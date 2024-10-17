@@ -5,10 +5,12 @@ class Plate extends StatelessWidget {
     super.key,
     required this.child,
     this.padding,
+    this.blurRadius = 60,
   });
 
   final Widget child;
   final EdgeInsets? padding;
+  final double blurRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +18,16 @@ class Plate extends StatelessWidget {
       width: double.maxFinite,
       padding: padding ?? const EdgeInsets.all(15),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Colors.white,
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromRGBO(142, 145, 245, 1),
-              blurRadius: 60,
-              spreadRadius: -20,
-            ),
-          ]),
+        borderRadius: BorderRadius.circular(25),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: const Color.fromRGBO(142, 145, 245, 1),
+            blurRadius: blurRadius,
+            spreadRadius: -20,
+          ),
+        ],
+      ),
       child: child,
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_application/ui/features/my_profile/widgets/local_body_info.dart';
-import 'package:gym_application/ui/widgets/plate.dart';
+import 'package:gym_application/ui/theme/color/app_colors.dart';
+import 'package:gym_application/ui/widgets/decoration/plate.dart';
 import 'package:gym_application/ui/widgets/user_avatar.dart';
 
 class UserInfo extends StatelessWidget {
@@ -21,11 +22,6 @@ class UserInfo extends StatelessWidget {
   final double weight;
   final int bmi;
 
-  static const Color mainColor = Color.fromRGBO(217, 227, 236, 1);
-  static const Color mainColorMedium = Color.fromARGB(255, 186, 189, 239);
-  static const Color mainColorDark = Color.fromRGBO(142, 145, 245, 1);
-  static const Color mainColorDarkest = Color.fromRGBO(59, 41, 122, 1);
-
   @override
   Widget build(BuildContext context) {
     return Plate(
@@ -36,7 +32,7 @@ class UserInfo extends StatelessWidget {
             child: GestureDetector(
               child: const Icon(
                 Icons.edit,
-                color: mainColorDarkest,
+                color: AppColors.mainColorDarkest,
               ),
             ),
           ),
@@ -44,7 +40,7 @@ class UserInfo extends StatelessWidget {
           const UserAvatar(
             size: 110,
             borderWeight: 6,
-            shadowColor: mainColorMedium,
+            shadowColor: AppColors.mainColorMedium,
           ),
           const SizedBox(height: 15),
           Text(
@@ -52,7 +48,7 @@ class UserInfo extends StatelessWidget {
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
-              color: mainColorDarkest,
+              color: AppColors.mainColorDarkest,
             ),
           ),
           Text(

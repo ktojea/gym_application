@@ -4,15 +4,15 @@ class UserAvatar extends StatelessWidget {
   const UserAvatar({
     super.key,
     required this.size,
-    this.borderColor,
-    this.borderWeight,
-    this.shadowColor,
+    this.borderColor = Colors.white,
+    this.borderWeight = 7,
+    this.shadowColor = const Color.fromRGBO(173, 175, 235, 1),
   });
 
   final double size;
-  final double? borderWeight;
-  final Color? borderColor;
-  final Color? shadowColor;
+  final double borderWeight;
+  final Color borderColor;
+  final Color shadowColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,13 @@ class UserAvatar extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          width: borderWeight ?? 7,
-          color: borderColor ?? Colors.white,
+          width: borderWeight,
+          color: borderColor,
         ),
         boxShadow: [
           BoxShadow(
             blurRadius: 50,
-            color: shadowColor ?? const Color.fromRGBO(173, 175, 235, 1),
+            color: shadowColor,
             spreadRadius: -10,
           )
         ],
