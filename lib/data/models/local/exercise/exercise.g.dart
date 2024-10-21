@@ -11,8 +11,8 @@ _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
       description: json['description'] as String,
-      equipmentId: (json['equipmentId'] as num).toInt(),
-      muscleGroupId: (json['muscleGroupId'] as num).toInt(),
+      equipmentId: (json['equipment_id'] as num).toInt(),
+      muscleGroupId: (json['muscle_group_id'] as num).toInt(),
       difficulty: (json['difficulty'] as num).toInt(),
     );
 
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'equipmentId': instance.equipmentId,
-      'muscleGroupId': instance.muscleGroupId,
+      'equipment_id': instance.equipmentId,
+      'muscle_group_id': instance.muscleGroupId,
       'difficulty': instance.difficulty,
     };
