@@ -19,15 +19,17 @@ class AppGridWidget extends StatelessWidget {
     return Wrap(
       spacing: spacing,
       runSpacing: spacing,
-      children: muscleGroupList.map((muscleGroup) {
-        return SizedBox(
-          width: (MediaQuery.of(context).size.width - 50 - spacing) / 2,
-          child: MuscleGroupWidget(
-            muscleGroup: muscleGroup,
-            onTap: onTap,
-          ),
-        );
-      }).toList(),
+      children: muscleGroupList.map(
+        (muscleGroup) {
+          return SizedBox(
+            width: (MediaQuery.of(context).size.width - 50 - spacing) / 2,
+            child: MuscleGroupWidget(
+              muscleGroup: muscleGroup,
+              onTap: onTap,
+            ),
+          );
+        },
+      ).toList(),
     );
   }
 }

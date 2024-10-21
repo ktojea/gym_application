@@ -6,6 +6,8 @@ import 'package:gym_application/ui/features/exercises/exercises_model.dart';
 import 'package:gym_application/ui/features/exercises/exercises_screen.dart';
 
 abstract interface class IExercisesScreenWidgetModel implements IWidgetModel {
+  MediaQueryData get mediaQuery;
+
   void onExerciseTap();
 }
 
@@ -21,4 +23,7 @@ class ExercisesScreenWidgetModel extends WidgetModel<ExercisesScreen, IExercises
 
   @override
   void onExerciseTap() => context.router.push(const EquipmentRoute());
+
+  @override
+  MediaQueryData get mediaQuery => MediaQuery.of(context);
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
-class SeparatorTextWidget extends StatelessWidget {
-  const SeparatorTextWidget({
+class TextWithFilterWidget extends StatelessWidget {
+  const TextWithFilterWidget({
     super.key,
     required this.mainText,
     this.secondText,
@@ -26,23 +26,22 @@ class SeparatorTextWidget extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        secondText == null
-            ? const SizedBox()
-            : Row(
-                children: [
-                  Text(
-                    secondText!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black38,
-                    ),
-                  ),
-                  const Icon(
-                    Icons.keyboard_arrow_down_sharp,
-                    color: Colors.black38,
-                  ),
-                ],
+        if (secondText != null)
+          Row(
+            children: [
+              Text(
+                secondText!,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black38,
+                ),
               ),
+              const Icon(
+                Icons.keyboard_arrow_down_sharp,
+                color: Colors.black38,
+              ),
+            ],
+          ),
       ],
     );
   }

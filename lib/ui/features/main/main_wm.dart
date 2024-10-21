@@ -19,15 +19,13 @@ abstract interface class IMainScreenWidgetModel implements IWidgetModel {
   void onQRScanTap();
 }
 
-MainScreenWidgetModel defaultMainScreenWidgetModelFactory(
-    BuildContext context) {
+MainScreenWidgetModel defaultMainScreenWidgetModelFactory(BuildContext context) {
   return MainScreenWidgetModel(
     MainScreenModel(),
   );
 }
 
-class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel>
-    implements IMainScreenWidgetModel {
+class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> implements IMainScreenWidgetModel {
   MainScreenWidgetModel(super.model);
 
   @override
@@ -44,18 +42,16 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel>
   final _muscleGroupListEntity = EntityStateNotifier<List<MuscleGroup>>();
 
   @override
-  ValueNotifier<EntityState<List<MuscleGroup>>> get muscleGroupListListenable =>
-      _muscleGroupListEntity;
+  ValueNotifier<EntityState<List<MuscleGroup>>> get muscleGroupListListenable => _muscleGroupListEntity;
 
   @override
   Future<void> initWidgetModel() async {
-    _initMain();
-
+    await _initMain();
     super.initWidgetModel();
   }
 
   Future<void> _initMain() async {
-    _initMuscleGroupList();
+    await _initMuscleGroupList();
   }
 
   Future<void> _initMuscleGroupList() async {
@@ -79,8 +75,7 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel>
       print("Error");
     }
   }
-  
+
   @override
-  Future<void> onRefresh() async {await _initMuscleGroupList();
-  }
+  Future<void> onRefresh() async => await _initMuscleGroupList();
 }

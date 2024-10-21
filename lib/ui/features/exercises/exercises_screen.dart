@@ -5,12 +5,11 @@ import 'package:gym_application/ui/features/exercises/exercises_wm.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
-import 'package:gym_application/ui/widgets/decoration/separator_text_widget.dart';
+import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.dart';
 
 @RoutePage()
 class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
-  const ExercisesScreen({super.key})
-      : super(defaultExercisesScreenWidgetModelFactory);
+  const ExercisesScreen({super.key}) : super(defaultExercisesScreenWidgetModelFactory);
 
   @override
   Widget build(IExercisesScreenWidgetModel wm) {
@@ -25,53 +24,42 @@ class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
           ),
         ),
       ),
-      body: ListView(
-        children: const [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: SeparatorTextWidget(
-              mainText: "*Группа мышц*",
-            ),
-          ),
-          SizedBox(height: 25),
-          SizedBox(
-            child: PlateWidget(
-              child: Column(
-                children: [
-                  Text("Ваш уровень"),
-                  CircularProgressIndicator(
-                    value: 0.7,
-                  ),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: ListView(
+          children: [
+            const Text(
+              "*Группа мышц*",
+              style: TextStyle(
+                color: AppColors.mainColorDarkest,
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
               ),
             ),
-          ),
-          SizedBox(height: 25),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: SeparatorTextWidget(
-              mainText: "1-й уровень",
+            const SizedBox(height: 25),
+            SizedBox(
+              width: wm.mediaQuery.size.width / 3,
+              child: const PlateWidget(
+                child: Text("Ваш уровень"),
+              ),
+            ),
+            const SizedBox(height: 25),
+            const TextWithFilterWidget(
+              mainText: "Начинающий",
               secondText: "Все",
             ),
-          ),
-          SizedBox(height: 25),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: SeparatorTextWidget(
-              mainText: "Ваш текущий уровень",
-              secondText: "Все",
-              color: AppColors.secondColorDarkest,
-            ),
-          ),
-          SizedBox(height: 25),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: SeparatorTextWidget(
-              mainText: "3-й уровень",
+            const SizedBox(height: 25),
+            const TextWithFilterWidget(
+              mainText: "Опытный",
               secondText: "Все",
             ),
-          ),
-        ],
+            const SizedBox(height: 25),
+            const TextWithFilterWidget(
+              mainText: "Профессионал",
+              secondText: "Все",
+            ),
+          ],
+        ),
       ),
     );
   }
