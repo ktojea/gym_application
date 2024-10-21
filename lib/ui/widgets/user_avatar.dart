@@ -6,6 +6,7 @@ class UserAvatar extends StatelessWidget {
     required this.size,
     this.borderColor = Colors.white,
     this.borderWeight = 7,
+    this.borderRadius = 8,
     this.shadowColor = const Color.fromRGBO(173, 175, 235, 1),
   });
 
@@ -13,11 +14,12 @@ class UserAvatar extends StatelessWidget {
   final double borderWeight;
   final Color borderColor;
   final Color shadowColor;
+  final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: EdgeInsets.all(borderRadius),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(

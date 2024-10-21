@@ -9,21 +9,24 @@ import 'package:gym_application/ui/widgets/info/subscription_widget.dart';
 
 @RoutePage()
 class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
-  const MyProfileScreen({super.key}) : super(defaultMyProfileScreenWidgetModelFactory);
+  const MyProfileScreen({super.key})
+      : super(defaultMyProfileScreenWidgetModelFactory);
 
   @override
   Widget build(IMyProfileScreenWidgetModel wm) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(217, 227, 236, 1),
-      appBar: AppBar(backgroundColor: const Color.fromRGBO(217, 227, 236, 1)),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: RefreshIndicator(
-          onRefresh: () => wm.onRefresh(),
-          child: ListView(
-            physics: const ClampingScrollPhysics(),
-            children: [
-              const Text(
+      backgroundColor: AppColors.mainColor,
+      appBar: AppBar(
+        backgroundColor: AppColors.mainColor,
+      ),
+      body: RefreshIndicator(
+        onRefresh: () => wm.onRefresh(),
+        child: ListView(
+          children: [
+            const SizedBox(height: 5),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: Text(
                 "Мой профиль",
                 style: TextStyle(
                   color: AppColors.mainColorDarkest,
@@ -31,23 +34,26 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              const SizedBox(height: 25),
-              EntityStateNotifierBuilder(
-                listenableEntityState: wm.userListenable,
-                loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
-                builder: (_, user) => user == null
-                    ? const SizedBox()
-                    : UserInfo(
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        age: user.age,
-                        height: user.height,
-                        weight: user.weight,
-                        bmi: 228,
+            ),
+            const SizedBox(height: 25),
+            EntityStateNotifierBuilder(
+              listenableEntityState: wm.userListenable,
+              loadingBuilder: (_, __) =>
+                  const Center(child: CircularProgressIndicator()),
+              builder: (_, user) => user == null
+                  ? const SizedBox()
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: UserInfo(
+                        user: user,
+                        onEiditTap: () => wm.onEditTap,
                       ),
-              ),
-              const SizedBox(height: 25),
-              const Row(
+                    ),
+            ),
+            const SizedBox(height: 25),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: Row(
                 children: [
                   Text(
                     "Абонементы",
@@ -64,28 +70,31 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
                   ),
                 ],
               ),
-              const SizedBox(height: 25),
-              EntityStateNotifierBuilder(
-                listenableEntityState: wm.subscriptionListListenable,
-                loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
-                builder: (_, subscriptionList) => subscriptionList == null
-                    ? const SizedBox()
-                    : Column(
-                        children: subscriptionList
-                            .map(
-                              (subscription) => Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: SubscriptionWidget(
-                                  subscription: subscription,
-                                  onTap: (id) => wm.onSubscriptionTap(subscription.id),
-                                ),
+            ),
+            const SizedBox(height: 25),
+            EntityStateNotifierBuilder(
+              listenableEntityState: wm.subscriptionListListenable,
+              loadingBuilder: (_, __) =>
+                  const Center(child: CircularProgressIndicator()),
+              builder: (_, subscriptionList) => subscriptionList == null
+                  ? const SizedBox()
+                  : Column(
+                      children: subscriptionList
+                          .map(
+                            (subscription) => Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 10, right: 25, left: 25),
+                              child: SubscriptionWidget(
+                                subscription: subscription,
+                                onTap: (id) =>
+                                    wm.onSubscriptionTap(subscription.id),
                               ),
-                            )
-                            .toList(),
-                      ),
-              ),
-            ],
-          ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+            ),
+          ],
         ),
       ),
     );

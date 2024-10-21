@@ -8,12 +8,12 @@ part of 'subscription.dart';
 
 _$SubscriptionImpl _$$SubscriptionImplFromJson(Map<String, dynamic> json) =>
     _$SubscriptionImpl(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       gymName: json['gymName'] as String,
       price: (json['price'] as num).toInt(),
       endDate: DateTime.parse(json['endDate'] as String),
       gymAvatar: json['gymAvatar'] as String?,
-      isOpen: json['isOpen'] as bool,
+      isNotificated: json['isNotificated'] as bool,
     );
 
 Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
@@ -23,5 +23,5 @@ Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
       'price': instance.price,
       'endDate': instance.endDate.toIso8601String(),
       'gymAvatar': instance.gymAvatar,
-      'isOpen': instance.isOpen,
+      'isNotificated': instance.isNotificated,
     };

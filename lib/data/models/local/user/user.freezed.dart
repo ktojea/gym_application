@@ -20,11 +20,18 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
-  int get height => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get surname => throw _privateConstructorUsedError;
+  String get phoneNumber => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  String get sex => throw _privateConstructorUsedError;
+  DateTime get dateOfBirthday => throw _privateConstructorUsedError;
   double get weight => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+  int get trainingLevel => throw _privateConstructorUsedError;
+  int get trainingFrequency => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +48,18 @@ abstract class $UserCopyWith<$Res> {
       _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
-      {String firstName, String lastName, int age, int height, double weight});
+      {int id,
+      String name,
+      String surname,
+      String phoneNumber,
+      String password,
+      DateTime createdAt,
+      String sex,
+      DateTime dateOfBirthday,
+      double weight,
+      int height,
+      int trainingLevel,
+      int trainingFrequency});
 }
 
 /// @nodoc
@@ -59,33 +77,68 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? age = null,
-    Object? height = null,
+    Object? id = null,
+    Object? name = null,
+    Object? surname = null,
+    Object? phoneNumber = null,
+    Object? password = null,
+    Object? createdAt = null,
+    Object? sex = null,
+    Object? dateOfBirthday = null,
     Object? weight = null,
+    Object? height = null,
+    Object? trainingLevel = null,
+    Object? trainingFrequency = null,
   }) {
     return _then(_value.copyWith(
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirthday: null == dateOfBirthday
+          ? _value.dateOfBirthday
+          : dateOfBirthday // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       weight: null == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+      trainingLevel: null == trainingLevel
+          ? _value.trainingLevel
+          : trainingLevel // ignore: cast_nullable_to_non_nullable
+              as int,
+      trainingFrequency: null == trainingFrequency
+          ? _value.trainingFrequency
+          : trainingFrequency // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -98,7 +151,18 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String firstName, String lastName, int age, int height, double weight});
+      {int id,
+      String name,
+      String surname,
+      String phoneNumber,
+      String password,
+      DateTime createdAt,
+      String sex,
+      DateTime dateOfBirthday,
+      double weight,
+      int height,
+      int trainingLevel,
+      int trainingFrequency});
 }
 
 /// @nodoc
@@ -113,33 +177,68 @@ class __$$UserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firstName = null,
-    Object? lastName = null,
-    Object? age = null,
-    Object? height = null,
+    Object? id = null,
+    Object? name = null,
+    Object? surname = null,
+    Object? phoneNumber = null,
+    Object? password = null,
+    Object? createdAt = null,
+    Object? sex = null,
+    Object? dateOfBirthday = null,
     Object? weight = null,
+    Object? height = null,
+    Object? trainingLevel = null,
+    Object? trainingFrequency = null,
   }) {
     return _then(_$UserImpl(
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      surname: null == surname
+          ? _value.surname
+          : surname // ignore: cast_nullable_to_non_nullable
+              as String,
+      phoneNumber: null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      sex: null == sex
+          ? _value.sex
+          : sex // ignore: cast_nullable_to_non_nullable
+              as String,
+      dateOfBirthday: null == dateOfBirthday
+          ? _value.dateOfBirthday
+          : dateOfBirthday // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       weight: null == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double,
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as int,
+      trainingLevel: null == trainingLevel
+          ? _value.trainingLevel
+          : trainingLevel // ignore: cast_nullable_to_non_nullable
+              as int,
+      trainingFrequency: null == trainingFrequency
+          ? _value.trainingFrequency
+          : trainingFrequency // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -148,30 +247,51 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserImpl extends _User {
   const _$UserImpl(
-      {required this.firstName,
-      required this.lastName,
-      required this.age,
+      {required this.id,
+      required this.name,
+      required this.surname,
+      required this.phoneNumber,
+      required this.password,
+      required this.createdAt,
+      required this.sex,
+      required this.dateOfBirthday,
+      required this.weight,
       required this.height,
-      required this.weight})
+      required this.trainingLevel,
+      required this.trainingFrequency})
       : super._();
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
   @override
-  final String firstName;
+  final int id;
   @override
-  final String lastName;
+  final String name;
   @override
-  final int age;
+  final String surname;
+  @override
+  final String phoneNumber;
+  @override
+  final String password;
+  @override
+  final DateTime createdAt;
+  @override
+  final String sex;
+  @override
+  final DateTime dateOfBirthday;
+  @override
+  final double weight;
   @override
   final int height;
   @override
-  final double weight;
+  final int trainingLevel;
+  @override
+  final int trainingFrequency;
 
   @override
   String toString() {
-    return 'User(firstName: $firstName, lastName: $lastName, age: $age, height: $height, weight: $weight)';
+    return 'User(id: $id, name: $name, surname: $surname, phoneNumber: $phoneNumber, password: $password, createdAt: $createdAt, sex: $sex, dateOfBirthday: $dateOfBirthday, weight: $weight, height: $height, trainingLevel: $trainingLevel, trainingFrequency: $trainingFrequency)';
   }
 
   @override
@@ -179,19 +299,42 @@ class _$UserImpl extends _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserImpl &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
-            (identical(other.age, age) || other.age == age) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.surname, surname) || other.surname == surname) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.sex, sex) || other.sex == sex) &&
+            (identical(other.dateOfBirthday, dateOfBirthday) ||
+                other.dateOfBirthday == dateOfBirthday) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.height, height) || other.height == height) &&
-            (identical(other.weight, weight) || other.weight == weight));
+            (identical(other.trainingLevel, trainingLevel) ||
+                other.trainingLevel == trainingLevel) &&
+            (identical(other.trainingFrequency, trainingFrequency) ||
+                other.trainingFrequency == trainingFrequency));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, firstName, lastName, age, height, weight);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      surname,
+      phoneNumber,
+      password,
+      createdAt,
+      sex,
+      dateOfBirthday,
+      weight,
+      height,
+      trainingLevel,
+      trainingFrequency);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -211,25 +354,46 @@ class _$UserImpl extends _User {
 
 abstract class _User extends User {
   const factory _User(
-      {required final String firstName,
-      required final String lastName,
-      required final int age,
+      {required final int id,
+      required final String name,
+      required final String surname,
+      required final String phoneNumber,
+      required final String password,
+      required final DateTime createdAt,
+      required final String sex,
+      required final DateTime dateOfBirthday,
+      required final double weight,
       required final int height,
-      required final double weight}) = _$UserImpl;
+      required final int trainingLevel,
+      required final int trainingFrequency}) = _$UserImpl;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
-  String get firstName;
+  int get id;
   @override
-  String get lastName;
+  String get name;
   @override
-  int get age;
+  String get surname;
+  @override
+  String get phoneNumber;
+  @override
+  String get password;
+  @override
+  DateTime get createdAt;
+  @override
+  String get sex;
+  @override
+  DateTime get dateOfBirthday;
+  @override
+  double get weight;
   @override
   int get height;
   @override
-  double get weight;
+  int get trainingLevel;
+  @override
+  int get trainingFrequency;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

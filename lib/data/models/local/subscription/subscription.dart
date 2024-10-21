@@ -7,12 +7,12 @@ part 'subscription.g.dart';
 class Subscription with _$Subscription {
   const Subscription._();
   const factory Subscription({
-    required String id,
+    required int id,
     required String gymName,
     required int price,
     required DateTime endDate,
     required String? gymAvatar,
-    required bool isOpen,
+    required bool isNotificated,
   }) = _Subscription;
 
   factory Subscription.fromJson(Map<String, dynamic> json) => _$SubscriptionFromJson(json);

@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/data/models/local/user/user.dart';
 import 'package:gym_application/ui/features/my_profile/widgets/local_body_info.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
-import 'package:gym_application/ui/widgets/decoration/plate.dart';
+import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
 import 'package:gym_application/ui/widgets/user_avatar.dart';
 
 class UserInfo extends StatelessWidget {
   const UserInfo({
     super.key,
-    required this.age,
-    required this.firstName,
-    required this.lastName,
-    required this.height,
-    required this.weight,
-    required this.bmi,
+    required this.user,
+    required this.onEiditTap,
   });
 
-  final String firstName;
-  final String lastName;
-  final int age;
-  final int height;
-  final double weight;
-  final int bmi;
+  final User user;
+  final VoidCallback onEiditTap;
 
   @override
   Widget build(BuildContext context) {
-    return Plate(
+    return PlateWidget(
       child: Column(
         children: [
           Align(
             alignment: Alignment.centerRight,
             child: GestureDetector(
+              onTap: () => onEiditTap(),
               child: const Icon(
                 Icons.edit,
                 color: AppColors.mainColorDarkest,
@@ -44,7 +38,7 @@ class UserInfo extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Text(
-            "$firstName $lastName",
+            "${user.name} ${user.surname}",
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
@@ -52,7 +46,7 @@ class UserInfo extends StatelessWidget {
             ),
           ),
           Text(
-            "$age лет",
+            "${user.age} лет",
             style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w500,
@@ -60,9 +54,9 @@ class UserInfo extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           LocalBodyInfo(
-            height: height,
-            weight: weight,
-            bmi: bmi,
+            height: user.height,
+            weight: user.weight,
+            bmi: 228,
           ),
           const SizedBox(height: 25),
         ],

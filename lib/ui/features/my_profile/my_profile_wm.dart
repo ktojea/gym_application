@@ -14,20 +14,22 @@ abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
 
   Future<void> onRefresh();
 
-  void onSubscriptionTap(String id);
+  void onSubscriptionTap(int id);
 
   void navigateBack();
 
   void onEditTap();
 }
 
-MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(BuildContext context) {
+MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(
+    BuildContext context) {
   return MyProfileScreenWidgetModel(
     MyProfileScreenModel(),
   );
 }
 
-class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfileScreenModel>
+class MyProfileScreenWidgetModel
+    extends WidgetModel<MyProfileScreen, IMyProfileScreenModel>
     implements IMyProfileScreenWidgetModel {
   MyProfileScreenWidgetModel(super.model);
 
@@ -39,7 +41,8 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
   final _subscriptionListEntity = EntityStateNotifier<List<Subscription>>();
 
   @override
-  ValueNotifier<EntityState<List<Subscription>>> get subscriptionListListenable => _subscriptionListEntity;
+  ValueNotifier<EntityState<List<Subscription>>>
+      get subscriptionListListenable => _subscriptionListEntity;
 
   @override
   Future<void> initWidgetModel() async {
@@ -55,14 +58,21 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
     _userEntity.loading();
 
     try {
-      await Future.delayed(const Duration(seconds: 3));
+      await Future.delayed(const Duration(seconds: 1));
 
-      const user = User(
-        firstName: 'Леха',
-        lastName: 'Соколов',
-        age: 10,
-        height: 220,
-        weight: 45,
+      final user = User(
+        id: 1,
+        name: "Инокентий",
+        surname: "Абдулов",
+        phoneNumber: "+78005553535",
+        password: "qwerty1234",
+        createdAt: DateTime(2024, 10, 10),
+        sex: "m",
+        dateOfBirthday: DateTime(2003, 10, 31),
+        weight: 104.3,
+        height: 191,
+        trainingLevel: 1,
+        trainingFrequency: 1,
       );
 
       _userEntity.content(user);
@@ -82,13 +92,13 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
       final list = List.generate(
         10,
         (i) => Subscription(
-          id: '$i',
+          id: i,
           gymName: 'DDX',
           price: 999,
           endDate: DateTime(2024, 11, 30),
           gymAvatar:
               'https://sun9-5.userapi.com/impg/g7SpGK8Qfz1qmxefP0vnAjdaAKlHQyHIqPamVQ/2eWrOh0lMug.jpg?size=730x599&quality=96&sign=97814d058218d6e1bb9e3f7fbf26d5a6&type=album',
-          isOpen: i % 3 == 0,
+          isNotificated: i % 3 == 0,
         ),
       );
 
@@ -108,18 +118,20 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
   }
 
   @override
-  void onSubscriptionTap(String id) {
+  void onSubscriptionTap(int id) {
     final subscriptionList = _subscriptionListEntity.value.data;
     if (subscriptionList == null) return;
 
     final updatedSubscriptionList = List<Subscription>.from(subscriptionList);
-    final indexChoosenSubscription = updatedSubscriptionList.indexWhere((s) => s.id == id);
+    final indexChoosenSubscription =
+        updatedSubscriptionList.indexWhere((s) => s.id == id);
 
     if (indexChoosenSubscription >= 0) {
-      final choosenSubscription = updatedSubscriptionList[indexChoosenSubscription];
+      final choosenSubscription =
+          updatedSubscriptionList[indexChoosenSubscription];
 
       updatedSubscriptionList[indexChoosenSubscription] =
-          choosenSubscription.copyWith(isOpen: !choosenSubscription.isOpen);
+          choosenSubscription.copyWith(isNotificated: !choosenSubscription.isNotificated);
       _subscriptionListEntity.content(updatedSubscriptionList);
     }
   }

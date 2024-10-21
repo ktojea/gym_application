@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
-import 'package:gym_application/ui/widgets/decoration/plate.dart';
+import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
 
 class SubscriptionWidget extends StatelessWidget {
   const SubscriptionWidget({
@@ -11,14 +11,14 @@ class SubscriptionWidget extends StatelessWidget {
   });
 
   final Subscription subscription;
-  final void Function(String id) onTap;
+  final void Function(int id) onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => onTap(subscription.id),
-      child: Plate(
-        blurRadius: 30,
+      child: PlateWidget(
+        blurRadius: 35,
         child: Row(
           children: [
             ClipRRect(
@@ -57,8 +57,12 @@ class SubscriptionWidget extends StatelessWidget {
             ),
             const Spacer(),
             Icon(
-              subscription.isOpen ? Icons.notifications_none_rounded : Icons.notifications_off_outlined,
-              color: subscription.isOpen ? Colors.green : Colors.red,
+              subscription.isNotificated
+                  ? Icons.notifications_none_rounded
+                  : Icons.notifications_off_outlined,
+              color: subscription.isNotificated
+                  ? AppColors.mainColorDarkest
+                  : Colors.black38,
             )
           ],
         ),

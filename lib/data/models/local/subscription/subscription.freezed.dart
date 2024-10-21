@@ -20,12 +20,12 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Subscription {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get gymName => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
   DateTime get endDate => throw _privateConstructorUsedError;
   String? get gymAvatar => throw _privateConstructorUsedError;
-  bool get isOpen => throw _privateConstructorUsedError;
+  bool get isNotificated => throw _privateConstructorUsedError;
 
   /// Serializes this Subscription to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,12 +44,12 @@ abstract class $SubscriptionCopyWith<$Res> {
       _$SubscriptionCopyWithImpl<$Res, Subscription>;
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String gymName,
       int price,
       DateTime endDate,
       String? gymAvatar,
-      bool isOpen});
+      bool isNotificated});
 }
 
 /// @nodoc
@@ -72,13 +72,13 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? price = null,
     Object? endDate = null,
     Object? gymAvatar = freezed,
-    Object? isOpen = null,
+    Object? isNotificated = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       gymName: null == gymName
           ? _value.gymName
           : gymName // ignore: cast_nullable_to_non_nullable
@@ -95,9 +95,9 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.gymAvatar
           : gymAvatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      isOpen: null == isOpen
-          ? _value.isOpen
-          : isOpen // ignore: cast_nullable_to_non_nullable
+      isNotificated: null == isNotificated
+          ? _value.isNotificated
+          : isNotificated // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -112,12 +112,12 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
+      {int id,
       String gymName,
       int price,
       DateTime endDate,
       String? gymAvatar,
-      bool isOpen});
+      bool isNotificated});
 }
 
 /// @nodoc
@@ -138,13 +138,13 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? price = null,
     Object? endDate = null,
     Object? gymAvatar = freezed,
-    Object? isOpen = null,
+    Object? isNotificated = null,
   }) {
     return _then(_$SubscriptionImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       gymName: null == gymName
           ? _value.gymName
           : gymName // ignore: cast_nullable_to_non_nullable
@@ -161,9 +161,9 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.gymAvatar
           : gymAvatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      isOpen: null == isOpen
-          ? _value.isOpen
-          : isOpen // ignore: cast_nullable_to_non_nullable
+      isNotificated: null == isNotificated
+          ? _value.isNotificated
+          : isNotificated // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -178,14 +178,14 @@ class _$SubscriptionImpl extends _Subscription {
       required this.price,
       required this.endDate,
       required this.gymAvatar,
-      required this.isOpen})
+      required this.isNotificated})
       : super._();
 
   factory _$SubscriptionImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubscriptionImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String gymName;
   @override
@@ -195,11 +195,11 @@ class _$SubscriptionImpl extends _Subscription {
   @override
   final String? gymAvatar;
   @override
-  final bool isOpen;
+  final bool isNotificated;
 
   @override
   String toString() {
-    return 'Subscription(id: $id, gymName: $gymName, price: $price, endDate: $endDate, gymAvatar: $gymAvatar, isOpen: $isOpen)';
+    return 'Subscription(id: $id, gymName: $gymName, price: $price, endDate: $endDate, gymAvatar: $gymAvatar, isNotificated: $isNotificated)';
   }
 
   @override
@@ -213,13 +213,14 @@ class _$SubscriptionImpl extends _Subscription {
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.gymAvatar, gymAvatar) ||
                 other.gymAvatar == gymAvatar) &&
-            (identical(other.isOpen, isOpen) || other.isOpen == isOpen));
+            (identical(other.isNotificated, isNotificated) ||
+                other.isNotificated == isNotificated));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, gymName, price, endDate, gymAvatar, isOpen);
+  int get hashCode => Object.hash(
+      runtimeType, id, gymName, price, endDate, gymAvatar, isNotificated);
 
   /// Create a copy of Subscription
   /// with the given fields replaced by the non-null parameter values.
@@ -239,19 +240,19 @@ class _$SubscriptionImpl extends _Subscription {
 
 abstract class _Subscription extends Subscription {
   const factory _Subscription(
-      {required final String id,
+      {required final int id,
       required final String gymName,
       required final int price,
       required final DateTime endDate,
       required final String? gymAvatar,
-      required final bool isOpen}) = _$SubscriptionImpl;
+      required final bool isNotificated}) = _$SubscriptionImpl;
   const _Subscription._() : super._();
 
   factory _Subscription.fromJson(Map<String, dynamic> json) =
       _$SubscriptionImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get gymName;
   @override
@@ -261,7 +262,7 @@ abstract class _Subscription extends Subscription {
   @override
   String? get gymAvatar;
   @override
-  bool get isOpen;
+  bool get isNotificated;
 
   /// Create a copy of Subscription
   /// with the given fields replaced by the non-null parameter values.
