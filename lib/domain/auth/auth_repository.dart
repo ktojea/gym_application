@@ -31,10 +31,10 @@ class AuthRepository {
   }
 
   Future<CheckVerificationCodeResponse> login(
-    LoginDTO checkVerificationCodeRegisterDTO,
+    LoginDTO loginDTO,
   ) async {
     try {
-      final checkVerificationCodeResponse = await _authApi.login(checkVerificationCodeRegisterDTO);
+      final checkVerificationCodeResponse = await _authApi.login(loginDTO);
 
       return checkVerificationCodeResponse.data;
     } on Exception {
