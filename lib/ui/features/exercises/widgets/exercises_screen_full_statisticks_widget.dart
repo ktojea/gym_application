@@ -16,7 +16,7 @@ class ExercisesScreenFullStatisticksWidget extends StatelessWidget {
         SizedBox(
           width: (MediaQuery.of(context).size.width - 50 - 10) / 3,
           child: const PlateWidget(
-            child: LevelInfoWidget(),
+            child: LevelInfoWidget(trainingLevel: 2),
           ),
         ),
         SizedBox(

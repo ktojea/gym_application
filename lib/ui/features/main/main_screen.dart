@@ -18,11 +18,10 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
     return Scaffold(
       backgroundColor: AppColors.mainColor,
       appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+        title: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: MainAppBarWidget(
             title: "Наша приложуха",
-            onTap: () => wm.onMyProfileTap(),
           ),
         ),
         backgroundColor: AppColors.mainColor,

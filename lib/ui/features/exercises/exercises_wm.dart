@@ -55,7 +55,7 @@ class ExercisesScreenWidgetModel
         9,
         (i) => Exercise(
           id: i,
-          name: "Упражнение ${i+1}",
+          name: "Упражнение ${i + 1}",
           description:
               "Делайте ${i % 3 + 1} раз в день и спина не будет болеть",
           equipmentId: 1,

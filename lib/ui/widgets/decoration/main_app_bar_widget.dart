@@ -1,16 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/user_avatar.dart';
 
 class MainAppBarWidget extends StatelessWidget {
   const MainAppBarWidget({
     super.key,
-    required this.onTap,
     this.title,
   });
 
   final String? title;
-  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class MainAppBarWidget extends StatelessWidget {
                 ),
               ),
         GestureDetector(
-          onTap: () => onTap(),
+          onTap: () => context.router.push(const MyProfileRoute()),
           child: const UserAvatar(
             size: 30,
             borderColor: AppColors.mainColorDark,

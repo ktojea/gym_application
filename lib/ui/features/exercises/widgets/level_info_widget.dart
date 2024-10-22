@@ -4,15 +4,18 @@ import 'package:gym_application/ui/theme/color/app_colors.dart';
 class LevelInfoWidget extends StatelessWidget {
   const LevelInfoWidget({
     super.key,
+    required this.trainingLevel,
   });
+
+  final int trainingLevel;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         Column(
           children: [
-            Text(
+            const Text(
               "Уровень:",
               style: TextStyle(
                 fontSize: 16,
@@ -21,26 +24,30 @@ class LevelInfoWidget extends StatelessWidget {
               ),
             ),
             Text(
-              "Опытный",
-              style: TextStyle(
+              trainingLevel == 1
+                  ? "Начинающий"
+                  : trainingLevel == 2
+                      ? "Опытный"
+                      : "Профи",
+              style: const TextStyle(
                 fontWeight: FontWeight.w500,
               ),
             ),
           ],
         ),
-        SizedBox(height: 24),
+        const SizedBox(height: 24),
         Stack(
           alignment: Alignment.center,
           children: [
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               value: 0.7,
               strokeAlign: 4,
               strokeWidth: 5,
             ),
-            Text("2", style: TextStyle(fontSize: 22)),
+            Text("$trainingLevel", style: TextStyle(fontSize: 22)),
           ],
         ),
-        SizedBox(height: 13),
+        const SizedBox(height: 13),
       ],
     );
   }
