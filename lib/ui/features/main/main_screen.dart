@@ -6,7 +6,7 @@ import 'package:gym_application/ui/features/main/main_wm.dart';
 import 'package:gym_application/ui/features/main/widgets/app_grid_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.dart';
-import 'package:gym_application/ui/features/main/widgets/statistics_widget.dart';
+import 'package:gym_application/ui/widgets/info/statistics_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
 @RoutePage()
@@ -55,7 +55,7 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
                     builder: (_, muscleGroupList) => muscleGroupList == null
                         ? const SizedBox()
                         : AppGridWidget(
-                            muscleGroupList: muscleGroupList,
+                            items: muscleGroupList,
                             onTap: () => wm.onExercisesTap(),
                           ),
                   ),

@@ -26,6 +26,7 @@ mixin _$Exercise {
   int get equipmentId => throw _privateConstructorUsedError;
   int get muscleGroupId => throw _privateConstructorUsedError;
   int get difficulty => throw _privateConstructorUsedError;
+  String get url => throw _privateConstructorUsedError;
 
   /// Serializes this Exercise to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +49,8 @@ abstract class $ExerciseCopyWith<$Res> {
       String description,
       int equipmentId,
       int muscleGroupId,
-      int difficulty});
+      int difficulty,
+      String url});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
     Object? equipmentId = null,
     Object? muscleGroupId = null,
     Object? difficulty = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -98,6 +101,10 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -116,7 +123,8 @@ abstract class _$$ExerciseImplCopyWith<$Res>
       String description,
       int equipmentId,
       int muscleGroupId,
-      int difficulty});
+      int difficulty,
+      String url});
 }
 
 /// @nodoc
@@ -138,6 +146,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? equipmentId = null,
     Object? muscleGroupId = null,
     Object? difficulty = null,
+    Object? url = null,
   }) {
     return _then(_$ExerciseImpl(
       id: null == id
@@ -164,6 +173,10 @@ class __$$ExerciseImplCopyWithImpl<$Res>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -177,7 +190,8 @@ class _$ExerciseImpl extends _Exercise {
       required this.description,
       required this.equipmentId,
       required this.muscleGroupId,
-      required this.difficulty})
+      required this.difficulty,
+      required this.url})
       : super._();
 
   factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
@@ -195,10 +209,12 @@ class _$ExerciseImpl extends _Exercise {
   final int muscleGroupId;
   @override
   final int difficulty;
+  @override
+  final String url;
 
   @override
   String toString() {
-    return 'Exercise(id: $id, name: $name, description: $description, equipmentId: $equipmentId, muscleGroupId: $muscleGroupId, difficulty: $difficulty)';
+    return 'Exercise(id: $id, name: $name, description: $description, equipmentId: $equipmentId, muscleGroupId: $muscleGroupId, difficulty: $difficulty, url: $url)';
   }
 
   @override
@@ -215,13 +231,14 @@ class _$ExerciseImpl extends _Exercise {
             (identical(other.muscleGroupId, muscleGroupId) ||
                 other.muscleGroupId == muscleGroupId) &&
             (identical(other.difficulty, difficulty) ||
-                other.difficulty == difficulty));
+                other.difficulty == difficulty) &&
+            (identical(other.url, url) || other.url == url));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description,
-      equipmentId, muscleGroupId, difficulty);
+      equipmentId, muscleGroupId, difficulty, url);
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.
@@ -246,7 +263,8 @@ abstract class _Exercise extends Exercise {
       required final String description,
       required final int equipmentId,
       required final int muscleGroupId,
-      required final int difficulty}) = _$ExerciseImpl;
+      required final int difficulty,
+      required final String url}) = _$ExerciseImpl;
   const _Exercise._() : super._();
 
   factory _Exercise.fromJson(Map<String, dynamic> json) =
@@ -264,6 +282,8 @@ abstract class _Exercise extends Exercise {
   int get muscleGroupId;
   @override
   int get difficulty;
+  @override
+  String get url;
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.

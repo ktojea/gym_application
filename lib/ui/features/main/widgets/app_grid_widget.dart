@@ -3,14 +3,14 @@ import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart
 import 'package:gym_application/ui/features/main/widgets/muscle_group_widget.dart';
 
 class AppGridWidget extends StatelessWidget {
-  final List<MuscleGroup> muscleGroupList;
+  final List<MuscleGroup> items;
   final VoidCallback onTap;
 
   static const double spacing = 10;
 
   const AppGridWidget({
     super.key,
-    required this.muscleGroupList,
+    required this.items,
     required this.onTap,
   });
 
@@ -19,12 +19,12 @@ class AppGridWidget extends StatelessWidget {
     return Wrap(
       spacing: spacing,
       runSpacing: spacing,
-      children: muscleGroupList.map(
-        (muscleGroup) {
+      children: items.map(
+        (item) {
           return SizedBox(
             width: (MediaQuery.of(context).size.width - 50 - spacing) / 2,
             child: MuscleGroupWidget(
-              muscleGroup: muscleGroup,
+              muscleGroup: item,
               onTap: onTap,
             ),
           );

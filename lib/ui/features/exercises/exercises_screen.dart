@@ -2,14 +2,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/ui/features/exercises/exercises_wm.dart';
+import 'package:gym_application/ui/features/exercises/widgets/exercises_builder_widget.dart';
+import 'package:gym_application/ui/features/exercises/widgets/exercises_screen_full_statisticks_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
-import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.dart';
 
 @RoutePage()
 class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
-  const ExercisesScreen({super.key}) : super(defaultExercisesScreenWidgetModelFactory);
+  const ExercisesScreen({super.key})
+      : super(defaultExercisesScreenWidgetModelFactory);
 
   @override
   Widget build(IExercisesScreenWidgetModel wm) {
@@ -37,16 +39,17 @@ class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
               ),
             ),
             const SizedBox(height: 25),
-            SizedBox(
-              width: wm.mediaQuery.size.width / 3,
-              child: const PlateWidget(
-                child: Text("Ваш уровень"),
-              ),
-            ),
+            const ExercisesScreenFullStatisticksWidget(),
             const SizedBox(height: 25),
             const TextWithFilterWidget(
               mainText: "Начинающий",
               secondText: "Все",
+            ),
+            const SizedBox(height: 25),
+            ExercisesBuilderWidget(
+              exerciseListListenable: wm.exerciseListListenable,
+              onTap: wm.onExerciseTap,
+              difficulty: 1,
             ),
             const SizedBox(height: 25),
             const TextWithFilterWidget(
@@ -54,9 +57,21 @@ class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
               secondText: "Все",
             ),
             const SizedBox(height: 25),
+            ExercisesBuilderWidget(
+              exerciseListListenable: wm.exerciseListListenable,
+              onTap: wm.onExerciseTap,
+              difficulty: 2,
+            ),
+            const SizedBox(height: 25),
             const TextWithFilterWidget(
               mainText: "Профессионал",
               secondText: "Все",
+            ),
+            const SizedBox(height: 25),
+            ExercisesBuilderWidget(
+              exerciseListListenable: wm.exerciseListListenable,
+              onTap: wm.onExerciseTap,
+              difficulty: 3,
             ),
           ],
         ),
