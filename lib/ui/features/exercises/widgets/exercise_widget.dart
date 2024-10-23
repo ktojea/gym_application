@@ -33,7 +33,7 @@ class ExerciseWidget extends StatelessWidget {
                       color: AppColors.mainColor,
                       child: Image(
                         fit: BoxFit.cover,
-                        image: NetworkImage(exercise.url),
+                        image: NetworkImage(exercise.imageUrl),
                       ),
                     ),
                   ),

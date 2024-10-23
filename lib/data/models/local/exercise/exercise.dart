@@ -13,7 +13,7 @@ class Exercise with _$Exercise {
     required int equipmentId,
     required int muscleGroupId,
     required int difficulty,
-    required String url,
+    required String imageUrl,
   }) = _Exercise;
 
   factory Exercise.fromJson(Map<String, dynamic> json) => _$ExerciseFromJson(json);

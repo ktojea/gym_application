@@ -7,9 +7,11 @@ class TextWithFilterWidget extends StatelessWidget {
     required this.mainText,
     this.secondText,
     this.color = AppColors.mainColorDarkest,
+    this.underText,
   });
 
   final String mainText;
+  final String? underText;
   final String? secondText;
   final Color color;
 
@@ -18,12 +20,29 @@ class TextWithFilterWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          mainText,
-          style: TextStyle(
-            color: color,
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                mainText,
+                softWrap: true,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              underText == null
+                  ? const SizedBox.shrink()
+                  : Text(
+                      underText!,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black38,
+                      ),
+                    ),
+            ],
           ),
         ),
         if (secondText != null)

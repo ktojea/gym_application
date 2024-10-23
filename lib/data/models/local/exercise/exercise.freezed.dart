@@ -26,7 +26,7 @@ mixin _$Exercise {
   int get equipmentId => throw _privateConstructorUsedError;
   int get muscleGroupId => throw _privateConstructorUsedError;
   int get difficulty => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
 
   /// Serializes this Exercise to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,7 +50,7 @@ abstract class $ExerciseCopyWith<$Res> {
       int equipmentId,
       int muscleGroupId,
       int difficulty,
-      String url});
+      String imageUrl});
 }
 
 /// @nodoc
@@ -74,7 +74,7 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
     Object? equipmentId = null,
     Object? muscleGroupId = null,
     Object? difficulty = null,
-    Object? url = null,
+    Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -101,9 +101,9 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -124,7 +124,7 @@ abstract class _$$ExerciseImplCopyWith<$Res>
       int equipmentId,
       int muscleGroupId,
       int difficulty,
-      String url});
+      String imageUrl});
 }
 
 /// @nodoc
@@ -146,7 +146,7 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? equipmentId = null,
     Object? muscleGroupId = null,
     Object? difficulty = null,
-    Object? url = null,
+    Object? imageUrl = null,
   }) {
     return _then(_$ExerciseImpl(
       id: null == id
@@ -173,9 +173,9 @@ class __$$ExerciseImplCopyWithImpl<$Res>
           ? _value.difficulty
           : difficulty // ignore: cast_nullable_to_non_nullable
               as int,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -191,7 +191,7 @@ class _$ExerciseImpl extends _Exercise {
       required this.equipmentId,
       required this.muscleGroupId,
       required this.difficulty,
-      required this.url})
+      required this.imageUrl})
       : super._();
 
   factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
@@ -210,11 +210,11 @@ class _$ExerciseImpl extends _Exercise {
   @override
   final int difficulty;
   @override
-  final String url;
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'Exercise(id: $id, name: $name, description: $description, equipmentId: $equipmentId, muscleGroupId: $muscleGroupId, difficulty: $difficulty, url: $url)';
+    return 'Exercise(id: $id, name: $name, description: $description, equipmentId: $equipmentId, muscleGroupId: $muscleGroupId, difficulty: $difficulty, imageUrl: $imageUrl)';
   }
 
   @override
@@ -232,13 +232,14 @@ class _$ExerciseImpl extends _Exercise {
                 other.muscleGroupId == muscleGroupId) &&
             (identical(other.difficulty, difficulty) ||
                 other.difficulty == difficulty) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description,
-      equipmentId, muscleGroupId, difficulty, url);
+      equipmentId, muscleGroupId, difficulty, imageUrl);
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.
@@ -264,7 +265,7 @@ abstract class _Exercise extends Exercise {
       required final int equipmentId,
       required final int muscleGroupId,
       required final int difficulty,
-      required final String url}) = _$ExerciseImpl;
+      required final String imageUrl}) = _$ExerciseImpl;
   const _Exercise._() : super._();
 
   factory _Exercise.fromJson(Map<String, dynamic> json) =
@@ -283,7 +284,7 @@ abstract class _Exercise extends Exercise {
   @override
   int get difficulty;
   @override
-  String get url;
+  String get imageUrl;
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.

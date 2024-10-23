@@ -61,7 +61,7 @@ class ExercisesScreenWidgetModel
           equipmentId: 1,
           muscleGroupId: 1,
           difficulty: i % 3 + 1,
-          url: "https://s00.yaplakal.com/pics/pics_original/5/1/3/3643315.jpg",
+          imageUrl: "https://s00.yaplakal.com/pics/pics_original/5/1/3/3643315.jpg",
         ),
       );
 
