@@ -11,7 +11,6 @@ class User with _$User {
     required String name,
     required String surname,
     required String phoneNumber,
-    required String password,
     required DateTime createdAt,
     required String sex,
     required DateTime dateOfBirthday,
@@ -19,6 +18,7 @@ class User with _$User {
     required int height,
     required int trainingLevel,
     required int trainingFrequency,
+    required String? imageUrl,
   }) = _User;
 
   int get age {

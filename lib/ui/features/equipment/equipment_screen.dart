@@ -9,8 +9,7 @@ import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.da
 
 @RoutePage()
 class EquipmentScreen extends ElementaryWidget<IEquipmentScreenWidgetModel> {
-  const EquipmentScreen({super.key})
-      : super(defaultEquipmentScreenWidgetModelFactory);
+  const EquipmentScreen({super.key}) : super(defaultEquipmentScreenWidgetModelFactory);
 
   @override
   Widget build(IEquipmentScreenWidgetModel wm) {
@@ -19,7 +18,9 @@ class EquipmentScreen extends ElementaryWidget<IEquipmentScreenWidgetModel> {
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
-          child: MainAppBarWidget(),
+          child: MainAppBarWidget(
+            title: null,
+          ),
         ),
         backgroundColor: AppColors.mainColor,
       ),
@@ -42,7 +43,6 @@ class EquipmentScreen extends ElementaryWidget<IEquipmentScreenWidgetModel> {
                   secondText: "Этот тренажер",
                 ),
                 const SizedBox(height: 25),
-                
               ],
             ),
           ),

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/di/scopes/user/user_scope.dart';
 import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/features/main/main_screen.dart';
@@ -47,6 +48,7 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   @override
   Future<void> initWidgetModel() async {
     await _initMain();
+    print(context.userInfo.userNotifier.value.toString());
     super.initWidgetModel();
   }
 

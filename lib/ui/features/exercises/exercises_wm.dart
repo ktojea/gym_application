@@ -4,26 +4,27 @@ import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/data/models/local/exercise/exercise.dart';
+import 'package:gym_application/data/models/local/muscle_group_level_lists/muscle_group_level_lists.dart';
 import 'package:gym_application/ui/features/exercises/exercises_model.dart';
 import 'package:gym_application/ui/features/exercises/exercises_screen.dart';
 
 abstract interface class IExercisesScreenWidgetModel implements IWidgetModel {
   MediaQueryData get mediaQuery;
 
+  ValueNotifier<EntityState<MuscleGroupLevelLists>> get muscleGroupLevelListsListenable;
+
   ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable;
 
   void onExerciseTap();
 }
 
-ExercisesScreenWidgetModel defaultExercisesScreenWidgetModelFactory(
-    BuildContext context) {
+ExercisesScreenWidgetModel defaultExercisesScreenWidgetModelFactory(BuildContext context) {
   return ExercisesScreenWidgetModel(
     ExercisesScreenModel(),
   );
 }
 
-class ExercisesScreenWidgetModel
-    extends WidgetModel<ExercisesScreen, IExercisesScreenModel>
+class ExercisesScreenWidgetModel extends WidgetModel<ExercisesScreen, IExercisesScreenModel>
     implements IExercisesScreenWidgetModel {
   ExercisesScreenWidgetModel(super.model);
 
@@ -36,8 +37,7 @@ class ExercisesScreenWidgetModel
   final _exerciseListEntity = EntityStateNotifier<List<Exercise>>();
 
   @override
-  ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable =>
-      _exerciseListEntity;
+  ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable => _exerciseListEntity;
 
   @override
   Future<void> initWidgetModel() async {
@@ -56,8 +56,7 @@ class ExercisesScreenWidgetModel
         (i) => Exercise(
           id: i,
           name: "Упражнение ${i + 1}",
-          description:
-              "Делайте ${i % 3 + 1} раз в день и спина не будет болеть",
+          description: "Делайте ${i % 3 + 1} раз в день и спина не будет болеть",
           equipmentId: 1,
           muscleGroupId: 1,
           difficulty: i % 3 + 1,
@@ -71,4 +70,9 @@ class ExercisesScreenWidgetModel
       print("Error");
     }
   }
+
+  final _muscleGroupLevelListsEntity = EntityStateNotifier<MuscleGroupLevelLists>();
+
+  @override
+  ValueNotifier<EntityState<MuscleGroupLevelLists>> get muscleGroupLevelListsListenable => _muscleGroupLevelListsEntity;
 }

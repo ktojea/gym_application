@@ -15,23 +15,20 @@ abstract interface class IEquipmentScreenWidgetModel implements IWidgetModel {
   ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable;
 }
 
-EquipmentScreenWidgetModel defaultEquipmentScreenWidgetModelFactory(
-    BuildContext context) {
+EquipmentScreenWidgetModel defaultEquipmentScreenWidgetModelFactory(BuildContext context) {
   return EquipmentScreenWidgetModel(
     EquipmentScreenModel(),
   );
 }
 
-class EquipmentScreenWidgetModel
-    extends WidgetModel<EquipmentScreen, IEquipmentScreenModel>
+class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipmentScreenModel>
     implements IEquipmentScreenWidgetModel {
   EquipmentScreenWidgetModel(super.model);
 
   final _equipmentEntity = EntityStateNotifier<Equipment>();
 
   @override
-  ValueNotifier<EntityState<Equipment>> get equipmentListenable =>
-      _equipmentEntity;
+  ValueNotifier<EntityState<Equipment>> get equipmentListenable => _equipmentEntity;
 
   final _exerciseEntity = EntityStateNotifier<Exercise>();
 
@@ -83,8 +80,7 @@ class EquipmentScreenWidgetModel
       const equipment = Equipment(
         id: 1,
         name: "Коврик",
-        imageUrl:
-            "https://sv-sport.ru/wp-content/uploads/a/2/6/a26e0e77c6b2b4f8b9522eef2d29075f.jpeg",
+        imageUrl: "https://sv-sport.ru/wp-content/uploads/a/2/6/a26e0e77c6b2b4f8b9522eef2d29075f.jpeg",
       );
 
       _equipmentEntity.content(equipment);
@@ -120,6 +116,5 @@ class EquipmentScreenWidgetModel
 
   final _exerciseMediaListEntity = EntityStateNotifier<List<ExerciseMedia>>();
   @override
-  ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable =>
-      _exerciseMediaListEntity;
+  ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable => _exerciseMediaListEntity;
 }

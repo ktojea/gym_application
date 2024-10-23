@@ -31,7 +31,8 @@ class UserInfo extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15),
-          const UserAvatar(
+          UserAvatar(
+            imageUrl: user.imageUrl,
             size: 110,
             borderWeight: 6,
             shadowColor: AppColors.mainColorMedium,

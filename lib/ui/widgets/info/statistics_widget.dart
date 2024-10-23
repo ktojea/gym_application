@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
@@ -16,15 +17,17 @@ class StatisticsWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Icon(
-                Icons.reddit,
-                color: Colors.white,
+              SizedBox(
+                width: 20,
+                child: Icon(
+                  Icons.reddit,
+                  color: Colors.white,
+                ),
               ),
-              Text(
+              AutoSizeText(
                 "Нейро-статистика",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),

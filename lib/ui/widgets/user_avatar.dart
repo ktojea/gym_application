@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class UserAvatar extends StatelessWidget {
   const UserAvatar({
     super.key,
+    required this.imageUrl,
     required this.size,
     this.borderColor = Colors.white,
     this.borderWeight = 7,
@@ -10,6 +11,7 @@ class UserAvatar extends StatelessWidget {
     this.shadowColor = const Color.fromRGBO(173, 175, 235, 1),
   });
 
+  final String? imageUrl;
   final double size;
   final double borderWeight;
   final Color borderColor;
@@ -35,12 +37,9 @@ class UserAvatar extends StatelessWidget {
         ],
       ),
       //TODO Сделать загрузку вместо контейнера
-      child: Container(
-        width: size,
-        height: size,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
+      child: CircleAvatar(
+        backgroundImage: NetworkImage(
+          imageUrl ?? ' https://as2.ftcdn.net/v2/jpg/04/10/43/77/1000_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
         ),
       ),
     );

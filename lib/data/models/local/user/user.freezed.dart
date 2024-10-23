@@ -24,7 +24,6 @@ mixin _$User {
   String get name => throw _privateConstructorUsedError;
   String get surname => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get sex => throw _privateConstructorUsedError;
   DateTime get dateOfBirthday => throw _privateConstructorUsedError;
@@ -32,6 +31,7 @@ mixin _$User {
   int get height => throw _privateConstructorUsedError;
   int get trainingLevel => throw _privateConstructorUsedError;
   int get trainingFrequency => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,14 +52,14 @@ abstract class $UserCopyWith<$Res> {
       String name,
       String surname,
       String phoneNumber,
-      String password,
       DateTime createdAt,
       String sex,
       DateTime dateOfBirthday,
       double weight,
       int height,
       int trainingLevel,
-      int trainingFrequency});
+      int trainingFrequency,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -81,7 +81,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? name = null,
     Object? surname = null,
     Object? phoneNumber = null,
-    Object? password = null,
     Object? createdAt = null,
     Object? sex = null,
     Object? dateOfBirthday = null,
@@ -89,6 +88,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? height = null,
     Object? trainingLevel = null,
     Object? trainingFrequency = null,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -107,10 +107,6 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -139,6 +135,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.trainingFrequency
           : trainingFrequency // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -155,14 +155,14 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String name,
       String surname,
       String phoneNumber,
-      String password,
       DateTime createdAt,
       String sex,
       DateTime dateOfBirthday,
       double weight,
       int height,
       int trainingLevel,
-      int trainingFrequency});
+      int trainingFrequency,
+      String? imageUrl});
 }
 
 /// @nodoc
@@ -181,7 +181,6 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? name = null,
     Object? surname = null,
     Object? phoneNumber = null,
-    Object? password = null,
     Object? createdAt = null,
     Object? sex = null,
     Object? dateOfBirthday = null,
@@ -189,6 +188,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? height = null,
     Object? trainingLevel = null,
     Object? trainingFrequency = null,
+    Object? imageUrl = freezed,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -206,10 +206,6 @@ class __$$UserImplCopyWithImpl<$Res>
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
               as String,
       createdAt: null == createdAt
           ? _value.createdAt
@@ -239,6 +235,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.trainingFrequency
           : trainingFrequency // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -251,14 +251,14 @@ class _$UserImpl extends _User {
       required this.name,
       required this.surname,
       required this.phoneNumber,
-      required this.password,
       required this.createdAt,
       required this.sex,
       required this.dateOfBirthday,
       required this.weight,
       required this.height,
       required this.trainingLevel,
-      required this.trainingFrequency})
+      required this.trainingFrequency,
+      required this.imageUrl})
       : super._();
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -273,8 +273,6 @@ class _$UserImpl extends _User {
   @override
   final String phoneNumber;
   @override
-  final String password;
-  @override
   final DateTime createdAt;
   @override
   final String sex;
@@ -288,10 +286,12 @@ class _$UserImpl extends _User {
   final int trainingLevel;
   @override
   final int trainingFrequency;
+  @override
+  final String? imageUrl;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, surname: $surname, phoneNumber: $phoneNumber, password: $password, createdAt: $createdAt, sex: $sex, dateOfBirthday: $dateOfBirthday, weight: $weight, height: $height, trainingLevel: $trainingLevel, trainingFrequency: $trainingFrequency)';
+    return 'User(id: $id, name: $name, surname: $surname, phoneNumber: $phoneNumber, createdAt: $createdAt, sex: $sex, dateOfBirthday: $dateOfBirthday, weight: $weight, height: $height, trainingLevel: $trainingLevel, trainingFrequency: $trainingFrequency, imageUrl: $imageUrl)';
   }
 
   @override
@@ -304,8 +304,6 @@ class _$UserImpl extends _User {
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.sex, sex) || other.sex == sex) &&
@@ -316,7 +314,9 @@ class _$UserImpl extends _User {
             (identical(other.trainingLevel, trainingLevel) ||
                 other.trainingLevel == trainingLevel) &&
             (identical(other.trainingFrequency, trainingFrequency) ||
-                other.trainingFrequency == trainingFrequency));
+                other.trainingFrequency == trainingFrequency) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -327,14 +327,14 @@ class _$UserImpl extends _User {
       name,
       surname,
       phoneNumber,
-      password,
       createdAt,
       sex,
       dateOfBirthday,
       weight,
       height,
       trainingLevel,
-      trainingFrequency);
+      trainingFrequency,
+      imageUrl);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -358,14 +358,14 @@ abstract class _User extends User {
       required final String name,
       required final String surname,
       required final String phoneNumber,
-      required final String password,
       required final DateTime createdAt,
       required final String sex,
       required final DateTime dateOfBirthday,
       required final double weight,
       required final int height,
       required final int trainingLevel,
-      required final int trainingFrequency}) = _$UserImpl;
+      required final int trainingFrequency,
+      required final String? imageUrl}) = _$UserImpl;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
@@ -378,8 +378,6 @@ abstract class _User extends User {
   String get surname;
   @override
   String get phoneNumber;
-  @override
-  String get password;
   @override
   DateTime get createdAt;
   @override
@@ -394,6 +392,8 @@ abstract class _User extends User {
   int get trainingLevel;
   @override
   int get trainingFrequency;
+  @override
+  String? get imageUrl;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

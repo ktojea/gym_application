@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/common/utils/di/app_async_dependency.dart';
-import 'package:gym_application/common/utils/di/scopes/Global/Global_scope.dart';
+import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
 
 @RoutePage()
 class GlobalScopeWrapperScreen extends StatelessWidget {

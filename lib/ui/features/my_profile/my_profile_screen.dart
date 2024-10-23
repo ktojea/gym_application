@@ -9,8 +9,7 @@ import 'package:gym_application/ui/widgets/info/subscription_widget.dart';
 
 @RoutePage()
 class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
-  const MyProfileScreen({super.key})
-      : super(defaultMyProfileScreenWidgetModelFactory);
+  const MyProfileScreen({super.key}) : super(defaultMyProfileScreenWidgetModelFactory);
 
   @override
   Widget build(IMyProfileScreenWidgetModel wm) {
@@ -36,19 +35,19 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
               ),
             ),
             const SizedBox(height: 25),
-            EntityStateNotifierBuilder(
-              listenableEntityState: wm.userListenable,
-              loadingBuilder: (_, __) =>
-                  const Center(child: CircularProgressIndicator()),
-              builder: (_, user) => user == null
-                  ? const SizedBox()
-                  : Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25),
-                      child: UserInfo(
-                        user: user,
-                        onEiditTap: () => wm.onEditTap,
-                      ),
-                    ),
+            ElevatedButton(
+              onPressed: () => wm.onProfileImageTap(),
+              child: Text('SUCK'),
+            ),
+            ValueListenableBuilder(
+              valueListenable: wm.userListenable,
+              builder: (_, user, __) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: UserInfo(
+                  user: user,
+                  onEiditTap: () => wm.onEditTap,
+                ),
+              ),
             ),
             const SizedBox(height: 25),
             const Padding(
@@ -74,20 +73,17 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
             const SizedBox(height: 25),
             EntityStateNotifierBuilder(
               listenableEntityState: wm.subscriptionListListenable,
-              loadingBuilder: (_, __) =>
-                  const Center(child: CircularProgressIndicator()),
+              loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
               builder: (_, subscriptionList) => subscriptionList == null
                   ? const SizedBox()
                   : Column(
                       children: subscriptionList
                           .map(
                             (subscription) => Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 10, right: 25, left: 25),
+                              padding: const EdgeInsets.only(bottom: 10, right: 25, left: 25),
                               child: SubscriptionWidget(
                                 subscription: subscription,
-                                onTap: (id) =>
-                                    wm.onSubscriptionTap(subscription.id),
+                                onTap: (id) => wm.onSubscriptionTap(subscription.id),
                               ),
                             ),
                           )

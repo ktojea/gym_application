@@ -10,18 +10,19 @@ class ExercisesScreenFullStatisticksWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SizedBox(
-          width: (MediaQuery.of(context).size.width - 50 - 10) / 3,
-          child: const PlateWidget(
+        Expanded(
+          flex: 1,
+          child: PlateWidget(
             child: LevelInfoWidget(trainingLevel: 2),
           ),
         ),
-        SizedBox(
-          width: (MediaQuery.of(context).size.width - 50 - 10) * 2 / 3,
-          child: const StatisticsWidget(),
+        SizedBox(width: 10),
+        Expanded(
+          flex: 2,
+          child: StatisticsWidget(),
         ),
       ],
     );

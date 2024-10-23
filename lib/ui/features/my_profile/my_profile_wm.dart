@@ -2,13 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/di/scopes/user/user_scope.dart';
 import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/data/models/local/user/user.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_model.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_screen.dart';
 
 abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
-  ValueNotifier<EntityState<User>> get userListenable;
+  ValueNotifier<User> get userListenable;
 
   ValueNotifier<EntityState<List<Subscription>>> get subscriptionListListenable;
 
@@ -19,66 +20,37 @@ abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
   void navigateBack();
 
   void onEditTap();
+
+  void onProfileImageTap();
 }
 
-MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(
-    BuildContext context) {
+MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(BuildContext context) {
   return MyProfileScreenWidgetModel(
     MyProfileScreenModel(),
   );
 }
 
-class MyProfileScreenWidgetModel
-    extends WidgetModel<MyProfileScreen, IMyProfileScreenModel>
+class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfileScreenModel>
     implements IMyProfileScreenWidgetModel {
   MyProfileScreenWidgetModel(super.model);
 
-  final _userEntity = EntityStateNotifier<User>();
-
   @override
-  ValueNotifier<EntityState<User>> get userListenable => _userEntity;
+  ValueNotifier<User> get userListenable => context.userInfo.userNotifier;
 
   final _subscriptionListEntity = EntityStateNotifier<List<Subscription>>();
 
   @override
-  ValueNotifier<EntityState<List<Subscription>>>
-      get subscriptionListListenable => _subscriptionListEntity;
+  ValueNotifier<EntityState<List<Subscription>>> get subscriptionListListenable => _subscriptionListEntity;
 
   @override
   Future<void> initWidgetModel() async {
     await _initMyProfile();
+
     super.initWidgetModel();
   }
 
   Future<void> _initMyProfile() async {
-    await Future.wait([_initUser(), _initSubscriptionList()]);
-  }
-
-  Future<void> _initUser() async {
-    _userEntity.loading();
-
-    try {
-      await Future.delayed(const Duration(seconds: 1));
-
-      final user = User(
-        id: 1,
-        name: "Инокентий",
-        surname: "Абдулов",
-        phoneNumber: "+78005553535",
-        password: "qwerty1234",
-        createdAt: DateTime(2024, 10, 10),
-        sex: "m",
-        dateOfBirthday: DateTime(2003, 10, 31),
-        weight: 104.3,
-        height: 191,
-        trainingLevel: 1,
-        trainingFrequency: 1,
-      );
-
-      _userEntity.content(user);
-    } on Exception {
-      _userEntity.error();
-    }
+    await Future.wait([_initSubscriptionList()]);
   }
 
   Future<void> _initSubscriptionList() async {
@@ -123,12 +95,10 @@ class MyProfileScreenWidgetModel
     if (subscriptionList == null) return;
 
     final updatedSubscriptionList = List<Subscription>.from(subscriptionList);
-    final indexChoosenSubscription =
-        updatedSubscriptionList.indexWhere((s) => s.id == id);
+    final indexChoosenSubscription = updatedSubscriptionList.indexWhere((s) => s.id == id);
 
     if (indexChoosenSubscription >= 0) {
-      final choosenSubscription =
-          updatedSubscriptionList[indexChoosenSubscription];
+      final choosenSubscription = updatedSubscriptionList[indexChoosenSubscription];
 
       updatedSubscriptionList[indexChoosenSubscription] =
           choosenSubscription.copyWith(isNotificated: !choosenSubscription.isNotificated);
@@ -138,4 +108,11 @@ class MyProfileScreenWidgetModel
 
   @override
   Future<void> onRefresh() async => await _initMyProfile();
+
+  @override
+  void onProfileImageTap() {
+    context.userInfo.userNotifier.value = context.userInfo.userNotifier.value.copyWith(
+        imageUrl:
+            'https://sun9-58.userapi.com/impg/LPCAU0Uw-iBtymeiAadvCCSC_cfhmvqf4saOxA/c1fRG39whi4.jpg?size=468x430&quality=95&sign=c5ff5d193601e8561c1241fd28f25511&type=album');
+  }
 }
