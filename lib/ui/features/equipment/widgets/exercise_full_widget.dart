@@ -43,6 +43,7 @@ class ExerciseFullWidget extends StatelessWidget {
                   builder: (_, exercise) => exercise == null
                       ? const SizedBox.shrink()
                       : TextWithImageWidget(
+                          label: "Упражнение",
                           name: exercise.name,
                           imageUrl: exercise.imageUrl,
                           spacing: spacing,
@@ -58,6 +59,7 @@ class ExerciseFullWidget extends StatelessWidget {
                   builder: (_, equipment) => equipment == null
                       ? const SizedBox.shrink()
                       : TextWithImageWidget(
+                          label: "Тренажер",
                           name: equipment.name,
                           imageUrl: equipment.imageUrl,
                           color: AppColors.secondColorDarkest,
@@ -83,37 +85,52 @@ class ExerciseFullWidget extends StatelessWidget {
                 const Center(child: CircularProgressIndicator()),
             builder: (_, exerciseMediaList) => exerciseMediaList == null
                 ? const SizedBox.shrink()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 12),
-                      const Text(
-                        "Подсказки в выполнении",
-                        style: TextStyle(
-                          color: AppColors.mainColorDarkest,
-                          fontSize: 19,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          children: exerciseMediaList
-                              .map((exerciseMedia) => Padding(
-                                    padding: const EdgeInsets.only(top: 12),
-                                    child: SizedBox(
-                                      width: MediaQuery.of(context).size.width / 2,
-                                      child: Image(
-                                          image: NetworkImage(exerciseMedia.url)),
-                                    ),
-                                  ))
-                              .toList(),
-                        ),
-                      ),
-                    ],
+                : HelpForExerciseWidget(
+                    exerciseMediaList: exerciseMediaList,
                   ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class HelpForExerciseWidget extends StatelessWidget {
+  const HelpForExerciseWidget({
+    super.key,
+    required this.exerciseMediaList,
+  });
+
+  final List<ExerciseMedia> exerciseMediaList;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 12),
+        const Text(
+          "Подсказки в выполнении",
+          style: TextStyle(
+            color: AppColors.mainColorDarkest,
+            fontSize: 19,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        Center(
+          child: Column(
+            children: exerciseMediaList
+                .map((exerciseMedia) => Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width / 1.7,
+                        child: Image(image: NetworkImage(exerciseMedia.url)),
+                      ),
+                    ))
+                .toList(),
+          ),
+        ),
+      ],
     );
   }
 }

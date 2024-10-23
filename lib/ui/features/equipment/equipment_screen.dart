@@ -42,6 +42,7 @@ class EquipmentScreen extends ElementaryWidget<IEquipmentScreenWidgetModel> {
                   secondText: "Этот тренажер",
                 ),
                 const SizedBox(height: 25),
+                
               ],
             ),
           ),

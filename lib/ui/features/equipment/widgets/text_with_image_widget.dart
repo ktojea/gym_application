@@ -8,8 +8,10 @@ class TextWithImageWidget extends StatelessWidget {
     required this.name,
     required this.imageUrl,
     this.color = AppColors.mainColorDarkest,
+    required this.label,
   });
 
+  final String label;
   final String name;
   final String imageUrl;
   final Color color;
@@ -19,11 +21,9 @@ class TextWithImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        //TODO Сделать заголовки
         Text(
-          name,
+          label,
           style: TextStyle(
             color: color,
             fontSize: 20,
@@ -39,6 +39,15 @@ class TextWithImageWidget extends StatelessWidget {
               fit: BoxFit.cover,
               image: NetworkImage(imageUrl),
             ),
+          ),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          name,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],

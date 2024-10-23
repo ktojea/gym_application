@@ -2,7 +2,7 @@ import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/data/models/local/exercise/exercise.dart';
-import 'package:gym_application/ui/features/exercises/widgets/exercise_widget.dart';
+import 'package:gym_application/ui/widgets/info/exercise_widget.dart';
 
 class ExercisesBuilderWidget extends StatelessWidget {
   const ExercisesBuilderWidget({
