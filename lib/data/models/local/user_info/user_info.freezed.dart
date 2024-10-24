@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'user.dart';
+part of 'user_info.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,103 +14,69 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
+  return _UserInfo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get surname => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
+mixin _$UserInfo {
   String get sex => throw _privateConstructorUsedError;
   DateTime get dateOfBirthday => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   double get weight => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
   String get trainingLevel => throw _privateConstructorUsedError;
   int get trainingFrequency => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
 
-  /// Serializes this User to a JSON map.
+  /// Serializes this UserInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of User
+  /// Create a copy of UserInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $UserInfoCopyWith<UserInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
+abstract class $UserInfoCopyWith<$Res> {
+  factory $UserInfoCopyWith(UserInfo value, $Res Function(UserInfo) then) =
+      _$UserInfoCopyWithImpl<$Res, UserInfo>;
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String surname,
-      String phoneNumber,
-      DateTime createdAt,
-      String sex,
+      {String sex,
       DateTime dateOfBirthday,
+      String? imageUrl,
       double weight,
       int height,
       String trainingLevel,
-      int trainingFrequency,
-      String? imageUrl});
+      int trainingFrequency});
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
+    implements $UserInfoCopyWith<$Res> {
+  _$UserInfoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of User
+  /// Create a copy of UserInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? surname = null,
-    Object? phoneNumber = null,
-    Object? createdAt = null,
     Object? sex = null,
     Object? dateOfBirthday = null,
+    Object? imageUrl = freezed,
     Object? weight = null,
     Object? height = null,
     Object? trainingLevel = null,
     Object? trainingFrequency = null,
-    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
       sex: null == sex
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -119,6 +85,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.dateOfBirthday
           : dateOfBirthday // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       weight: null == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
@@ -135,82 +105,50 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.trainingFrequency
           : trainingFrequency // ignore: cast_nullable_to_non_nullable
               as int,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$UserImplCopyWith(
-          _$UserImpl value, $Res Function(_$UserImpl) then) =
-      __$$UserImplCopyWithImpl<$Res>;
+abstract class _$$UserInfoImplCopyWith<$Res>
+    implements $UserInfoCopyWith<$Res> {
+  factory _$$UserInfoImplCopyWith(
+          _$UserInfoImpl value, $Res Function(_$UserInfoImpl) then) =
+      __$$UserInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String surname,
-      String phoneNumber,
-      DateTime createdAt,
-      String sex,
+      {String sex,
       DateTime dateOfBirthday,
+      String? imageUrl,
       double weight,
       int height,
       String trainingLevel,
-      int trainingFrequency,
-      String? imageUrl});
+      int trainingFrequency});
 }
 
 /// @nodoc
-class __$$UserImplCopyWithImpl<$Res>
-    extends _$UserCopyWithImpl<$Res, _$UserImpl>
-    implements _$$UserImplCopyWith<$Res> {
-  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
+class __$$UserInfoImplCopyWithImpl<$Res>
+    extends _$UserInfoCopyWithImpl<$Res, _$UserInfoImpl>
+    implements _$$UserInfoImplCopyWith<$Res> {
+  __$$UserInfoImplCopyWithImpl(
+      _$UserInfoImpl _value, $Res Function(_$UserInfoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of User
+  /// Create a copy of UserInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? surname = null,
-    Object? phoneNumber = null,
-    Object? createdAt = null,
     Object? sex = null,
     Object? dateOfBirthday = null,
+    Object? imageUrl = freezed,
     Object? weight = null,
     Object? height = null,
     Object? trainingLevel = null,
     Object? trainingFrequency = null,
-    Object? imageUrl = freezed,
   }) {
-    return _then(_$UserImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      surname: null == surname
-          ? _value.surname
-          : surname // ignore: cast_nullable_to_non_nullable
-              as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: null == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+    return _then(_$UserInfoImpl(
       sex: null == sex
           ? _value.sex
           : sex // ignore: cast_nullable_to_non_nullable
@@ -219,6 +157,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.dateOfBirthday
           : dateOfBirthday // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       weight: null == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
@@ -235,49 +177,32 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.trainingFrequency
           : trainingFrequency // ignore: cast_nullable_to_non_nullable
               as int,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$UserImpl extends _User {
-  const _$UserImpl(
-      {required this.id,
-      required this.name,
-      required this.surname,
-      required this.phoneNumber,
-      required this.createdAt,
-      required this.sex,
+class _$UserInfoImpl extends _UserInfo {
+  const _$UserInfoImpl(
+      {required this.sex,
       required this.dateOfBirthday,
+      required this.imageUrl,
       required this.weight,
       required this.height,
       required this.trainingLevel,
-      required this.trainingFrequency,
-      required this.imageUrl})
+      required this.trainingFrequency})
       : super._();
 
-  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserImplFromJson(json);
+  factory _$UserInfoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserInfoImplFromJson(json);
 
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final String surname;
-  @override
-  final String phoneNumber;
-  @override
-  final DateTime createdAt;
   @override
   final String sex;
   @override
   final DateTime dateOfBirthday;
+  @override
+  final String? imageUrl;
   @override
   final double weight;
   @override
@@ -286,104 +211,71 @@ class _$UserImpl extends _User {
   final String trainingLevel;
   @override
   final int trainingFrequency;
-  @override
-  final String? imageUrl;
 
   @override
   String toString() {
-    return 'User(id: $id, name: $name, surname: $surname, phoneNumber: $phoneNumber, createdAt: $createdAt, sex: $sex, dateOfBirthday: $dateOfBirthday, weight: $weight, height: $height, trainingLevel: $trainingLevel, trainingFrequency: $trainingFrequency, imageUrl: $imageUrl)';
+    return 'UserInfo(sex: $sex, dateOfBirthday: $dateOfBirthday, imageUrl: $imageUrl, weight: $weight, height: $height, trainingLevel: $trainingLevel, trainingFrequency: $trainingFrequency)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.surname, surname) || other.surname == surname) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
+            other is _$UserInfoImpl &&
             (identical(other.sex, sex) || other.sex == sex) &&
             (identical(other.dateOfBirthday, dateOfBirthday) ||
                 other.dateOfBirthday == dateOfBirthday) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.height, height) || other.height == height) &&
             (identical(other.trainingLevel, trainingLevel) ||
                 other.trainingLevel == trainingLevel) &&
             (identical(other.trainingFrequency, trainingFrequency) ||
-                other.trainingFrequency == trainingFrequency) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+                other.trainingFrequency == trainingFrequency));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      surname,
-      phoneNumber,
-      createdAt,
-      sex,
-      dateOfBirthday,
-      weight,
-      height,
-      trainingLevel,
-      trainingFrequency,
-      imageUrl);
+  int get hashCode => Object.hash(runtimeType, sex, dateOfBirthday, imageUrl,
+      weight, height, trainingLevel, trainingFrequency);
 
-  /// Create a copy of User
+  /// Create a copy of UserInfo
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
+  _$$UserInfoImplCopyWith<_$UserInfoImpl> get copyWith =>
+      __$$UserInfoImplCopyWithImpl<_$UserInfoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UserImplToJson(
+    return _$$UserInfoImplToJson(
       this,
     );
   }
 }
 
-abstract class _User extends User {
-  const factory _User(
-      {required final int id,
-      required final String name,
-      required final String surname,
-      required final String phoneNumber,
-      required final DateTime createdAt,
-      required final String sex,
+abstract class _UserInfo extends UserInfo {
+  const factory _UserInfo(
+      {required final String sex,
       required final DateTime dateOfBirthday,
+      required final String? imageUrl,
       required final double weight,
       required final int height,
       required final String trainingLevel,
-      required final int trainingFrequency,
-      required final String? imageUrl}) = _$UserImpl;
-  const _User._() : super._();
+      required final int trainingFrequency}) = _$UserInfoImpl;
+  const _UserInfo._() : super._();
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
+  factory _UserInfo.fromJson(Map<String, dynamic> json) =
+      _$UserInfoImpl.fromJson;
 
-  @override
-  int get id;
-  @override
-  String get name;
-  @override
-  String get surname;
-  @override
-  String get phoneNumber;
-  @override
-  DateTime get createdAt;
   @override
   String get sex;
   @override
   DateTime get dateOfBirthday;
+  @override
+  String? get imageUrl;
   @override
   double get weight;
   @override
@@ -392,13 +284,11 @@ abstract class _User extends User {
   String get trainingLevel;
   @override
   int get trainingFrequency;
-  @override
-  String? get imageUrl;
 
-  /// Create a copy of User
+  /// Create a copy of UserInfo
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+  _$$UserInfoImplCopyWith<_$UserInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

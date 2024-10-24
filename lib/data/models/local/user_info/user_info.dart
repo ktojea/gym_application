@@ -1,25 +1,20 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'user_info.freezed.dart';
+part 'user_info.g.dart';
 
 @freezed
-class User with _$User {
-  const User._();
-  const factory User({
-    required int id,
-    required String name,
-    required String surname,
-    required String phoneNumber,
-    required DateTime createdAt,
+class UserInfo with _$UserInfo {
+  const UserInfo._();
+  const factory UserInfo({
     required String sex,
     required DateTime dateOfBirthday,
+    required String? imageUrl,
     required double weight,
     required int height,
     required String trainingLevel,
     required int trainingFrequency,
-    required String? imageUrl,
-  }) = _User;
+  }) = _UserInfo;
 
   int get age {
     final currentDate = DateTime.now();
@@ -33,5 +28,5 @@ class User with _$User {
     return age;
   }
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory UserInfo.fromJson(Map<String, dynamic> json) => _$UserInfoFromJson(json);
 }

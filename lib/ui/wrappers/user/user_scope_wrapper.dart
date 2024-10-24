@@ -12,7 +12,10 @@ class UserScopeWrapperScreen extends StatelessWidget {
     return AsyncDependencyWidget(
       create: UserScope.new,
       loaderBuilder: (context) => const Center(child: CircularProgressIndicator()),
-      errorBuilder: (context) => const SizedBox(),
+      errorBuilder: (context) => const Icon(
+        Icons.error,
+        color: Colors.white,
+      ),
       child: const AutoRouter(),
     );
   }

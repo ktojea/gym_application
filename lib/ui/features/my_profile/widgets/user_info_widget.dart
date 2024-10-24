@@ -5,8 +5,8 @@ import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
 import 'package:gym_application/ui/widgets/user_avatar.dart';
 
-class UserInfo extends StatelessWidget {
-  const UserInfo({
+class UserInfoWidget extends StatelessWidget {
+  const UserInfoWidget({
     super.key,
     required this.user,
     required this.onEiditTap,

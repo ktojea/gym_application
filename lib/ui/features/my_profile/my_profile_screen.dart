@@ -3,7 +3,7 @@ import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_wm.dart';
-import 'package:gym_application/ui/features/my_profile/widgets/user_info.dart';
+import 'package:gym_application/ui/features/my_profile/widgets/user_info_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/info/subscription_widget.dart';
 
@@ -43,7 +43,7 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
               valueListenable: wm.userListenable,
               builder: (_, user, __) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
-                child: UserInfo(
+                child: UserInfoWidget(
                   user: user,
                   onEiditTap: () => wm.onEditTap,
                 ),
