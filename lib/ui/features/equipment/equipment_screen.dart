@@ -39,17 +39,21 @@ class EquipmentScreen extends ElementaryWidget<IEquipmentScreenWidgetModel> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const EquipmentDescriptionWidget(),
-                const SizedBox(height: 25),
+                const SizedBox(height: 15),
+                EquipmentDescriptionWidget(
+                  equipmentListenable: wm.equipmentListenable,
+                ),
+                const SizedBox(height: 15),
                 if (exerciseId != null) ...[
                   ExerciseDescriptionWidget(
                     exerciseLisenable: wm.exerciseLisenable,
-                    equipmentListenable: wm.equipmentListenable,
                     exerciseMediaListListenable: wm.exerciseMediaListenable,
                   ),
                   const SizedBox(height: 25),
                 ],
-                const ExercisesForEquipmentWidget(),
+                ExercisesForEquipmentWidget(
+                  exerciseListListenable: wm.exerciseListListenable,
+                ),
                 const SizedBox(height: 25),
               ],
             ),

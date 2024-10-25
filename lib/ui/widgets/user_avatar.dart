@@ -33,7 +33,6 @@ class UserAvatar extends StatelessWidget {
           )
         ],
       ),
-      //TODO Сделать загрузку вместо контейнера
       child: CircleAvatar(
         radius: borderRadius,
         backgroundImage: NetworkImage(

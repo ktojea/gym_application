@@ -37,19 +37,19 @@ class SubscriptionWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 15),
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Большие мышце",
-                  style: TextStyle(
+                  "${subscription.gymName} - ${subscription.price}₽",
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                   ),
                 ),
                 Text(
-                  "Описание",
-                  style: TextStyle(
+                  subscription.endDate.toString().substring(0, 10),
+                  style: const TextStyle(
                     color: Colors.black38,
                   ),
                 ),

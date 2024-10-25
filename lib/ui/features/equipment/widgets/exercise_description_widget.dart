@@ -1,6 +1,5 @@
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:gym_application/data/models/local/equipment/equipment.dart';
 import 'package:gym_application/data/models/local/exercise/exercise.dart';
 import 'package:gym_application/data/models/local/exercise_media/exercise_media.dart';
 import 'package:gym_application/ui/features/equipment/widgets/description_widget.dart';
@@ -12,12 +11,10 @@ class ExerciseDescriptionWidget extends StatelessWidget {
   const ExerciseDescriptionWidget({
     super.key,
     required this.exerciseLisenable,
-    required this.equipmentListenable,
     required this.exerciseMediaListListenable,
   });
 
   final ValueNotifier<EntityState<Exercise>> exerciseLisenable;
-  final ValueNotifier<EntityState<Equipment>> equipmentListenable;
   final ValueNotifier<EntityState<List<ExerciseMedia>>> exerciseMediaListListenable;
 
   static const double spacing = 25;

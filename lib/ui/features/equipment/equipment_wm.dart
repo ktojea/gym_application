@@ -13,22 +13,27 @@ abstract interface class IEquipmentScreenWidgetModel implements IWidgetModel {
   ValueNotifier<EntityState<Equipment>> get equipmentListenable;
 
   ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable;
+
+  ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable;
 }
 
-EquipmentScreenWidgetModel defaultEquipmentScreenWidgetModelFactory(BuildContext context) {
+EquipmentScreenWidgetModel defaultEquipmentScreenWidgetModelFactory(
+    BuildContext context) {
   return EquipmentScreenWidgetModel(
     EquipmentScreenModel(),
   );
 }
 
-class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipmentScreenModel>
+class EquipmentScreenWidgetModel
+    extends WidgetModel<EquipmentScreen, IEquipmentScreenModel>
     implements IEquipmentScreenWidgetModel {
   EquipmentScreenWidgetModel(super.model);
 
   final _equipmentEntity = EntityStateNotifier<Equipment>();
 
   @override
-  ValueNotifier<EntityState<Equipment>> get equipmentListenable => _equipmentEntity;
+  ValueNotifier<EntityState<Equipment>> get equipmentListenable =>
+      _equipmentEntity;
 
   final _exerciseEntity = EntityStateNotifier<Exercise>();
 
@@ -80,7 +85,8 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
       const equipment = Equipment(
         id: 1,
         name: "Коврик",
-        imageUrl: "https://sv-sport.ru/wp-content/uploads/a/2/6/a26e0e77c6b2b4f8b9522eef2d29075f.jpeg",
+        imageUrl:
+            "https://sv-sport.ru/wp-content/uploads/a/2/6/a26e0e77c6b2b4f8b9522eef2d29075f.jpeg",
       );
 
       _equipmentEntity.content(equipment);
@@ -116,5 +122,38 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
 
   final _exerciseMediaListEntity = EntityStateNotifier<List<ExerciseMedia>>();
   @override
-  ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable => _exerciseMediaListEntity;
+  ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable =>
+      _exerciseMediaListEntity;
+
+  final _exerciseListEntity = EntityStateNotifier<List<Exercise>>();
+
+  @override
+  ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable =>
+      _exerciseListEntity;
+
+  Future<void> _initExerciseList() async {
+    _exerciseListEntity.loading();
+
+    try {
+      Future.delayed(const Duration(seconds: 1));
+
+      final list = List.generate(
+        12,
+        (i) => Exercise(
+          id: i,
+          name: "Медитация",
+          description: "Сидеть и предеть",
+          equipmentId: 1,
+          muscleGroupId: 1,
+          difficulty: 1,
+          imageUrl:
+              "https://sneg.top/uploads/posts/2023-06/1687811209_sneg-top-p-spokoistvie-avatarka-krasivo-39.jpg",
+        ),
+      );
+      _exerciseListEntity.content(list);
+    } on Exception {
+      _exerciseListEntity.error();
+      debugPrint("Error");
+    }
+  }
 }
