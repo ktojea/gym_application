@@ -48,7 +48,7 @@ class ExercisesScreenWidgetModel extends WidgetModel<ExercisesScreen, IExercises
       await Future.delayed(const Duration(seconds: 1));
 
       final list = List.generate(
-        9,
+        11,
         (i) => Exercise(
           id: i,
           name: "Упражнение ${i + 1}",
