@@ -20,8 +20,6 @@ abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
   void navigateBack();
 
   void onEditTap();
-
-  void onProfileImageTap();
 }
 
 MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(BuildContext context) {
@@ -85,9 +83,9 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
   void navigateBack() => context.router.maybePop();
 
   @override
-  void onEditTap() {
-    // TODO: implement onEditTap
-  }
+  void onEditTap() => context.userInfo.userNotifier.value = context.userInfo.userNotifier.value.copyWith(
+      imageUrl:
+          'https://sun9-58.userapi.com/impg/LPCAU0Uw-iBtymeiAadvCCSC_cfhmvqf4saOxA/c1fRG39whi4.jpg?size=468x430&quality=95&sign=c5ff5d193601e8561c1241fd28f25511&type=album');
 
   @override
   void onSubscriptionTap(int id) {
@@ -108,11 +106,4 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
 
   @override
   Future<void> onRefresh() async => await _initMyProfile();
-
-  @override
-  void onProfileImageTap() {
-    context.userInfo.userNotifier.value = context.userInfo.userNotifier.value.copyWith(
-        imageUrl:
-            'https://sun9-58.userapi.com/impg/LPCAU0Uw-iBtymeiAadvCCSC_cfhmvqf4saOxA/c1fRG39whi4.jpg?size=468x430&quality=95&sign=c5ff5d193601e8561c1241fd28f25511&type=album');
-  }
 }

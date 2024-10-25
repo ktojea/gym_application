@@ -13,8 +13,6 @@ abstract interface class IExercisesScreenWidgetModel implements IWidgetModel {
 
   ValueNotifier<EntityState<MuscleGroupLevelLists>> get muscleGroupLevelListsListenable;
 
-  ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable;
-
   void onExerciseTap();
 }
 
@@ -29,24 +27,22 @@ class ExercisesScreenWidgetModel extends WidgetModel<ExercisesScreen, IExercises
   ExercisesScreenWidgetModel(super.model);
 
   @override
-  void onExerciseTap() => context.router.push(const EquipmentRoute());
+  void onExerciseTap() => context.router.push(EquipmentRoute(
+        equipmentId: 123,
+        exerciseId: 1,
+      ));
 
   @override
   MediaQueryData get mediaQuery => MediaQuery.of(context);
 
-  final _exerciseListEntity = EntityStateNotifier<List<Exercise>>();
-
-  @override
-  ValueNotifier<EntityState<List<Exercise>>> get exerciseListListenable => _exerciseListEntity;
-
   @override
   Future<void> initWidgetModel() async {
-    await _initExerciseList();
+    await _initMuscleGroupLevelLists();
     super.initWidgetModel();
   }
 
-  Future<void> _initExerciseList() async {
-    _exerciseListEntity.loading();
+  Future<void> _initMuscleGroupLevelLists() async {
+    _muscleGroupLevelListsEntity.loading();
 
     try {
       await Future.delayed(const Duration(seconds: 1));
@@ -64,9 +60,15 @@ class ExercisesScreenWidgetModel extends WidgetModel<ExercisesScreen, IExercises
         ),
       );
 
-      _exerciseListEntity.content(list);
+      _muscleGroupLevelListsEntity.content(
+        MuscleGroupLevelLists(
+          beginnerList: list,
+          experiencedList: list,
+          professional: list,
+        ),
+      );
     } on Exception {
-      _exerciseListEntity.error();
+      _muscleGroupLevelListsEntity.error();
       print("Error");
     }
   }

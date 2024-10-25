@@ -35,17 +35,13 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
               ),
             ),
             const SizedBox(height: 25),
-            ElevatedButton(
-              onPressed: () => wm.onProfileImageTap(),
-              child: Text('SUCK'),
-            ),
             ValueListenableBuilder(
               valueListenable: wm.userListenable,
               builder: (_, user, __) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: UserInfoWidget(
                   user: user,
-                  onEiditTap: () => wm.onEditTap,
+                  onEditTap: () => wm.onEditTap(),
                 ),
               ),
             ),

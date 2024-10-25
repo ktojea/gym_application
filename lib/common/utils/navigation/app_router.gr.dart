@@ -22,9 +22,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     EquipmentRoute.name: (routeData) {
+      final args = routeData.argsAs<EquipmentRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const EquipmentScreen(),
+        child: EquipmentScreen(
+          equipmentId: args.equipmentId,
+          exerciseId: args.exerciseId,
+          key: args.key,
+        ),
       );
     },
     ExercisesRoute.name: (routeData) {
@@ -94,16 +99,44 @@ class AuthScopeWrapperRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [EquipmentScreen]
-class EquipmentRoute extends PageRouteInfo<void> {
-  const EquipmentRoute({List<PageRouteInfo>? children})
-      : super(
+class EquipmentRoute extends PageRouteInfo<EquipmentRouteArgs> {
+  EquipmentRoute({
+    required int equipmentId,
+    int? exerciseId,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
           EquipmentRoute.name,
+          args: EquipmentRouteArgs(
+            equipmentId: equipmentId,
+            exerciseId: exerciseId,
+            key: key,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'EquipmentRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<EquipmentRouteArgs> page = PageInfo<EquipmentRouteArgs>(name);
+}
+
+class EquipmentRouteArgs {
+  const EquipmentRouteArgs({
+    required this.equipmentId,
+    this.exerciseId,
+    this.key,
+  });
+
+  final int equipmentId;
+
+  final int? exerciseId;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'EquipmentRouteArgs{equipmentId: $equipmentId, exerciseId: $exerciseId, key: $key}';
+  }
 }
 
 /// generated route for

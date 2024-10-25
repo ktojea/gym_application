@@ -53,7 +53,7 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
                     loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
                     builder: (_, muscleGroupList) => muscleGroupList == null
                         ? const SizedBox()
-                        : AppGridWidget(
+                        : MuscleGroupGridWidget(
                             items: muscleGroupList,
                             onTap: () => wm.onExercisesTap(),
                           ),

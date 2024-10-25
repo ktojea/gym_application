@@ -94,7 +94,7 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
     _exerciseMediaListEntity.loading();
 
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 0));
 
       final list = List.generate(
         2,

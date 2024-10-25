@@ -9,11 +9,11 @@ class UserInfoWidget extends StatelessWidget {
   const UserInfoWidget({
     super.key,
     required this.user,
-    required this.onEiditTap,
+    required this.onEditTap,
   });
 
   final User user;
-  final VoidCallback onEiditTap;
+  final VoidCallback onEditTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class UserInfoWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: GestureDetector(
-              onTap: () => onEiditTap(),
+              onTap: () => onEditTap(),
               child: const Icon(
                 Icons.edit,
                 color: AppColors.mainColorDarkest,
@@ -33,7 +33,7 @@ class UserInfoWidget extends StatelessWidget {
           const SizedBox(height: 15),
           UserAvatar(
             imageUrl: user.imageUrl,
-            size: 110,
+            borderRadius: 80,
             borderWeight: 6,
             shadowColor: AppColors.mainColorMedium,
           ),

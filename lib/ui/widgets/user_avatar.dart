@@ -4,15 +4,13 @@ class UserAvatar extends StatelessWidget {
   const UserAvatar({
     super.key,
     required this.imageUrl,
-    required this.size,
     this.borderColor = Colors.white,
     this.borderWeight = 7,
-    this.borderRadius = 8,
+    this.borderRadius = 20,
     this.shadowColor = const Color.fromRGBO(173, 175, 235, 1),
   });
 
   final String? imageUrl;
-  final double size;
   final double borderWeight;
   final Color borderColor;
   final Color shadowColor;
@@ -21,7 +19,6 @@ class UserAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(borderRadius),
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
@@ -38,6 +35,7 @@ class UserAvatar extends StatelessWidget {
       ),
       //TODO Сделать загрузку вместо контейнера
       child: CircleAvatar(
+        radius: borderRadius,
         backgroundImage: NetworkImage(
           imageUrl ?? ' https://as2.ftcdn.net/v2/jpg/04/10/43/77/1000_F_410437733_hdq4Q3QOH9uwh0mcqAhRFzOKfrCR24Ta.jpg',
         ),

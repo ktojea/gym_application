@@ -6,33 +6,19 @@ import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
 class MuscleGroupWidget extends StatelessWidget {
   const MuscleGroupWidget({
     super.key,
+    required this.index,
     required this.muscleGroup,
     required this.onTap,
   });
 
+  final int index;
   final MuscleGroup muscleGroup;
   final VoidCallback onTap;
 
-  Color get textColor {
-    final remainder = muscleGroup.id % 4;
-    if ((remainder == 1) || (remainder == 2)) {
-      return AppColors.secondColorDarkest;
-    } else {
-      return AppColors.mainColorDarkest;
-    }
-  }
-
-  Color get iconColor {
-    final remainder = muscleGroup.id % 4;
-    if ((remainder == 1) || (remainder == 2)) {
-      return AppColors.secondColorDark;
-    } else {
-      return AppColors.mainColorDark;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final color = (index % 4 == 1 || index % 4 == 2) ? AppColors.secondColorDark : AppColors.mainColorDark;
+
     return GestureDetector(
       onTap: () => onTap(),
       child: PlateWidget(
@@ -46,7 +32,7 @@ class MuscleGroupWidget extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 16,
-                color: textColor,
+                color: color,
               ),
             ),
             const SizedBox(height: 0),
@@ -55,7 +41,7 @@ class MuscleGroupWidget extends StatelessWidget {
               child: Icon(
                 Icons.accessibility_new_rounded,
                 size: 60,
-                color: iconColor,
+                color: color,
               ),
             ),
           ],

@@ -14,7 +14,6 @@ class DescriptionWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 14),
         const Text(
           "Описание",
           style: TextStyle(

@@ -34,10 +34,8 @@ class MainAppBarWidget extends StatelessWidget {
             onTap: () => context.router.push(const MyProfileRoute()),
             child: UserAvatar(
               imageUrl: user.imageUrl,
-              size: 30,
               borderColor: AppColors.mainColorDark,
               borderWeight: 2.3,
-              borderRadius: 3,
             ),
           ),
         ],
