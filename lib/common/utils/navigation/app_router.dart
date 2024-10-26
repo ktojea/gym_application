@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/features/equipment/equipment_screen.dart';
 import 'package:gym_application/ui/features/main/main_screen.dart';
 import 'package:gym_application/ui/features/exercises/exercises_screen.dart';

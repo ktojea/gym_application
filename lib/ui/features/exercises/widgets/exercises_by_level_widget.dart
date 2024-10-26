@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_application/data/models/local/exercise/exercise.dart';
+import 'package:gym_application/data/models/local/exercise_in_list/exercise_in_list.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.dart';
 import 'package:gym_application/ui/widgets/info/exercise_widget.dart';
@@ -14,9 +14,9 @@ class ExercisesByLevelWidget extends StatefulWidget {
   });
 
   final String levelName;
-  final List<Exercise> exercises;
+  final List<ExerciseInList> exercises;
   final int difficulty;
-  final VoidCallback onTap;
+  final void Function(int exerciseId, int equipmentId) onTap;
 
   @override
   State<ExercisesByLevelWidget> createState() => _ExercisesByLevelWidgetState();
@@ -24,6 +24,8 @@ class ExercisesByLevelWidget extends StatefulWidget {
 
 class _ExercisesByLevelWidgetState extends State<ExercisesByLevelWidget> {
   final scrollController = FixedExtentScrollController();
+
+  final isStartNotifier = ValueNotifier<bool?>(true);
 
   @override
   void initState() {
@@ -51,8 +53,6 @@ class _ExercisesByLevelWidgetState extends State<ExercisesByLevelWidget> {
     super.dispose();
   }
 
-  final isStartNotifier = ValueNotifier<bool?>(true);
-
   @override
   Widget build(BuildContext context) {
     final countPages = (widget.exercises.length / 3).ceil();
@@ -79,7 +79,7 @@ class _ExercisesByLevelWidgetState extends State<ExercisesByLevelWidget> {
           children: [
             Expanded(
               child: SizedBox(
-                height: 300,
+                height: 320,
                 child: ListWheelScrollView.useDelegate(
                   itemExtent: 300,
                   perspective: 0.0015,
@@ -95,7 +95,8 @@ class _ExercisesByLevelWidgetState extends State<ExercisesByLevelWidget> {
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: ExerciseWidget(
                                 exercise: e,
-                                onTap: () => widget.onTap(),
+                                blurRadius: 25,
+                                onTap: widget.onTap,
                               ),
                             ),
                           )
@@ -118,10 +119,7 @@ class _ExercisesByLevelWidgetState extends State<ExercisesByLevelWidget> {
 }
 
 class _IndicatorWidget extends StatelessWidget {
-  const _IndicatorWidget({
-    super.key,
-    required this.isStart,
-  });
+  const _IndicatorWidget({required this.isStart});
 
   final bool? isStart;
 
@@ -132,7 +130,7 @@ class _IndicatorWidget extends StatelessWidget {
         Text(
           '•',
           style: TextStyle(
-            fontSize: isStart == true ? 30 : 10,
+            fontSize: isStart == true ? 20 : 10,
             color: AppColors.mainColorDarkest,
             fontWeight: FontWeight.bold,
           ),
@@ -140,7 +138,7 @@ class _IndicatorWidget extends StatelessWidget {
         Text(
           '•',
           style: TextStyle(
-            fontSize: isStart == null ? 30 : 10,
+            fontSize: isStart == null ? 20 : 10,
             color: AppColors.mainColorDarkest,
             fontWeight: FontWeight.bold,
           ),
@@ -148,7 +146,7 @@ class _IndicatorWidget extends StatelessWidget {
         Text(
           '•',
           style: TextStyle(
-            fontSize: isStart == false ? 30 : 10,
+            fontSize: isStart == false ? 20 : 10,
             color: AppColors.mainColorDarkest,
             fontWeight: FontWeight.bold,
           ),

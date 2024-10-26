@@ -1,9 +1,9 @@
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/di/scopes/user/user_scope.dart';
 import 'package:gym_application/data/models/local/equipment/equipment.dart';
 import 'package:gym_application/data/models/local/exercise/exercise.dart';
-import 'package:gym_application/data/models/local/exercise_media/exercise_media.dart';
 import 'package:gym_application/ui/features/equipment/equipment_model.dart';
 import 'package:gym_application/ui/features/equipment/equipment_screen.dart';
 
@@ -11,13 +11,14 @@ abstract interface class IEquipmentScreenWidgetModel implements IWidgetModel {
   ValueNotifier<EntityState<Exercise>> get exerciseLisenable;
 
   ValueNotifier<EntityState<Equipment>> get equipmentListenable;
-
-  ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable;
 }
 
 EquipmentScreenWidgetModel defaultEquipmentScreenWidgetModelFactory(BuildContext context) {
   return EquipmentScreenWidgetModel(
-    EquipmentScreenModel(),
+    EquipmentScreenModel(
+      exerciseRepository: context.userInfo.exerciseRepository,
+      equipmentRepository: context.userInfo.equipmentRepository,
+    ),
   );
 }
 
@@ -37,32 +38,23 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
 
   @override
   Future<void> initWidgetModel() async {
-    await Future.wait([
-      _initExercise(),
-      _initEquipment(),
-      _initExerciseMediaList(),
-    ]);
+    await Future.wait(
+      [
+        if (widget.exerciseId != null) _initExercise(),
+        _initEquipment(),
+      ],
+    );
 
     super.initWidgetModel();
   }
 
   Future<void> _initExercise() async {
+    if (widget.exerciseId == null) return;
+
     _exerciseEntity.loading();
 
     try {
-      await Future.delayed(const Duration(seconds: 1));
-
-      const exercise = Exercise(
-        id: 1,
-        name: "Отжимания",
-        description:
-            "Это корчое сложные упражнение где надо делать вон то и это и короче прикинь круто как делать то все это ууу",
-        equipmentId: 1,
-        muscleGroupId: 1,
-        difficulty: 1,
-        imageUrl:
-            "https://sun9-23.userapi.com/impg/9GSVvVWyB4AkPQp7HeGyHg7BXPpEfN2jBfpoYA/oHdxLPUekyA.jpg?size=1280x720&quality=95&sign=e96d305a21e1ae5e5bebd10702590f44&type=album",
-      );
+      final exercise = await model.getExercise(widget.exerciseId!);
 
       _exerciseEntity.content(exercise);
     } on Exception {
@@ -75,13 +67,7 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
     _equipmentEntity.loading();
 
     try {
-      await Future.delayed(const Duration(seconds: 1));
-
-      const equipment = Equipment(
-        id: 1,
-        name: "Коврик",
-        imageUrl: "https://sv-sport.ru/wp-content/uploads/a/2/6/a26e0e77c6b2b4f8b9522eef2d29075f.jpeg",
-      );
+      final equipment = await model.getEquipment(widget.equipmentId);
 
       _equipmentEntity.content(equipment);
     } on Exception {
@@ -89,32 +75,4 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
       print("Error");
     }
   }
-
-  Future<void> _initExerciseMediaList() async {
-    _exerciseMediaListEntity.loading();
-
-    try {
-      await Future.delayed(const Duration(seconds: 0));
-
-      final list = List.generate(
-        2,
-        (i) => ExerciseMedia(
-          id: i,
-          exerciseId: 1,
-          type: "Hz",
-          url: i == 1
-              ? "https://www.picturesanimations.com/s/sport/push_ups_animated.gif"
-              : "https://otvet.imgsmail.ru/download/u_563a3e1e748832df5ddc412f70bdf18a_800.gif",
-        ),
-      );
-      _exerciseMediaListEntity.content(list);
-    } on Exception {
-      _exerciseMediaListEntity.error();
-      print("Error");
-    }
-  }
-
-  final _exerciseMediaListEntity = EntityStateNotifier<List<ExerciseMedia>>();
-  @override
-  ValueNotifier<EntityState<List<ExerciseMedia>>> get exerciseMediaListenable => _exerciseMediaListEntity;
 }

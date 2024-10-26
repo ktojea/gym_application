@@ -55,7 +55,7 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
                         ? const SizedBox()
                         : MuscleGroupGridWidget(
                             items: muscleGroupList,
-                            onTap: () => wm.onExercisesTap(),
+                            onTap: (muscleGroup) => wm.onMuscleGroupTap(muscleGroup),
                           ),
                   ),
                   const SizedBox(height: 25),

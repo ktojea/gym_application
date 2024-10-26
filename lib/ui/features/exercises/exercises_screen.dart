@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/features/exercises/exercises_wm.dart';
 import 'package:gym_application/ui/features/exercises/widgets/exercises_by_level_widget.dart';
 import 'package:gym_application/ui/features/exercises/widgets/exercises_screen_full_statisticks_widget.dart';
@@ -10,7 +11,12 @@ import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
 
 @RoutePage()
 class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
-  const ExercisesScreen({super.key}) : super(defaultExercisesScreenWidgetModelFactory);
+  const ExercisesScreen({
+    super.key,
+    required this.muscleGroup,
+  }) : super(defaultExercisesScreenWidgetModelFactory);
+
+  final MuscleGroup muscleGroup;
 
   @override
   Widget build(IExercisesScreenWidgetModel wm) {
@@ -37,9 +43,9 @@ class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          "*Группа мышц*",
-                          style: TextStyle(
+                        Text(
+                          muscleGroup.name.trim(),
+                          style: const TextStyle(
                             color: AppColors.mainColorDarkest,
                             fontSize: 22,
                             fontWeight: FontWeight.w600,
@@ -48,26 +54,29 @@ class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
                         const SizedBox(height: 25),
                         const ExercisesScreenFullStatisticksWidget(),
                         const SizedBox(height: 25),
-                        ExercisesByLevelWidget(
-                          levelName: "Начинающий",
-                          exercises: muscleGroupLevelLists.beginnerList,
-                          onTap: wm.onExerciseTap,
-                          difficulty: 1,
-                        ),
+                        if (muscleGroupLevelLists.beginnerExercises.isNotEmpty)
+                          ExercisesByLevelWidget(
+                            levelName: "Начинающий",
+                            exercises: muscleGroupLevelLists.beginnerExercises,
+                            onTap: (exerciseId, equipmentId) => wm.onExerciseTap(exerciseId, equipmentId),
+                            difficulty: 1,
+                          ),
                         const SizedBox(height: 25),
-                        ExercisesByLevelWidget(
-                          levelName: "Опытный",
-                          exercises: muscleGroupLevelLists.experiencedList,
-                          onTap: wm.onExerciseTap,
-                          difficulty: 2,
-                        ),
+                        if (muscleGroupLevelLists.intermediateExercises.isNotEmpty)
+                          ExercisesByLevelWidget(
+                            levelName: "Опытный",
+                            exercises: muscleGroupLevelLists.intermediateExercises,
+                            onTap: (exerciseId, equipmentId) => wm.onExerciseTap(exerciseId, equipmentId),
+                            difficulty: 2,
+                          ),
                         const SizedBox(height: 25),
-                        ExercisesByLevelWidget(
-                          levelName: "Профессионал",
-                          exercises: muscleGroupLevelLists.professional,
-                          onTap: wm.onExerciseTap,
-                          difficulty: 3,
-                        ),
+                        if (muscleGroupLevelLists.advancedExercises.isNotEmpty)
+                          ExercisesByLevelWidget(
+                            levelName: "Профессионал",
+                            exercises: muscleGroupLevelLists.advancedExercises,
+                            onTap: (exerciseId, equipmentId) => wm.onExerciseTap(exerciseId, equipmentId),
+                            difficulty: 3,
+                          ),
                       ],
                     ),
                   ),

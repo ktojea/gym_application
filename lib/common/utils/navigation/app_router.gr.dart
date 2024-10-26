@@ -33,9 +33,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ExercisesRoute.name: (routeData) {
+      final args = routeData.argsAs<ExercisesRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ExercisesScreen(),
+        child: ExercisesScreen(
+          key: args.key,
+          muscleGroup: args.muscleGroup,
+        ),
       );
     },
     GlobalScopeWrapperRoute.name: (routeData) {
@@ -117,7 +121,8 @@ class EquipmentRoute extends PageRouteInfo<EquipmentRouteArgs> {
 
   static const String name = 'EquipmentRoute';
 
-  static const PageInfo<EquipmentRouteArgs> page = PageInfo<EquipmentRouteArgs>(name);
+  static const PageInfo<EquipmentRouteArgs> page =
+      PageInfo<EquipmentRouteArgs>(name);
 }
 
 class EquipmentRouteArgs {
@@ -141,16 +146,40 @@ class EquipmentRouteArgs {
 
 /// generated route for
 /// [ExercisesScreen]
-class ExercisesRoute extends PageRouteInfo<void> {
-  const ExercisesRoute({List<PageRouteInfo>? children})
-      : super(
+class ExercisesRoute extends PageRouteInfo<ExercisesRouteArgs> {
+  ExercisesRoute({
+    Key? key,
+    required MuscleGroup muscleGroup,
+    List<PageRouteInfo>? children,
+  }) : super(
           ExercisesRoute.name,
+          args: ExercisesRouteArgs(
+            key: key,
+            muscleGroup: muscleGroup,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ExercisesRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ExercisesRouteArgs> page =
+      PageInfo<ExercisesRouteArgs>(name);
+}
+
+class ExercisesRouteArgs {
+  const ExercisesRouteArgs({
+    this.key,
+    required this.muscleGroup,
+  });
+
+  final Key? key;
+
+  final MuscleGroup muscleGroup;
+
+  @override
+  String toString() {
+    return 'ExercisesRouteArgs{key: $key, muscleGroup: $muscleGroup}';
+  }
 }
 
 /// generated route for

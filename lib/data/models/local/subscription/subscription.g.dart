@@ -11,9 +11,9 @@ _$SubscriptionImpl _$$SubscriptionImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       gymName: json['gym_name'] as String,
       price: (json['price'] as num).toInt(),
-      endDate: DateTime.parse(json['end_date'] as String),
+      endTime: DateTime.parse(json['end_time'] as String),
       gymAvatar: json['gym_avatar'] as String?,
-      isNotificated: json['is_notificated'] as bool,
+      notify: json['notify'] as bool,
     );
 
 Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
@@ -21,7 +21,7 @@ Map<String, dynamic> _$$SubscriptionImplToJson(_$SubscriptionImpl instance) =>
       'id': instance.id,
       'gym_name': instance.gymName,
       'price': instance.price,
-      'end_date': instance.endDate.toIso8601String(),
+      'end_time': instance.endTime.toIso8601String(),
       'gym_avatar': instance.gymAvatar,
-      'is_notificated': instance.isNotificated,
+      'notify': instance.notify,
     };

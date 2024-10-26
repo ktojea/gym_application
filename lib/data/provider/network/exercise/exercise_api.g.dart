@@ -22,19 +22,19 @@ class _ExerciseApi implements ExerciseApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Exercise>> getExercisesByMuscleGroupId(int muscleGroupId) async {
+  Future<Exercise> getExercise(int exerciseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Exercise>>(Options(
+    final _options = _setStreamType<Exercise>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/exercise/muscle_group/{id}',
+          '/exercise/${exerciseId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -43,12 +43,10 @@ class _ExerciseApi implements ExerciseApi {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Exercise> _value;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late Exercise _value;
     try {
-      _value = _result.data!
-          .map((dynamic i) => Exercise.fromJson(i as Map<String, dynamic>))
-          .toList();
+      _value = Exercise.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -57,19 +55,54 @@ class _ExerciseApi implements ExerciseApi {
   }
 
   @override
-  Future<List<Exercise>> getExercisesByEquipmentId(int equipmentId) async {
+  Future<MuscleGroupLevelLists> getExercisesByMuscleGroupId(
+      int muscleGroupId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Exercise>>(Options(
+    final _options = _setStreamType<MuscleGroupLevelLists>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/exercise/equipment/{id}',
+          '/exercise/muscle_group/${muscleGroupId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MuscleGroupLevelLists _value;
+    try {
+      _value = MuscleGroupLevelLists.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<List<ExerciseInList>> getExercisesByEquipmentId(
+      int equipmentId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<ExerciseInList>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/exercise/equipment/${equipmentId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -79,10 +112,11 @@ class _ExerciseApi implements ExerciseApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Exercise> _value;
+    late List<ExerciseInList> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Exercise.fromJson(i as Map<String, dynamic>))
+          .map(
+              (dynamic i) => ExerciseInList.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

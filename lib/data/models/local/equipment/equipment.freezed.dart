@@ -20,7 +20,8 @@ Equipment _$EquipmentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Equipment {
-  int get id => throw _privateConstructorUsedError;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
@@ -39,7 +40,10 @@ abstract class $EquipmentCopyWith<$Res> {
   factory $EquipmentCopyWith(Equipment value, $Res Function(Equipment) then) =
       _$EquipmentCopyWithImpl<$Res, Equipment>;
   @useResult
-  $Res call({int id, String name, String imageUrl});
+  $Res call(
+      {@JsonKey(includeToJson: false, includeFromJson: false) int? id,
+      String name,
+      String imageUrl});
 }
 
 /// @nodoc
@@ -57,15 +61,15 @@ class _$EquipmentCopyWithImpl<$Res, $Val extends Equipment>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? imageUrl = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -86,7 +90,10 @@ abstract class _$$EquipmentImplCopyWith<$Res>
       __$$EquipmentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, String imageUrl});
+  $Res call(
+      {@JsonKey(includeToJson: false, includeFromJson: false) int? id,
+      String name,
+      String imageUrl});
 }
 
 /// @nodoc
@@ -102,15 +109,15 @@ class __$$EquipmentImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? imageUrl = null,
   }) {
     return _then(_$EquipmentImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -127,14 +134,17 @@ class __$$EquipmentImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EquipmentImpl extends _Equipment {
   const _$EquipmentImpl(
-      {required this.id, required this.name, required this.imageUrl})
+      {@JsonKey(includeToJson: false, includeFromJson: false) this.id,
+      required this.name,
+      required this.imageUrl})
       : super._();
 
   factory _$EquipmentImpl.fromJson(Map<String, dynamic> json) =>
       _$$EquipmentImplFromJson(json);
 
   @override
-  final int id;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  final int? id;
   @override
   final String name;
   @override
@@ -178,7 +188,7 @@ class _$EquipmentImpl extends _Equipment {
 
 abstract class _Equipment extends Equipment {
   const factory _Equipment(
-      {required final int id,
+      {@JsonKey(includeToJson: false, includeFromJson: false) final int? id,
       required final String name,
       required final String imageUrl}) = _$EquipmentImpl;
   const _Equipment._() : super._();
@@ -187,7 +197,8 @@ abstract class _Equipment extends Equipment {
       _$EquipmentImpl.fromJson;
 
   @override
-  int get id;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  int? get id;
   @override
   String get name;
   @override

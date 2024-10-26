@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/datetime/date_formattors.dart';
 import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
@@ -37,19 +38,19 @@ class SubscriptionWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 15),
-            const Column(
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Большие мышце",
-                  style: TextStyle(
+                  subscription.gymName,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,
                   ),
                 ),
                 Text(
-                  "Описание",
-                  style: TextStyle(
+                  'До ${DateFormattors.getDate(subscription.endTime)}',
+                  style: const TextStyle(
                     color: Colors.black38,
                   ),
                 ),
@@ -57,12 +58,8 @@ class SubscriptionWidget extends StatelessWidget {
             ),
             const Spacer(),
             Icon(
-              subscription.isNotificated
-                  ? Icons.notifications_none_rounded
-                  : Icons.notifications_off_outlined,
-              color: subscription.isNotificated
-                  ? AppColors.mainColorDarkest
-                  : Colors.black38,
+              subscription.notify ? Icons.notifications_none_rounded : Icons.notifications_off_outlined,
+              color: subscription.notify ? AppColors.mainColorDarkest : Colors.black38,
             )
           ],
         ),

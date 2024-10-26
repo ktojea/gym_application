@@ -13,7 +13,7 @@ abstract interface class IMainScreenWidgetModel implements IWidgetModel {
 
   Future<void> onRefresh();
 
-  void onExercisesTap();
+  void onMuscleGroupTap(MuscleGroup muscleGroup);
 
   void onMyProfileTap();
 
@@ -22,7 +22,9 @@ abstract interface class IMainScreenWidgetModel implements IWidgetModel {
 
 MainScreenWidgetModel defaultMainScreenWidgetModelFactory(BuildContext context) {
   return MainScreenWidgetModel(
-    MainScreenModel(),
+    MainScreenModel(
+      muscleGroupRepository: context.userInfo.muscleGroupRepository,
+    ),
   );
 }
 
@@ -33,7 +35,7 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   void onMyProfileTap() => context.router.push(const MyProfileRoute());
 
   @override
-  void onExercisesTap() => context.router.push(const ExercisesRoute());
+  void onMuscleGroupTap(MuscleGroup muscleGroup) => context.router.push(ExercisesRoute(muscleGroup: muscleGroup));
 
   @override
   void onQRScanTap() {
@@ -48,7 +50,6 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   @override
   Future<void> initWidgetModel() async {
     await _initMain();
-    print(context.userInfo.userNotifier.value.toString());
     super.initWidgetModel();
   }
 
@@ -60,18 +61,9 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
     _muscleGroupListEntity.loading();
 
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      final muscleGroups = await model.getMuscleGroups();
 
-      final list = List.generate(
-        12,
-        (i) => MuscleGroup(
-          id: i,
-          name: "Задняя часть бедра",
-          imageUrl: "",
-        ),
-      );
-
-      _muscleGroupListEntity.content(list);
+      _muscleGroupListEntity.content(muscleGroups);
     } on Exception {
       _muscleGroupListEntity.error();
       print("Error");

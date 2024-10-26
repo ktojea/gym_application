@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_wm.dart';
 import 'package:gym_application/ui/features/my_profile/widgets/user_info_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
@@ -72,23 +73,42 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
               loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
               builder: (_, subscriptionList) => subscriptionList == null
                   ? const SizedBox()
-                  : Column(
-                      children: subscriptionList
-                          .map(
-                            (subscription) => Padding(
-                              padding: const EdgeInsets.only(bottom: 10, right: 25, left: 25),
-                              child: SubscriptionWidget(
-                                subscription: subscription,
-                                onTap: (id) => wm.onSubscriptionTap(subscription.id),
-                              ),
-                            ),
-                          )
-                          .toList(),
+                  : UserSubcriptionsWidget(
+                      subscriptions: subscriptionList,
+                      onSubscriptionTap: (subscriptionId) => wm.onSubscriptionTap(subscriptionId),
                     ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class UserSubcriptionsWidget extends StatelessWidget {
+  const UserSubcriptionsWidget({
+    super.key,
+    required this.subscriptions,
+    required this.onSubscriptionTap,
+  });
+
+  final List<Subscription> subscriptions;
+  final void Function(int subscriptionId) onSubscriptionTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: subscriptions
+          .map(
+            (subscription) => Padding(
+              padding: const EdgeInsets.only(bottom: 10, right: 25, left: 25),
+              child: SubscriptionWidget(
+                subscription: subscription,
+                onTap: (id) => onSubscriptionTap(subscription.id),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 }

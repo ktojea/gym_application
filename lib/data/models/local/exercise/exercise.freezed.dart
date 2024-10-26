@@ -20,13 +20,14 @@ Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Exercise {
-  int get id => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  int get equipmentId => throw _privateConstructorUsedError;
-  int get muscleGroupId => throw _privateConstructorUsedError;
-  int get difficulty => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get difficulty => throw _privateConstructorUsedError;
+  int get muscleGroupId => throw _privateConstructorUsedError;
+  List<ExerciseMedia> get exerciseMedia => throw _privateConstructorUsedError;
 
   /// Serializes this Exercise to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,13 +45,13 @@ abstract class $ExerciseCopyWith<$Res> {
       _$ExerciseCopyWithImpl<$Res, Exercise>;
   @useResult
   $Res call(
-      {int id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) int? id,
       String name,
+      String imageUrl,
       String description,
-      int equipmentId,
+      String difficulty,
       int muscleGroupId,
-      int difficulty,
-      String imageUrl});
+      List<ExerciseMedia> exerciseMedia});
 }
 
 /// @nodoc
@@ -68,43 +69,43 @@ class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
-    Object? description = null,
-    Object? equipmentId = null,
-    Object? muscleGroupId = null,
-    Object? difficulty = null,
     Object? imageUrl = null,
+    Object? description = null,
+    Object? difficulty = null,
+    Object? muscleGroupId = null,
+    Object? exerciseMedia = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      equipmentId: null == equipmentId
-          ? _value.equipmentId
-          : equipmentId // ignore: cast_nullable_to_non_nullable
-              as int,
+      difficulty: null == difficulty
+          ? _value.difficulty
+          : difficulty // ignore: cast_nullable_to_non_nullable
+              as String,
       muscleGroupId: null == muscleGroupId
           ? _value.muscleGroupId
           : muscleGroupId // ignore: cast_nullable_to_non_nullable
               as int,
-      difficulty: null == difficulty
-          ? _value.difficulty
-          : difficulty // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      exerciseMedia: null == exerciseMedia
+          ? _value.exerciseMedia
+          : exerciseMedia // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseMedia>,
     ) as $Val);
   }
 }
@@ -118,13 +119,13 @@ abstract class _$$ExerciseImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) int? id,
       String name,
+      String imageUrl,
       String description,
-      int equipmentId,
+      String difficulty,
       int muscleGroupId,
-      int difficulty,
-      String imageUrl});
+      List<ExerciseMedia> exerciseMedia});
 }
 
 /// @nodoc
@@ -140,43 +141,43 @@ class __$$ExerciseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
-    Object? description = null,
-    Object? equipmentId = null,
-    Object? muscleGroupId = null,
-    Object? difficulty = null,
     Object? imageUrl = null,
+    Object? description = null,
+    Object? difficulty = null,
+    Object? muscleGroupId = null,
+    Object? exerciseMedia = null,
   }) {
     return _then(_$ExerciseImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      equipmentId: null == equipmentId
-          ? _value.equipmentId
-          : equipmentId // ignore: cast_nullable_to_non_nullable
-              as int,
+      difficulty: null == difficulty
+          ? _value.difficulty
+          : difficulty // ignore: cast_nullable_to_non_nullable
+              as String,
       muscleGroupId: null == muscleGroupId
           ? _value.muscleGroupId
           : muscleGroupId // ignore: cast_nullable_to_non_nullable
               as int,
-      difficulty: null == difficulty
-          ? _value.difficulty
-          : difficulty // ignore: cast_nullable_to_non_nullable
-              as int,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      exerciseMedia: null == exerciseMedia
+          ? _value._exerciseMedia
+          : exerciseMedia // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseMedia>,
     ));
   }
 }
@@ -185,36 +186,43 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ExerciseImpl extends _Exercise {
   const _$ExerciseImpl(
-      {required this.id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) this.id,
       required this.name,
+      required this.imageUrl,
       required this.description,
-      required this.equipmentId,
-      required this.muscleGroupId,
       required this.difficulty,
-      required this.imageUrl})
-      : super._();
+      required this.muscleGroupId,
+      required final List<ExerciseMedia> exerciseMedia})
+      : _exerciseMedia = exerciseMedia,
+        super._();
 
   factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ExerciseImplFromJson(json);
 
   @override
-  final int id;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  final int? id;
   @override
   final String name;
   @override
+  final String imageUrl;
+  @override
   final String description;
   @override
-  final int equipmentId;
+  final String difficulty;
   @override
   final int muscleGroupId;
+  final List<ExerciseMedia> _exerciseMedia;
   @override
-  final int difficulty;
-  @override
-  final String imageUrl;
+  List<ExerciseMedia> get exerciseMedia {
+    if (_exerciseMedia is EqualUnmodifiableListView) return _exerciseMedia;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_exerciseMedia);
+  }
 
   @override
   String toString() {
-    return 'Exercise(id: $id, name: $name, description: $description, equipmentId: $equipmentId, muscleGroupId: $muscleGroupId, difficulty: $difficulty, imageUrl: $imageUrl)';
+    return 'Exercise(id: $id, name: $name, imageUrl: $imageUrl, description: $description, difficulty: $difficulty, muscleGroupId: $muscleGroupId, exerciseMedia: $exerciseMedia)';
   }
 
   @override
@@ -224,22 +232,29 @@ class _$ExerciseImpl extends _Exercise {
             other is _$ExerciseImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.equipmentId, equipmentId) ||
-                other.equipmentId == equipmentId) &&
-            (identical(other.muscleGroupId, muscleGroupId) ||
-                other.muscleGroupId == muscleGroupId) &&
             (identical(other.difficulty, difficulty) ||
                 other.difficulty == difficulty) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl));
+            (identical(other.muscleGroupId, muscleGroupId) ||
+                other.muscleGroupId == muscleGroupId) &&
+            const DeepCollectionEquality()
+                .equals(other._exerciseMedia, _exerciseMedia));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description,
-      equipmentId, muscleGroupId, difficulty, imageUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      imageUrl,
+      description,
+      difficulty,
+      muscleGroupId,
+      const DeepCollectionEquality().hash(_exerciseMedia));
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.
@@ -259,32 +274,33 @@ class _$ExerciseImpl extends _Exercise {
 
 abstract class _Exercise extends Exercise {
   const factory _Exercise(
-      {required final int id,
+      {@JsonKey(includeFromJson: false, includeToJson: false) final int? id,
       required final String name,
+      required final String imageUrl,
       required final String description,
-      required final int equipmentId,
+      required final String difficulty,
       required final int muscleGroupId,
-      required final int difficulty,
-      required final String imageUrl}) = _$ExerciseImpl;
+      required final List<ExerciseMedia> exerciseMedia}) = _$ExerciseImpl;
   const _Exercise._() : super._();
 
   factory _Exercise.fromJson(Map<String, dynamic> json) =
       _$ExerciseImpl.fromJson;
 
   @override
-  int get id;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  int? get id;
   @override
   String get name;
   @override
+  String get imageUrl;
+  @override
   String get description;
   @override
-  int get equipmentId;
+  String get difficulty;
   @override
   int get muscleGroupId;
   @override
-  int get difficulty;
-  @override
-  String get imageUrl;
+  List<ExerciseMedia> get exerciseMedia;
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.

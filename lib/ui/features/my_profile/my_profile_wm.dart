@@ -24,7 +24,9 @@ abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
 
 MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(BuildContext context) {
   return MyProfileScreenWidgetModel(
-    MyProfileScreenModel(),
+    MyProfileScreenModel(
+      userRepository: context.userInfo.userRepository,
+    ),
   );
 }
 
@@ -52,27 +54,12 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
   }
 
   Future<void> _initSubscriptionList() async {
-    // Показываю пользователю загрузку.
     _subscriptionListEntity.loading();
 
     try {
-      // Загрузка данных.
-      await Future.delayed(const Duration(seconds: 2));
+      final subscriptions = await model.getSubscriptions();
 
-      final list = List.generate(
-        10,
-        (i) => Subscription(
-          id: i,
-          gymName: 'DDX',
-          price: 999,
-          endDate: DateTime(2024, 11, 30),
-          gymAvatar:
-              'https://sun9-5.userapi.com/impg/g7SpGK8Qfz1qmxefP0vnAjdaAKlHQyHIqPamVQ/2eWrOh0lMug.jpg?size=730x599&quality=96&sign=97814d058218d6e1bb9e3f7fbf26d5a6&type=album',
-          isNotificated: i % 3 == 0,
-        ),
-      );
-
-      _subscriptionListEntity.content(list);
+      _subscriptionListEntity.content(subscriptions);
     } on Exception {
       _subscriptionListEntity.error();
       print('Error');
@@ -99,7 +86,7 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
       final choosenSubscription = updatedSubscriptionList[indexChoosenSubscription];
 
       updatedSubscriptionList[indexChoosenSubscription] =
-          choosenSubscription.copyWith(isNotificated: !choosenSubscription.isNotificated);
+          choosenSubscription.copyWith(notify: !choosenSubscription.notify);
       _subscriptionListEntity.content(updatedSubscriptionList);
     }
   }

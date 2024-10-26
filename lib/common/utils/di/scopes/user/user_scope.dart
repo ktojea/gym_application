@@ -6,7 +6,13 @@ import 'package:gym_application/common/utils/di/app_async_dependency.dart';
 import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
 import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/data/models/local/user/user.dart';
+import 'package:gym_application/data/provider/network/equipment/equipment_api.dart';
+import 'package:gym_application/data/provider/network/exercise/exercise_api.dart';
+import 'package:gym_application/data/provider/network/muscle_group/muscle_group.dart';
 import 'package:gym_application/data/provider/network/user/user_api.dart';
+import 'package:gym_application/domain/equipment/equipment_repository.dart';
+import 'package:gym_application/domain/exercise/exercise_repository.dart';
+import 'package:gym_application/domain/muscle_group/muscle_group_repository.dart';
 import 'package:gym_application/domain/user/user_repository.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +23,18 @@ class UserScope extends AppAsyncDependency {
 
   late final UserRepository userRepository;
 
+  late final MuscleGroupApi _muscleGroupApi;
+
+  late final MuscleGroupRepository muscleGroupRepository;
+
+  late final ExerciseApi _exerciseApi;
+
+  late final ExerciseRepository exerciseRepository;
+
+  late final EquipmentApi _equipmentApi;
+
+  late final EquipmentRepository equipmentRepository;
+
   @override
   Future<void> initAsync(BuildContext context) async {
     _initNewToken(context);
@@ -24,6 +42,18 @@ class UserScope extends AppAsyncDependency {
     _userApi = UserApi(context.global.dio);
 
     userRepository = UserRepository(userApi: _userApi);
+
+    _muscleGroupApi = MuscleGroupApi(context.global.dio);
+
+    muscleGroupRepository = MuscleGroupRepository(muscleGroupApi: _muscleGroupApi);
+
+    _exerciseApi = ExerciseApi(context.global.dio);
+
+    exerciseRepository = ExerciseRepository(exerciseApi: _exerciseApi);
+
+    _equipmentApi = EquipmentApi(context.global.dio);
+
+    equipmentRepository = EquipmentRepository(equipmentApi: _equipmentApi);
 
     await _initUser(context);
   }

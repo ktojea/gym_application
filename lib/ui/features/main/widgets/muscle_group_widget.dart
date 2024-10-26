@@ -13,18 +13,19 @@ class MuscleGroupWidget extends StatelessWidget {
 
   final int index;
   final MuscleGroup muscleGroup;
-  final VoidCallback onTap;
+  final void Function(MuscleGroup muscleGroup) onTap;
 
   @override
   Widget build(BuildContext context) {
     final color = (index % 4 == 1 || index % 4 == 2) ? AppColors.secondColorDark : AppColors.mainColorDark;
 
     return GestureDetector(
-      onTap: () => onTap(),
+      onTap: () => onTap(muscleGroup),
       child: PlateWidget(
         blurRadius: 40,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               muscleGroup.name,
@@ -35,14 +36,20 @@ class MuscleGroupWidget extends StatelessWidget {
                 color: color,
               ),
             ),
-            const SizedBox(height: 0),
             Align(
-              alignment: Alignment.bottomRight,
-              child: Icon(
-                Icons.accessibility_new_rounded,
-                size: 60,
-                color: color,
+              alignment: Alignment.centerRight,
+              child: SizedBox.square(
+                dimension: 80,
+                child: Image.network(
+                  muscleGroup.imageUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
+              // child: Icon(
+              //   Icons.accessibility_new_rounded,
+              //   size: 60,
+              //   color: color,
+              // ),
             ),
           ],
         ),

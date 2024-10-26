@@ -10,7 +10,7 @@ class MuscleGroupGridWidget extends StatelessWidget {
   });
 
   final List<MuscleGroup> items;
-  final VoidCallback onTap;
+  final void Function(MuscleGroup muscleGroup) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class MuscleGroupGridWidget extends StatelessWidget {
       children: List.generate(
         items.length,
         (index) {
-          return SizedBox(
-            width: (MediaQuery.of(context).size.width - 50 - spacing) / 2,
+          return SizedBox.square(
+            dimension: (MediaQuery.of(context).size.width - 50 - spacing) / 2,
             child: MuscleGroupWidget(
               index: index,
               muscleGroup: items[index],

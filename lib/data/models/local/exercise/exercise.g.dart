@@ -8,22 +8,22 @@ part of 'exercise.dart';
 
 _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
     _$ExerciseImpl(
-      id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      description: json['description'] as String,
-      equipmentId: (json['equipment_id'] as num).toInt(),
-      muscleGroupId: (json['muscle_group_id'] as num).toInt(),
-      difficulty: (json['difficulty'] as num).toInt(),
       imageUrl: json['image_url'] as String,
+      description: json['description'] as String,
+      difficulty: json['difficulty'] as String,
+      muscleGroupId: (json['muscle_group_id'] as num).toInt(),
+      exerciseMedia: (json['exercise_media'] as List<dynamic>)
+          .map((e) => ExerciseMedia.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
-      'description': instance.description,
-      'equipment_id': instance.equipmentId,
-      'muscle_group_id': instance.muscleGroupId,
-      'difficulty': instance.difficulty,
       'image_url': instance.imageUrl,
+      'description': instance.description,
+      'difficulty': instance.difficulty,
+      'muscle_group_id': instance.muscleGroupId,
+      'exercise_media': instance.exerciseMedia.map((e) => e.toJson()).toList(),
     };

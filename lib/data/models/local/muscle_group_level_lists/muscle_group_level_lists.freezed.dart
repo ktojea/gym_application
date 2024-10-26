@@ -21,9 +21,12 @@ MuscleGroupLevelLists _$MuscleGroupLevelListsFromJson(
 
 /// @nodoc
 mixin _$MuscleGroupLevelLists {
-  List<Exercise> get beginnerList => throw _privateConstructorUsedError;
-  List<Exercise> get experiencedList => throw _privateConstructorUsedError;
-  List<Exercise> get professional => throw _privateConstructorUsedError;
+  List<ExerciseInList> get beginnerExercises =>
+      throw _privateConstructorUsedError;
+  List<ExerciseInList> get intermediateExercises =>
+      throw _privateConstructorUsedError;
+  List<ExerciseInList> get advancedExercises =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this MuscleGroupLevelLists to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,9 +45,9 @@ abstract class $MuscleGroupLevelListsCopyWith<$Res> {
       _$MuscleGroupLevelListsCopyWithImpl<$Res, MuscleGroupLevelLists>;
   @useResult
   $Res call(
-      {List<Exercise> beginnerList,
-      List<Exercise> experiencedList,
-      List<Exercise> professional});
+      {List<ExerciseInList> beginnerExercises,
+      List<ExerciseInList> intermediateExercises,
+      List<ExerciseInList> advancedExercises});
 }
 
 /// @nodoc
@@ -63,23 +66,23 @@ class _$MuscleGroupLevelListsCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? beginnerList = null,
-    Object? experiencedList = null,
-    Object? professional = null,
+    Object? beginnerExercises = null,
+    Object? intermediateExercises = null,
+    Object? advancedExercises = null,
   }) {
     return _then(_value.copyWith(
-      beginnerList: null == beginnerList
-          ? _value.beginnerList
-          : beginnerList // ignore: cast_nullable_to_non_nullable
-              as List<Exercise>,
-      experiencedList: null == experiencedList
-          ? _value.experiencedList
-          : experiencedList // ignore: cast_nullable_to_non_nullable
-              as List<Exercise>,
-      professional: null == professional
-          ? _value.professional
-          : professional // ignore: cast_nullable_to_non_nullable
-              as List<Exercise>,
+      beginnerExercises: null == beginnerExercises
+          ? _value.beginnerExercises
+          : beginnerExercises // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseInList>,
+      intermediateExercises: null == intermediateExercises
+          ? _value.intermediateExercises
+          : intermediateExercises // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseInList>,
+      advancedExercises: null == advancedExercises
+          ? _value.advancedExercises
+          : advancedExercises // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseInList>,
     ) as $Val);
   }
 }
@@ -94,9 +97,9 @@ abstract class _$$MuscleGroupLevelListsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<Exercise> beginnerList,
-      List<Exercise> experiencedList,
-      List<Exercise> professional});
+      {List<ExerciseInList> beginnerExercises,
+      List<ExerciseInList> intermediateExercises,
+      List<ExerciseInList> advancedExercises});
 }
 
 /// @nodoc
@@ -113,23 +116,23 @@ class __$$MuscleGroupLevelListsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? beginnerList = null,
-    Object? experiencedList = null,
-    Object? professional = null,
+    Object? beginnerExercises = null,
+    Object? intermediateExercises = null,
+    Object? advancedExercises = null,
   }) {
     return _then(_$MuscleGroupLevelListsImpl(
-      beginnerList: null == beginnerList
-          ? _value._beginnerList
-          : beginnerList // ignore: cast_nullable_to_non_nullable
-              as List<Exercise>,
-      experiencedList: null == experiencedList
-          ? _value._experiencedList
-          : experiencedList // ignore: cast_nullable_to_non_nullable
-              as List<Exercise>,
-      professional: null == professional
-          ? _value._professional
-          : professional // ignore: cast_nullable_to_non_nullable
-              as List<Exercise>,
+      beginnerExercises: null == beginnerExercises
+          ? _value._beginnerExercises
+          : beginnerExercises // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseInList>,
+      intermediateExercises: null == intermediateExercises
+          ? _value._intermediateExercises
+          : intermediateExercises // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseInList>,
+      advancedExercises: null == advancedExercises
+          ? _value._advancedExercises
+          : advancedExercises // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseInList>,
     ));
   }
 }
@@ -138,44 +141,47 @@ class __$$MuscleGroupLevelListsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MuscleGroupLevelListsImpl extends _MuscleGroupLevelLists {
   const _$MuscleGroupLevelListsImpl(
-      {required final List<Exercise> beginnerList,
-      required final List<Exercise> experiencedList,
-      required final List<Exercise> professional})
-      : _beginnerList = beginnerList,
-        _experiencedList = experiencedList,
-        _professional = professional,
+      {required final List<ExerciseInList> beginnerExercises,
+      required final List<ExerciseInList> intermediateExercises,
+      required final List<ExerciseInList> advancedExercises})
+      : _beginnerExercises = beginnerExercises,
+        _intermediateExercises = intermediateExercises,
+        _advancedExercises = advancedExercises,
         super._();
 
   factory _$MuscleGroupLevelListsImpl.fromJson(Map<String, dynamic> json) =>
       _$$MuscleGroupLevelListsImplFromJson(json);
 
-  final List<Exercise> _beginnerList;
+  final List<ExerciseInList> _beginnerExercises;
   @override
-  List<Exercise> get beginnerList {
-    if (_beginnerList is EqualUnmodifiableListView) return _beginnerList;
+  List<ExerciseInList> get beginnerExercises {
+    if (_beginnerExercises is EqualUnmodifiableListView)
+      return _beginnerExercises;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_beginnerList);
+    return EqualUnmodifiableListView(_beginnerExercises);
   }
 
-  final List<Exercise> _experiencedList;
+  final List<ExerciseInList> _intermediateExercises;
   @override
-  List<Exercise> get experiencedList {
-    if (_experiencedList is EqualUnmodifiableListView) return _experiencedList;
+  List<ExerciseInList> get intermediateExercises {
+    if (_intermediateExercises is EqualUnmodifiableListView)
+      return _intermediateExercises;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_experiencedList);
+    return EqualUnmodifiableListView(_intermediateExercises);
   }
 
-  final List<Exercise> _professional;
+  final List<ExerciseInList> _advancedExercises;
   @override
-  List<Exercise> get professional {
-    if (_professional is EqualUnmodifiableListView) return _professional;
+  List<ExerciseInList> get advancedExercises {
+    if (_advancedExercises is EqualUnmodifiableListView)
+      return _advancedExercises;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_professional);
+    return EqualUnmodifiableListView(_advancedExercises);
   }
 
   @override
   String toString() {
-    return 'MuscleGroupLevelLists(beginnerList: $beginnerList, experiencedList: $experiencedList, professional: $professional)';
+    return 'MuscleGroupLevelLists(beginnerExercises: $beginnerExercises, intermediateExercises: $intermediateExercises, advancedExercises: $advancedExercises)';
   }
 
   @override
@@ -184,20 +190,20 @@ class _$MuscleGroupLevelListsImpl extends _MuscleGroupLevelLists {
         (other.runtimeType == runtimeType &&
             other is _$MuscleGroupLevelListsImpl &&
             const DeepCollectionEquality()
-                .equals(other._beginnerList, _beginnerList) &&
+                .equals(other._beginnerExercises, _beginnerExercises) &&
             const DeepCollectionEquality()
-                .equals(other._experiencedList, _experiencedList) &&
+                .equals(other._intermediateExercises, _intermediateExercises) &&
             const DeepCollectionEquality()
-                .equals(other._professional, _professional));
+                .equals(other._advancedExercises, _advancedExercises));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_beginnerList),
-      const DeepCollectionEquality().hash(_experiencedList),
-      const DeepCollectionEquality().hash(_professional));
+      const DeepCollectionEquality().hash(_beginnerExercises),
+      const DeepCollectionEquality().hash(_intermediateExercises),
+      const DeepCollectionEquality().hash(_advancedExercises));
 
   /// Create a copy of MuscleGroupLevelLists
   /// with the given fields replaced by the non-null parameter values.
@@ -218,9 +224,9 @@ class _$MuscleGroupLevelListsImpl extends _MuscleGroupLevelLists {
 
 abstract class _MuscleGroupLevelLists extends MuscleGroupLevelLists {
   const factory _MuscleGroupLevelLists(
-          {required final List<Exercise> beginnerList,
-          required final List<Exercise> experiencedList,
-          required final List<Exercise> professional}) =
+          {required final List<ExerciseInList> beginnerExercises,
+          required final List<ExerciseInList> intermediateExercises,
+          required final List<ExerciseInList> advancedExercises}) =
       _$MuscleGroupLevelListsImpl;
   const _MuscleGroupLevelLists._() : super._();
 
@@ -228,11 +234,11 @@ abstract class _MuscleGroupLevelLists extends MuscleGroupLevelLists {
       _$MuscleGroupLevelListsImpl.fromJson;
 
   @override
-  List<Exercise> get beginnerList;
+  List<ExerciseInList> get beginnerExercises;
   @override
-  List<Exercise> get experiencedList;
+  List<ExerciseInList> get intermediateExercises;
   @override
-  List<Exercise> get professional;
+  List<ExerciseInList> get advancedExercises;
 
   /// Create a copy of MuscleGroupLevelLists
   /// with the given fields replaced by the non-null parameter values.

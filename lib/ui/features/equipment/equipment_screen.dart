@@ -45,7 +45,6 @@ class EquipmentScreen extends ElementaryWidget<IEquipmentScreenWidgetModel> {
                   ExerciseDescriptionWidget(
                     exerciseLisenable: wm.exerciseLisenable,
                     equipmentListenable: wm.equipmentListenable,
-                    exerciseMediaListListenable: wm.exerciseMediaListenable,
                   ),
                   const SizedBox(height: 25),
                 ],

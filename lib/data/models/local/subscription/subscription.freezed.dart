@@ -23,9 +23,9 @@ mixin _$Subscription {
   int get id => throw _privateConstructorUsedError;
   String get gymName => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  DateTime get endDate => throw _privateConstructorUsedError;
+  DateTime get endTime => throw _privateConstructorUsedError;
   String? get gymAvatar => throw _privateConstructorUsedError;
-  bool get isNotificated => throw _privateConstructorUsedError;
+  bool get notify => throw _privateConstructorUsedError;
 
   /// Serializes this Subscription to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,9 +47,9 @@ abstract class $SubscriptionCopyWith<$Res> {
       {int id,
       String gymName,
       int price,
-      DateTime endDate,
+      DateTime endTime,
       String? gymAvatar,
-      bool isNotificated});
+      bool notify});
 }
 
 /// @nodoc
@@ -70,9 +70,9 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
     Object? id = null,
     Object? gymName = null,
     Object? price = null,
-    Object? endDate = null,
+    Object? endTime = null,
     Object? gymAvatar = freezed,
-    Object? isNotificated = null,
+    Object? notify = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,17 +87,17 @@ class _$SubscriptionCopyWithImpl<$Res, $Val extends Subscription>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      endDate: null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       gymAvatar: freezed == gymAvatar
           ? _value.gymAvatar
           : gymAvatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      isNotificated: null == isNotificated
-          ? _value.isNotificated
-          : isNotificated // ignore: cast_nullable_to_non_nullable
+      notify: null == notify
+          ? _value.notify
+          : notify // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -115,9 +115,9 @@ abstract class _$$SubscriptionImplCopyWith<$Res>
       {int id,
       String gymName,
       int price,
-      DateTime endDate,
+      DateTime endTime,
       String? gymAvatar,
-      bool isNotificated});
+      bool notify});
 }
 
 /// @nodoc
@@ -136,9 +136,9 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
     Object? id = null,
     Object? gymName = null,
     Object? price = null,
-    Object? endDate = null,
+    Object? endTime = null,
     Object? gymAvatar = freezed,
-    Object? isNotificated = null,
+    Object? notify = null,
   }) {
     return _then(_$SubscriptionImpl(
       id: null == id
@@ -153,17 +153,17 @@ class __$$SubscriptionImplCopyWithImpl<$Res>
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      endDate: null == endDate
-          ? _value.endDate
-          : endDate // ignore: cast_nullable_to_non_nullable
+      endTime: null == endTime
+          ? _value.endTime
+          : endTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
       gymAvatar: freezed == gymAvatar
           ? _value.gymAvatar
           : gymAvatar // ignore: cast_nullable_to_non_nullable
               as String?,
-      isNotificated: null == isNotificated
-          ? _value.isNotificated
-          : isNotificated // ignore: cast_nullable_to_non_nullable
+      notify: null == notify
+          ? _value.notify
+          : notify // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -176,9 +176,9 @@ class _$SubscriptionImpl extends _Subscription {
       {required this.id,
       required this.gymName,
       required this.price,
-      required this.endDate,
+      required this.endTime,
       required this.gymAvatar,
-      required this.isNotificated})
+      required this.notify})
       : super._();
 
   factory _$SubscriptionImpl.fromJson(Map<String, dynamic> json) =>
@@ -191,15 +191,15 @@ class _$SubscriptionImpl extends _Subscription {
   @override
   final int price;
   @override
-  final DateTime endDate;
+  final DateTime endTime;
   @override
   final String? gymAvatar;
   @override
-  final bool isNotificated;
+  final bool notify;
 
   @override
   String toString() {
-    return 'Subscription(id: $id, gymName: $gymName, price: $price, endDate: $endDate, gymAvatar: $gymAvatar, isNotificated: $isNotificated)';
+    return 'Subscription(id: $id, gymName: $gymName, price: $price, endTime: $endTime, gymAvatar: $gymAvatar, notify: $notify)';
   }
 
   @override
@@ -210,17 +210,16 @@ class _$SubscriptionImpl extends _Subscription {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.gymName, gymName) || other.gymName == gymName) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.endDate, endDate) || other.endDate == endDate) &&
+            (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.gymAvatar, gymAvatar) ||
                 other.gymAvatar == gymAvatar) &&
-            (identical(other.isNotificated, isNotificated) ||
-                other.isNotificated == isNotificated));
+            (identical(other.notify, notify) || other.notify == notify));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, gymName, price, endDate, gymAvatar, isNotificated);
+  int get hashCode =>
+      Object.hash(runtimeType, id, gymName, price, endTime, gymAvatar, notify);
 
   /// Create a copy of Subscription
   /// with the given fields replaced by the non-null parameter values.
@@ -243,9 +242,9 @@ abstract class _Subscription extends Subscription {
       {required final int id,
       required final String gymName,
       required final int price,
-      required final DateTime endDate,
+      required final DateTime endTime,
       required final String? gymAvatar,
-      required final bool isNotificated}) = _$SubscriptionImpl;
+      required final bool notify}) = _$SubscriptionImpl;
   const _Subscription._() : super._();
 
   factory _Subscription.fromJson(Map<String, dynamic> json) =
@@ -258,11 +257,11 @@ abstract class _Subscription extends Subscription {
   @override
   int get price;
   @override
-  DateTime get endDate;
+  DateTime get endTime;
   @override
   String? get gymAvatar;
   @override
-  bool get isNotificated;
+  bool get notify;
 
   /// Create a copy of Subscription
   /// with the given fields replaced by the non-null parameter values.
