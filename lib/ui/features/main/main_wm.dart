@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
@@ -10,6 +13,10 @@ import 'package:gym_application/ui/features/main/main_model.dart';
 
 abstract interface class IMainScreenWidgetModel implements IWidgetModel {
   ValueNotifier<EntityState<List<MuscleGroup>>> get muscleGroupListListenable;
+
+  ValueNotifier<EntityState<String>> get aiTextListenable;
+
+  ValueNotifier<int> get pulseListenable;
 
   Future<void> onRefresh();
 
@@ -24,6 +31,7 @@ MainScreenWidgetModel defaultMainScreenWidgetModelFactory(BuildContext context) 
   return MainScreenWidgetModel(
     MainScreenModel(
       muscleGroupRepository: context.userInfo.muscleGroupRepository,
+      aiRepository: context.userInfo.aiRepository,
     ),
   );
 }
@@ -38,9 +46,7 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   void onMuscleGroupTap(MuscleGroup muscleGroup) => context.router.push(ExercisesRoute(muscleGroup: muscleGroup));
 
   @override
-  void onQRScanTap() {
-    // TODO: implement onQRScanTap
-  }
+  void onQRScanTap() => context.router.push(const ScannerRoute());
 
   final _muscleGroupListEntity = EntityStateNotifier<List<MuscleGroup>>();
 
@@ -50,11 +56,20 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   @override
   Future<void> initWidgetModel() async {
     await _initMain();
+
+    Timer.periodic(const Duration(seconds: 1), (_) {
+      var random = Random();
+      _pulseNotifier.value = 90 + random.nextInt(10);
+    });
+
     super.initWidgetModel();
   }
 
   Future<void> _initMain() async {
-    await _initMuscleGroupList();
+    await Future.wait([
+      _initMuscleGroupList(),
+      _initAiText(),
+    ]);
   }
 
   Future<void> _initMuscleGroupList() async {
@@ -72,4 +87,26 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
 
   @override
   Future<void> onRefresh() async => await _initMuscleGroupList();
+
+  final _aiTextEntity = EntityStateNotifier<String>();
+
+  @override
+  ValueNotifier<EntityState<String>> get aiTextListenable => _aiTextEntity;
+
+  Future<void> _initAiText() async {
+    _aiTextEntity.loading();
+
+    try {
+      final traningPlan = await model.getTrainingPlan();
+
+      _aiTextEntity.content(traningPlan);
+    } on Exception {
+      _aiTextEntity.error();
+    }
+  }
+
+  final _pulseNotifier = ValueNotifier<int>(96);
+
+  @override
+  ValueNotifier<int> get pulseListenable => _pulseNotifier;
 }

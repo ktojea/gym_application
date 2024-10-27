@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/features/exercises/exercises_wm.dart';
 import 'package:gym_application/ui/features/exercises/widgets/exercises_by_level_widget.dart';
-import 'package:gym_application/ui/features/exercises/widgets/exercises_screen_full_statisticks_widget.dart';
+
+import 'package:gym_application/ui/features/exercises/widgets/level_info_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
+import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
 
 @RoutePage()
 class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
@@ -52,7 +54,12 @@ class ExercisesScreen extends ElementaryWidget<IExercisesScreenWidgetModel> {
                           ),
                         ),
                         const SizedBox(height: 25),
-                        const ExercisesScreenFullStatisticksWidget(),
+                        const SizedBox(
+                          width: double.infinity,
+                          child: PlateWidget(
+                            child: LevelInfoWidget(trainingLevel: 2),
+                          ),
+                        ),
                         const SizedBox(height: 25),
                         if (muscleGroupLevelLists.beginnerExercises.isNotEmpty)
                           ExercisesByLevelWidget(

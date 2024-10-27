@@ -6,6 +6,7 @@ import 'package:gym_application/data/models/local/subscription/subscription.dart
 import 'package:gym_application/ui/features/my_profile/my_profile_wm.dart';
 import 'package:gym_application/ui/features/my_profile/widgets/user_info_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
+import 'package:gym_application/ui/widgets/info/ai_helper_widget.dart';
 import 'package:gym_application/ui/widgets/info/subscription_widget.dart';
 
 @RoutePage()
@@ -45,6 +46,20 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
                   onEditTap: () => wm.onEditTap(),
                 ),
               ),
+            ),
+            const SizedBox(height: 25),
+            EntityStateNotifierBuilder(
+              listenableEntityState: wm.aiTextListenable,
+              loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
+              builder: (_, aiText) => aiText == null
+                  ? const SizedBox()
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: AiHelperWidget(
+                        title: 'Прогресс',
+                        text: aiText,
+                      ),
+                    ),
             ),
             const SizedBox(height: 25),
             const Padding(

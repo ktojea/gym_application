@@ -10,28 +10,7 @@ class SplashScreen extends ElementaryWidget<ISplashScreenWidgetModel> {
   @override
   Widget build(ISplashScreenWidgetModel wm) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Splash экран'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-      ),
-      body: ColoredBox(
-        color: Colors.orange.shade100,
-        child: Center(
-          child: Column(
-            children: [
-              TextButton(
-                onPressed: () => wm.onMainTap(),
-                child: const Text('Главный экран'),
-              ),
-              TextButton(
-                onPressed: () => wm.onAuthTap(),
-                child: const Text('Авторизация'),
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: Image.asset('assets/images/splash.jpeg'),
     );
   }
 }

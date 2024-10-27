@@ -11,7 +11,7 @@ class UserScopeWrapperScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AsyncDependencyWidget(
       create: UserScope.new,
-      loaderBuilder: (context) => const Center(child: CircularProgressIndicator()),
+      loaderBuilder: (context) => Image.asset('assets/images/splash.jpeg'),
       errorBuilder: (context) => const Icon(
         Icons.error,
         color: Colors.white,

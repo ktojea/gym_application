@@ -9,9 +9,11 @@ import 'package:gym_application/ui/features/my_profile/my_profile_model.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_screen.dart';
 
 abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
-  ValueNotifier<User> get userListenable;
+  ValueNotifier<EntityState<String>> get aiTextListenable;
 
   ValueNotifier<EntityState<List<Subscription>>> get subscriptionListListenable;
+
+  ValueNotifier<User> get userListenable;
 
   Future<void> onRefresh();
 
@@ -26,6 +28,7 @@ MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(BuildContext
   return MyProfileScreenWidgetModel(
     MyProfileScreenModel(
       userRepository: context.userInfo.userRepository,
+      aiRepository: context.userInfo.aiRepository,
     ),
   );
 }
@@ -50,7 +53,10 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
   }
 
   Future<void> _initMyProfile() async {
-    await Future.wait([_initSubscriptionList()]);
+    await Future.wait([
+      _initSubscriptionList(),
+      _initAiText(),
+    ]);
   }
 
   Future<void> _initSubscriptionList() async {
@@ -93,4 +99,21 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
 
   @override
   Future<void> onRefresh() async => await _initMyProfile();
+
+  final _aiTextEntity = EntityStateNotifier<String>();
+
+  @override
+  ValueNotifier<EntityState<String>> get aiTextListenable => _aiTextEntity;
+
+  Future<void> _initAiText() async {
+    _aiTextEntity.loading();
+
+    try {
+      final progressAssessment = await model.getProgressAssessment();
+
+      _aiTextEntity.content(progressAssessment);
+    } on Exception {
+      _aiTextEntity.error();
+    }
+  }
 }

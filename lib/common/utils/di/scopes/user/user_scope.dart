@@ -1,15 +1,15 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/common/utils/di/app_async_dependency.dart';
 import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
-import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/data/models/local/user/user.dart';
+import 'package:gym_application/data/provider/network/ai_api/ai_api.dart';
 import 'package:gym_application/data/provider/network/equipment/equipment_api.dart';
 import 'package:gym_application/data/provider/network/exercise/exercise_api.dart';
 import 'package:gym_application/data/provider/network/muscle_group/muscle_group.dart';
 import 'package:gym_application/data/provider/network/user/user_api.dart';
+import 'package:gym_application/domain/ai/ai_repository.dart';
 import 'package:gym_application/domain/equipment/equipment_repository.dart';
 import 'package:gym_application/domain/exercise/exercise_repository.dart';
 import 'package:gym_application/domain/muscle_group/muscle_group_repository.dart';
@@ -35,13 +35,19 @@ class UserScope extends AppAsyncDependency {
 
   late final EquipmentRepository equipmentRepository;
 
+  late final AiApi _aiApi;
+
+  late final AiRepository aiRepository;
+
   @override
   Future<void> initAsync(BuildContext context) async {
-    _initNewToken(context);
+    await _initNewToken(context);
 
     _userApi = UserApi(context.global.dio);
 
     userRepository = UserRepository(userApi: _userApi);
+
+    await _initUser(context);
 
     _muscleGroupApi = MuscleGroupApi(context.global.dio);
 
@@ -55,7 +61,9 @@ class UserScope extends AppAsyncDependency {
 
     equipmentRepository = EquipmentRepository(equipmentApi: _equipmentApi);
 
-    await _initUser(context);
+    _aiApi = AiApi(context.global.dio);
+
+    aiRepository = AiRepository(aiApi: _aiApi);
   }
 
   Future<void> _initNewToken(BuildContext context) async {
@@ -90,8 +98,15 @@ class UserScope extends AppAsyncDependency {
       );
 
       userNotifier = ValueNotifier<User>(user);
-    } on Exception catch (e, stackTrce) {
-      context.router.replace(const AuthScopeWrapperRoute());
+    } on Object catch (e, stackTrce) {
+      // context.router.replace(const AuthScopeWrapperRoute());
+      showDialog(
+          context: context,
+          builder: (context) => Material(
+                  child: Text(
+                e.toString(),
+                style: TextStyle(fontSize: 14),
+              )));
       debugPrint(e.toString());
       debugPrintStack(stackTrace: stackTrce);
     }

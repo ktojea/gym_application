@@ -23,4 +23,7 @@ abstract class AuthApi {
   Future<HttpResponse<CheckVerificationCodeResponse>> login(
     @Body() LoginDTO LoginDTO,
   );
+
+  @GET('/auth/validate_user')
+  Future<String> validateUser(@Query('token') String token);
 }

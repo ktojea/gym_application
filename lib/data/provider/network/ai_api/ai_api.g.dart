@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_api.dart';
+part of 'ai_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'auth_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _AuthApi implements AuthApi {
-  _AuthApi(
+class _AiApi implements AiApi {
+  _AiApi(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -22,20 +22,19 @@ class _AuthApi implements AuthApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<HttpResponse<String>> registerUser(RegisterDTO registeDTO) async {
+  Future<String> getAdviceForExercise(int exerciseId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(registeDTO.toJson());
-    final _options = _setStreamType<HttpResponse<String>>(Options(
-      method: 'POST',
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<String>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/auth/register',
+          '/ai/exercise/${exerciseId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -52,90 +51,13 @@ class _AuthApi implements AuthApi {
       errorLogger?.logError(e, s, _options);
       rethrow;
     }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
+    return _value;
   }
 
   @override
-  Future<HttpResponse<CheckVerificationCodeResponse>>
-      checkVerificationCodeRegister(
-          CheckVerificationCodeRegisterDTO
-              checkVerificationCodeRegisterDTO) async {
+  Future<String> getTrainingPlan() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(checkVerificationCodeRegisterDTO.toJson());
-    final _options =
-        _setStreamType<HttpResponse<CheckVerificationCodeResponse>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/auth/check_verification_code_register',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CheckVerificationCodeResponse _value;
-    try {
-      _value = CheckVerificationCodeResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<CheckVerificationCodeResponse>> login(
-      LoginDTO LoginDTO) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(LoginDTO.toJson());
-    final _options =
-        _setStreamType<HttpResponse<CheckVerificationCodeResponse>>(Options(
-      method: 'POST',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/auth/login',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CheckVerificationCodeResponse _value;
-    try {
-      _value = CheckVerificationCodeResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<String> validateUser(String token) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'token': token};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<String>(Options(
@@ -145,7 +67,40 @@ class _AuthApi implements AuthApi {
     )
         .compose(
           _dio.options,
-          '/auth/validate_user',
+          '/ai/training_plan',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<String>(_options);
+    late String _value;
+    try {
+      _value = _result.data!;
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<String> getProgressAssessment() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<String>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/ai/progress_assessment',
           queryParameters: queryParameters,
           data: _data,
         )

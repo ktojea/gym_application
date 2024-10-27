@@ -75,44 +75,56 @@ class _ExercisesByLevelWidgetState extends State<ExercisesByLevelWidget> {
           secondText: "Все",
         ),
         const SizedBox(height: 10),
-        Row(
-          children: [
-            Expanded(
-              child: SizedBox(
-                height: 320,
-                child: ListWheelScrollView.useDelegate(
-                  itemExtent: 300,
-                  perspective: 0.0015,
-                  diameterRatio: 2.5,
-                  controller: scrollController,
-                  physics: const FixedExtentScrollPhysics(),
-                  childDelegate: ListWheelChildBuilderDelegate(
-                    childCount: exercisesForListWheel.length,
-                    builder: (_, i) => Column(
-                      children: exercisesForListWheel[i]
-                          .map(
-                            (e) => Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: ExerciseWidget(
-                                exercise: e,
-                                blurRadius: 25,
-                                onTap: widget.onTap,
+        if (widget.exercises.length < 3)
+          ...widget.exercises.map(
+            (e) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: ExerciseWidget(
+                exercise: e,
+                blurRadius: 25,
+                onTap: widget.onTap,
+              ),
+            ),
+          ),
+        if (widget.exercises.length > 2)
+          Row(
+            children: [
+              Expanded(
+                child: SizedBox(
+                  height: 320,
+                  child: ListWheelScrollView.useDelegate(
+                    itemExtent: 300,
+                    perspective: 0.0015,
+                    diameterRatio: 2.5,
+                    controller: scrollController,
+                    physics: const FixedExtentScrollPhysics(),
+                    childDelegate: ListWheelChildBuilderDelegate(
+                      childCount: exercisesForListWheel.length,
+                      builder: (_, i) => Column(
+                        children: exercisesForListWheel[i]
+                            .map(
+                              (e) => Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 5),
+                                child: ExerciseWidget(
+                                  exercise: e,
+                                  blurRadius: 25,
+                                  onTap: widget.onTap,
+                                ),
                               ),
-                            ),
-                          )
-                          .toList(),
+                            )
+                            .toList(),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(width: 8),
-            ValueListenableBuilder(
-              valueListenable: isStartNotifier,
-              builder: (_, isStart, __) => _IndicatorWidget(isStart: isStart),
-            ),
-          ],
-        ),
+              const SizedBox(width: 8),
+              ValueListenableBuilder(
+                valueListenable: isStartNotifier,
+                builder: (_, isStart, __) => _IndicatorWidget(isStart: isStart),
+              ),
+            ],
+          ),
       ],
     );
   }

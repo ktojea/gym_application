@@ -12,6 +12,7 @@ class ExerciseInList with _$ExerciseInList {
     required String description,
     required String? imageUrl,
     required int equipmentId,
+    required int muscleGroupId,
   }) = _ExerciseInList;
 
   factory ExerciseInList.fromJson(Map<String, dynamic> json) => _$ExerciseInListFromJson(json);

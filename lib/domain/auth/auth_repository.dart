@@ -41,4 +41,12 @@ class AuthRepository {
       rethrow;
     }
   }
+
+  Future<void> validateUser(String token) async {
+    try {
+      await _authApi.validateUser(token);
+    } on Exception {
+      rethrow;
+    }
+  }
 }

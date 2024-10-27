@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/di/scopes/auth/auth_scope.dart';
 import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
 import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/data/models/remote/auth/dto/login_dto/login_dto.dart';
@@ -29,7 +30,7 @@ LoginScreenWidgetModel defaultLoginScreenWidgetModelFactory(BuildContext context
   return LoginScreenWidgetModel(
     LoginScreenModel(
       localStorageRepository: context.global.localStorageRepository,
-      authRepository: context.global.authRepository,
+      authRepository: context.auth.authRepository,
     ),
   );
 }

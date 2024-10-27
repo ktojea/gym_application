@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'exercise_in_list.dart';
+part of 'exercise_in_list_equipment.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,55 +14,55 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ExerciseInList _$ExerciseInListFromJson(Map<String, dynamic> json) {
-  return _ExerciseInList.fromJson(json);
+ExerciseInListEquipment _$ExerciseInListEquipmentFromJson(
+    Map<String, dynamic> json) {
+  return _ExerciseInListEquipment.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ExerciseInList {
+mixin _$ExerciseInListEquipment {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
-  int get equipmentId => throw _privateConstructorUsedError;
   int get muscleGroupId => throw _privateConstructorUsedError;
 
-  /// Serializes this ExerciseInList to a JSON map.
+  /// Serializes this ExerciseInListEquipment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of ExerciseInList
+  /// Create a copy of ExerciseInListEquipment
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ExerciseInListCopyWith<ExerciseInList> get copyWith =>
+  $ExerciseInListEquipmentCopyWith<ExerciseInListEquipment> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ExerciseInListCopyWith<$Res> {
-  factory $ExerciseInListCopyWith(
-          ExerciseInList value, $Res Function(ExerciseInList) then) =
-      _$ExerciseInListCopyWithImpl<$Res, ExerciseInList>;
+abstract class $ExerciseInListEquipmentCopyWith<$Res> {
+  factory $ExerciseInListEquipmentCopyWith(ExerciseInListEquipment value,
+          $Res Function(ExerciseInListEquipment) then) =
+      _$ExerciseInListEquipmentCopyWithImpl<$Res, ExerciseInListEquipment>;
   @useResult
   $Res call(
       {int id,
       String name,
       String description,
       String? imageUrl,
-      int equipmentId,
       int muscleGroupId});
 }
 
 /// @nodoc
-class _$ExerciseInListCopyWithImpl<$Res, $Val extends ExerciseInList>
-    implements $ExerciseInListCopyWith<$Res> {
-  _$ExerciseInListCopyWithImpl(this._value, this._then);
+class _$ExerciseInListEquipmentCopyWithImpl<$Res,
+        $Val extends ExerciseInListEquipment>
+    implements $ExerciseInListEquipmentCopyWith<$Res> {
+  _$ExerciseInListEquipmentCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ExerciseInList
+  /// Create a copy of ExerciseInListEquipment
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -71,7 +71,6 @@ class _$ExerciseInListCopyWithImpl<$Res, $Val extends ExerciseInList>
     Object? name = null,
     Object? description = null,
     Object? imageUrl = freezed,
-    Object? equipmentId = null,
     Object? muscleGroupId = null,
   }) {
     return _then(_value.copyWith(
@@ -91,10 +90,6 @@ class _$ExerciseInListCopyWithImpl<$Res, $Val extends ExerciseInList>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipmentId: null == equipmentId
-          ? _value.equipmentId
-          : equipmentId // ignore: cast_nullable_to_non_nullable
-              as int,
       muscleGroupId: null == muscleGroupId
           ? _value.muscleGroupId
           : muscleGroupId // ignore: cast_nullable_to_non_nullable
@@ -104,11 +99,12 @@ class _$ExerciseInListCopyWithImpl<$Res, $Val extends ExerciseInList>
 }
 
 /// @nodoc
-abstract class _$$ExerciseInListImplCopyWith<$Res>
-    implements $ExerciseInListCopyWith<$Res> {
-  factory _$$ExerciseInListImplCopyWith(_$ExerciseInListImpl value,
-          $Res Function(_$ExerciseInListImpl) then) =
-      __$$ExerciseInListImplCopyWithImpl<$Res>;
+abstract class _$$ExerciseInListEquipmentImplCopyWith<$Res>
+    implements $ExerciseInListEquipmentCopyWith<$Res> {
+  factory _$$ExerciseInListEquipmentImplCopyWith(
+          _$ExerciseInListEquipmentImpl value,
+          $Res Function(_$ExerciseInListEquipmentImpl) then) =
+      __$$ExerciseInListEquipmentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -116,19 +112,20 @@ abstract class _$$ExerciseInListImplCopyWith<$Res>
       String name,
       String description,
       String? imageUrl,
-      int equipmentId,
       int muscleGroupId});
 }
 
 /// @nodoc
-class __$$ExerciseInListImplCopyWithImpl<$Res>
-    extends _$ExerciseInListCopyWithImpl<$Res, _$ExerciseInListImpl>
-    implements _$$ExerciseInListImplCopyWith<$Res> {
-  __$$ExerciseInListImplCopyWithImpl(
-      _$ExerciseInListImpl _value, $Res Function(_$ExerciseInListImpl) _then)
+class __$$ExerciseInListEquipmentImplCopyWithImpl<$Res>
+    extends _$ExerciseInListEquipmentCopyWithImpl<$Res,
+        _$ExerciseInListEquipmentImpl>
+    implements _$$ExerciseInListEquipmentImplCopyWith<$Res> {
+  __$$ExerciseInListEquipmentImplCopyWithImpl(
+      _$ExerciseInListEquipmentImpl _value,
+      $Res Function(_$ExerciseInListEquipmentImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ExerciseInList
+  /// Create a copy of ExerciseInListEquipment
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -137,10 +134,9 @@ class __$$ExerciseInListImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = null,
     Object? imageUrl = freezed,
-    Object? equipmentId = null,
     Object? muscleGroupId = null,
   }) {
-    return _then(_$ExerciseInListImpl(
+    return _then(_$ExerciseInListEquipmentImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -157,10 +153,6 @@ class __$$ExerciseInListImplCopyWithImpl<$Res>
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      equipmentId: null == equipmentId
-          ? _value.equipmentId
-          : equipmentId // ignore: cast_nullable_to_non_nullable
-              as int,
       muscleGroupId: null == muscleGroupId
           ? _value.muscleGroupId
           : muscleGroupId // ignore: cast_nullable_to_non_nullable
@@ -171,18 +163,17 @@ class __$$ExerciseInListImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ExerciseInListImpl extends _ExerciseInList {
-  const _$ExerciseInListImpl(
+class _$ExerciseInListEquipmentImpl extends _ExerciseInListEquipment {
+  const _$ExerciseInListEquipmentImpl(
       {required this.id,
       required this.name,
       required this.description,
       required this.imageUrl,
-      required this.equipmentId,
       required this.muscleGroupId})
       : super._();
 
-  factory _$ExerciseInListImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ExerciseInListImplFromJson(json);
+  factory _$ExerciseInListEquipmentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ExerciseInListEquipmentImplFromJson(json);
 
   @override
   final int id;
@@ -193,66 +184,61 @@ class _$ExerciseInListImpl extends _ExerciseInList {
   @override
   final String? imageUrl;
   @override
-  final int equipmentId;
-  @override
   final int muscleGroupId;
 
   @override
   String toString() {
-    return 'ExerciseInList(id: $id, name: $name, description: $description, imageUrl: $imageUrl, equipmentId: $equipmentId, muscleGroupId: $muscleGroupId)';
+    return 'ExerciseInListEquipment(id: $id, name: $name, description: $description, imageUrl: $imageUrl, muscleGroupId: $muscleGroupId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExerciseInListImpl &&
+            other is _$ExerciseInListEquipmentImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
-            (identical(other.equipmentId, equipmentId) ||
-                other.equipmentId == equipmentId) &&
             (identical(other.muscleGroupId, muscleGroupId) ||
                 other.muscleGroupId == muscleGroupId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, description, imageUrl, equipmentId, muscleGroupId);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, description, imageUrl, muscleGroupId);
 
-  /// Create a copy of ExerciseInList
+  /// Create a copy of ExerciseInListEquipment
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExerciseInListImplCopyWith<_$ExerciseInListImpl> get copyWith =>
-      __$$ExerciseInListImplCopyWithImpl<_$ExerciseInListImpl>(
-          this, _$identity);
+  _$$ExerciseInListEquipmentImplCopyWith<_$ExerciseInListEquipmentImpl>
+      get copyWith => __$$ExerciseInListEquipmentImplCopyWithImpl<
+          _$ExerciseInListEquipmentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ExerciseInListImplToJson(
+    return _$$ExerciseInListEquipmentImplToJson(
       this,
     );
   }
 }
 
-abstract class _ExerciseInList extends ExerciseInList {
-  const factory _ExerciseInList(
+abstract class _ExerciseInListEquipment extends ExerciseInListEquipment {
+  const factory _ExerciseInListEquipment(
       {required final int id,
       required final String name,
       required final String description,
       required final String? imageUrl,
-      required final int equipmentId,
-      required final int muscleGroupId}) = _$ExerciseInListImpl;
-  const _ExerciseInList._() : super._();
+      required final int muscleGroupId}) = _$ExerciseInListEquipmentImpl;
+  const _ExerciseInListEquipment._() : super._();
 
-  factory _ExerciseInList.fromJson(Map<String, dynamic> json) =
-      _$ExerciseInListImpl.fromJson;
+  factory _ExerciseInListEquipment.fromJson(Map<String, dynamic> json) =
+      _$ExerciseInListEquipmentImpl.fromJson;
 
   @override
   int get id;
@@ -263,14 +249,12 @@ abstract class _ExerciseInList extends ExerciseInList {
   @override
   String? get imageUrl;
   @override
-  int get equipmentId;
-  @override
   int get muscleGroupId;
 
-  /// Create a copy of ExerciseInList
+  /// Create a copy of ExerciseInListEquipment
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExerciseInListImplCopyWith<_$ExerciseInListImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ExerciseInListEquipmentImplCopyWith<_$ExerciseInListEquipmentImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

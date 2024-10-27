@@ -39,7 +39,7 @@ class LoginScreen extends ElementaryWidget<ILoginScreenWidgetModel> {
                 ),
               ),
               TextButton(
-                onPressed: () => wm.onRegistrationTap(),
+                onPressed: () {},
                 child: const Text('Регистрация'),
               ),
             ],

@@ -8,6 +8,7 @@ import 'package:gym_application/ui/features/login/login_screen.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_screen.dart';
 import 'package:gym_application/ui/features/registration/registration_screen.dart';
 import 'package:gym_application/ui/features/splash/splash_screen.dart';
+import 'package:gym_application/ui/widgets/scanner/scanner_screen.dart';
 import 'package:gym_application/ui/wrappers/auth/auth_scope_wrapper.dart';
 import 'package:gym_application/ui/wrappers/global/global_scope_wrapper.dart';
 import 'package:gym_application/ui/wrappers/user/user_scope_wrapper.dart';
@@ -62,6 +63,10 @@ class AppRouter extends _$AppRouter {
             ),
             AutoRoute(
               page: ExercisesRoute.page,
+              path: 'exercises',
+            ),
+            AutoRoute(
+              page: ScannerRoute.page,
               path: 'exercises',
             ),
           ],

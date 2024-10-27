@@ -4,9 +4,10 @@ import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/ui/features/main/main_wm.dart';
 import 'package:gym_application/ui/features/main/widgets/app_grid_widget.dart';
+import 'package:gym_application/ui/features/main/widgets/pulse_with_training_purpose_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.dart';
-import 'package:gym_application/ui/widgets/info/statistics_widget.dart';
+import 'package:gym_application/ui/widgets/info/ai_helper_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
 @RoutePage()
@@ -21,7 +22,7 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
         title: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: MainAppBarWidget(
-            title: "Наша приложуха",
+            title: "GoFit",
           ),
         ),
         backgroundColor: AppColors.mainColor,
@@ -32,9 +33,26 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
         child: ListView(
           children: [
             const SizedBox(height: 25),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              child: StatisticsWidget(), //TODO* Градиент красиви
+            ValueListenableBuilder(
+              valueListenable: wm.pulseListenable,
+              builder: (_, pulse, __) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: PulseWithTrainingPurposeWidget(pulse: pulse),
+              ),
+            ),
+            const SizedBox(height: 25),
+            EntityStateNotifierBuilder(
+              listenableEntityState: wm.aiTextListenable,
+              loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
+              builder: (_, aiText) => aiText == null
+                  ? const SizedBox()
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 25),
+                      child: AiHelperWidget(
+                        title: 'План тренировки',
+                        text: aiText,
+                      ),
+                    ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -66,7 +84,7 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => wm.onQRScanTap,
+        onPressed: () => wm.onQRScanTap(),
         backgroundColor: AppColors.mainColorDark,
         foregroundColor: Colors.white,
         tooltip: "Сканировать QR-код",

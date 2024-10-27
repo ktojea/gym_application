@@ -72,6 +72,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const RegistrationScreen(),
       );
     },
+    ScannerRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ScannerScreen(),
+      );
+    },
     SplashRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -248,6 +254,20 @@ class RegistrationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'RegistrationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ScannerScreen]
+class ScannerRoute extends PageRouteInfo<void> {
+  const ScannerRoute({List<PageRouteInfo>? children})
+      : super(
+          ScannerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ScannerRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

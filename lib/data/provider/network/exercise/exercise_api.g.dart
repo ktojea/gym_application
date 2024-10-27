@@ -89,13 +89,13 @@ class _ExerciseApi implements ExerciseApi {
   }
 
   @override
-  Future<List<ExerciseInList>> getExercisesByEquipmentId(
+  Future<List<ExerciseInListEquipment>> getExercisesByEquipmentId(
       int equipmentId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<ExerciseInList>>(Options(
+    final _options = _setStreamType<List<ExerciseInListEquipment>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -112,11 +112,11 @@ class _ExerciseApi implements ExerciseApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<ExerciseInList> _value;
+    late List<ExerciseInListEquipment> _value;
     try {
       _value = _result.data!
-          .map(
-              (dynamic i) => ExerciseInList.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) =>
+              ExerciseInListEquipment.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);

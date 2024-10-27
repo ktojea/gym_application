@@ -1,5 +1,5 @@
 import 'package:gym_application/data/models/local/exercise/exercise.dart';
-import 'package:gym_application/data/models/local/exercise_in_list/exercise_in_list.dart';
+import 'package:gym_application/data/models/local/exercise_in_list_equipment/exercise_in_list_equipment.dart';
 import 'package:gym_application/data/models/local/muscle_group_level_lists/muscle_group_level_lists.dart';
 import 'package:gym_application/data/provider/network/exercise/exercise_api.dart';
 
@@ -28,7 +28,7 @@ class ExerciseRepository {
     }
   }
 
-  Future<List<ExerciseInList>> getExercisesByEquipmentId(int equipmentId) async {
+  Future<List<ExerciseInListEquipment>> getExercisesByEquipmentId(int equipmentId) async {
     try {
       final exerciseList = await _exerciseApi.getExercisesByEquipmentId(equipmentId);
 

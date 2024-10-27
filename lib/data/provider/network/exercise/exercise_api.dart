@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:gym_application/data/models/local/exercise/exercise.dart';
-import 'package:gym_application/data/models/local/exercise_in_list/exercise_in_list.dart';
+import 'package:gym_application/data/models/local/exercise_in_list_equipment/exercise_in_list_equipment.dart';
 import 'package:gym_application/data/models/local/muscle_group_level_lists/muscle_group_level_lists.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -17,5 +17,5 @@ abstract class ExerciseApi {
   Future<MuscleGroupLevelLists> getExercisesByMuscleGroupId(@Path('id') int muscleGroupId);
 
   @GET('/exercise/equipment/{id}')
-  Future<List<ExerciseInList>> getExercisesByEquipmentId(@Path('id') int equipmentId);
+  Future<List<ExerciseInListEquipment>> getExercisesByEquipmentId(@Path('id') int equipmentId);
 }

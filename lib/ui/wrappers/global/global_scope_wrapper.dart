@@ -11,7 +11,7 @@ class GlobalScopeWrapperScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AsyncDependencyWidget(
       create: GlobalScope.new,
-      loaderBuilder: (context) => const SizedBox(),
+      loaderBuilder: (context) => Image.asset('assets/images/splash.jpeg'),
       errorBuilder: (context) => const SizedBox(),
       child: const AutoRouter(),
     );
