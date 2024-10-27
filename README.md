@@ -1,4 +1,4 @@
-# Перейдите на commit 5f99d453a768ce41ac7b5cb7cf9c47a127fbebf8 💪
+# Перейдите на commit 5f99d453a768ce41ac7b5cb7cf9c47a127fbebf8 
 
 # GoFit – Ваш умный помощник для тренировок 💪
 
