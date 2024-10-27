@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:gym_application/data/models/local/user/user.dart';
 import 'package:gym_application/ui/features/my_profile/widgets/local_body_info.dart';
@@ -57,7 +59,7 @@ class UserInfoWidget extends StatelessWidget {
           LocalBodyInfo(
             height: user.height,
             weight: user.weight,
-            bmi: 228,
+            bmi: user.weight / pow(user.height / 100, 2),
           ),
           const SizedBox(height: 25),
         ],

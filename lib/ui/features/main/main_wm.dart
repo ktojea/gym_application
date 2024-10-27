@@ -66,10 +66,8 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   }
 
   Future<void> _initMain() async {
-    await Future.wait([
-      _initMuscleGroupList(),
-      _initAiText(),
-    ]);
+    await _initMuscleGroupList();
+    await _initAiText();
   }
 
   Future<void> _initMuscleGroupList() async {

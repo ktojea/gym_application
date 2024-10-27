@@ -11,7 +11,7 @@ class LocalBodyInfo extends StatelessWidget {
 
   final int height;
   final double weight;
-  final int bmi;
+  final double bmi;
 
   @override
   Widget build(BuildContext context) {

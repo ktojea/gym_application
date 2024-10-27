@@ -29,7 +29,7 @@ class BacklessPlate extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "$value",
+                        text: (value.runtimeType == double) ? value.toStringAsFixed(1) : value.toString(),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,

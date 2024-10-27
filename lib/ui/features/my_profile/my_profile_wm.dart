@@ -53,10 +53,8 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
   }
 
   Future<void> _initMyProfile() async {
-    await Future.wait([
-      _initSubscriptionList(),
-      _initAiText(),
-    ]);
+    await _initSubscriptionList();
+    await _initAiText();
   }
 
   Future<void> _initSubscriptionList() async {

@@ -43,7 +43,7 @@ class SplashScreenWidgetModel extends WidgetModel<SplashScreen, ISplashScreenMod
     super.initWidgetModel();
   }
 
-  void _toLoginScreen() => context.router.push(const LoginRoute());
+  void _toLoginScreen() => context.router.replace(const LoginRoute());
 
-  void _toMainScreen() => context.router.push(const UserScopeWrapperRoute());
+  void _toMainScreen() => context.router.replace(const UserScopeWrapperRoute());
 }
