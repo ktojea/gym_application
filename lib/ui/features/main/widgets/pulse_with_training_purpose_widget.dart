@@ -16,7 +16,7 @@ class PulseWithTrainingPurposeWidget extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(15),
             color: Colors.red,
           ),
           child: SizedBox(
@@ -43,9 +43,9 @@ class PulseWithTrainingPurposeWidget extends StatelessWidget {
         const SizedBox(width: 10),
         Expanded(
           child: Container(
-            padding: const EdgeInsets.all(12),
+            padding: const EdgeInsets.fromLTRB(15, 12, 15, 12),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(25),
               color: AppColors.secondColorDark,
             ),
             child: const Column(

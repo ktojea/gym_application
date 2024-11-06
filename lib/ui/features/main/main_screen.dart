@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_application/ui/features/main/main_wm.dart';
 import 'package:gym_application/ui/features/main/widgets/app_grid_widget.dart';
 import 'package:gym_application/ui/features/main/widgets/pulse_with_training_purpose_widget.dart';
+import 'package:gym_application/ui/features/main/widgets/trainings_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/main_app_bar_widget.dart';
 import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.dart';
 import 'package:gym_application/ui/widgets/info/ai_helper_widget.dart';
@@ -32,7 +33,7 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
         onRefresh: () => wm.onRefresh(),
         child: ListView(
           children: [
-            const SizedBox(height: 25),
+            const SizedBox(height: 15),
             ValueListenableBuilder(
               valueListenable: wm.pulseListenable,
               builder: (_, pulse, __) => Padding(
@@ -40,10 +41,18 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
                 child: PulseWithTrainingPurposeWidget(pulse: pulse),
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TrainingsWidget(
+                onTap: () => wm.onTrainingsTap(),
+              ),
+            ),
+            // const SizedBox(height: 25),
             EntityStateNotifierBuilder(
               listenableEntityState: wm.aiTextListenable,
-              loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
+              loadingBuilder: (_, __) =>
+                  const Center(child: CircularProgressIndicator()),
               builder: (_, aiText) => aiText == null
                   ? const SizedBox()
                   : Padding(
@@ -68,12 +77,14 @@ class MainScreen extends ElementaryWidget<IMainScreenWidgetModel> {
                   const SizedBox(height: 25),
                   EntityStateNotifierBuilder(
                     listenableEntityState: wm.muscleGroupListListenable,
-                    loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
+                    loadingBuilder: (_, __) =>
+                        const Center(child: CircularProgressIndicator()),
                     builder: (_, muscleGroupList) => muscleGroupList == null
                         ? const SizedBox()
                         : MuscleGroupGridWidget(
                             items: muscleGroupList,
-                            onTap: (muscleGroup) => wm.onMuscleGroupTap(muscleGroup),
+                            onTap: (muscleGroup) =>
+                                wm.onMuscleGroupTap(muscleGroup),
                           ),
                   ),
                   const SizedBox(height: 25),

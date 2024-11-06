@@ -25,6 +25,8 @@ abstract interface class IMainScreenWidgetModel implements IWidgetModel {
   void onMyProfileTap();
 
   void onQRScanTap();
+
+  void onTrainingsTap();
 }
 
 MainScreenWidgetModel defaultMainScreenWidgetModelFactory(BuildContext context) {
@@ -68,7 +70,7 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
   Future<void> _initMain() async {
     await Future.wait([
       _initMuscleGroupList(),
-      _initAiText(),
+      // _initAiText(),
     ]);
   }
 
@@ -109,4 +111,7 @@ class MainScreenWidgetModel extends WidgetModel<MainScreen, IMainScreenModel> im
 
   @override
   ValueNotifier<int> get pulseListenable => _pulseNotifier;
+  
+  @override
+  void onTrainingsTap() => context.router.push(const WorkoutsRoute());
 }

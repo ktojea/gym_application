@@ -58,7 +58,7 @@ class EquipmentScreenWidgetModel extends WidgetModel<EquipmentScreen, IEquipment
     await Future.wait(
       [
         if (widget.exerciseId != null) _initExercise(),
-        if (widget.exerciseId != null) _initAiText(),
+        // if (widget.exerciseId != null) _initAiText(),
         _initEquipment(),
         _initExercisesForEquipment(),
       ],

@@ -2,12 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_wm.dart';
 import 'package:gym_application/ui/features/my_profile/widgets/user_info_widget.dart';
+import 'package:gym_application/ui/features/my_profile/widgets/user_subcriptions_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/info/ai_helper_widget.dart';
-import 'package:gym_application/ui/widgets/info/subscription_widget.dart';
 
 @RoutePage()
 class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
@@ -96,34 +95,6 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class UserSubcriptionsWidget extends StatelessWidget {
-  const UserSubcriptionsWidget({
-    super.key,
-    required this.subscriptions,
-    required this.onSubscriptionTap,
-  });
-
-  final List<Subscription> subscriptions;
-  final void Function(int subscriptionId) onSubscriptionTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: subscriptions
-          .map(
-            (subscription) => Padding(
-              padding: const EdgeInsets.only(bottom: 10, right: 25, left: 25),
-              child: SubscriptionWidget(
-                subscription: subscription,
-                onTap: (id) => onSubscriptionTap(subscription.id),
-              ),
-            ),
-          )
-          .toList(),
     );
   }
 }

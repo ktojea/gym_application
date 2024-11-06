@@ -90,6 +90,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const UserScopeWrapperScreen(),
       );
     },
+    WorkoutRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WorkoutScreen(),
+      );
+    },
+    WorkoutsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const WorkoutsScreen(),
+      );
+    },
   };
 }
 
@@ -296,6 +308,34 @@ class UserScopeWrapperRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'UserScopeWrapperRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WorkoutScreen]
+class WorkoutRoute extends PageRouteInfo<void> {
+  const WorkoutRoute({List<PageRouteInfo>? children})
+      : super(
+          WorkoutRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WorkoutRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [WorkoutsScreen]
+class WorkoutsRoute extends PageRouteInfo<void> {
+  const WorkoutsRoute({List<PageRouteInfo>? children})
+      : super(
+          WorkoutsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'WorkoutsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

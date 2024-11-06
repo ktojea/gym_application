@@ -8,7 +8,7 @@ import 'package:gym_application/ui/widgets/user_avatar.dart';
 class MainAppBarWidget extends StatelessWidget {
   const MainAppBarWidget({
     super.key,
-    required this.title,
+    this.title,
   });
 
   final String? title;
@@ -21,7 +21,7 @@ class MainAppBarWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           title == null
-              ? const SizedBox()
+              ? const SizedBox.shrink()
               : Text(
                   title!,
                   style: const TextStyle(
