@@ -61,7 +61,6 @@ class WorkoutScreen extends ElementaryWidget<IWorkoutScreenWidgetModel> {
                       : Column(
                           children: exerciseList.map(
                             (exercise) {
-                              // TODO: сделать количество повторений из бд + НЕ РАБОТАЕТ!!!
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: WorkoutExerciseWidget(
