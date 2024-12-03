@@ -4,15 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:gym_application/common/utils/di/app_async_dependency.dart';
 import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
 import 'package:gym_application/data/models/local/user/user.dart';
-import 'package:gym_application/data/provider/network/ai_api/ai_api.dart';
+import 'package:gym_application/data/provider/network/ai/ai_api.dart';
 import 'package:gym_application/data/provider/network/equipment/equipment_api.dart';
 import 'package:gym_application/data/provider/network/exercise/exercise_api.dart';
 import 'package:gym_application/data/provider/network/muscle_group/muscle_group.dart';
 import 'package:gym_application/data/provider/network/user/user_api.dart';
+import 'package:gym_application/data/provider/network/workouts/workouts_api.dart';
 import 'package:gym_application/domain/ai/ai_repository.dart';
 import 'package:gym_application/domain/equipment/equipment_repository.dart';
 import 'package:gym_application/domain/exercise/exercise_repository.dart';
 import 'package:gym_application/domain/muscle_group/muscle_group_repository.dart';
+import 'package:gym_application/domain/prepared_workout/prepared_workout_repository.dart';
 import 'package:gym_application/domain/user/user_repository.dart';
 import 'package:provider/provider.dart';
 
@@ -39,6 +41,10 @@ class UserScope extends AppAsyncDependency {
 
   late final AiRepository aiRepository;
 
+  late final WorkoutsApi _workoutsApi;
+
+  late final WorkoutsRepository workoutsRepository;
+
   @override
   Future<void> initAsync(BuildContext context) async {
     await _initNewToken(context);
@@ -64,6 +70,10 @@ class UserScope extends AppAsyncDependency {
     _aiApi = AiApi(context.global.dio);
 
     aiRepository = AiRepository(aiApi: _aiApi);
+
+    _workoutsApi = WorkoutsApi(context.global.dio);
+
+    workoutsRepository = WorkoutsRepository(workoutsApi: _workoutsApi);
   }
 
   Future<void> _initNewToken(BuildContext context) async {

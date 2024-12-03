@@ -22,12 +22,8 @@ RegisterDTO _$RegisterDTOFromJson(Map<String, dynamic> json) {
 mixin _$RegisterDTO {
   String get phoneNumber => throw _privateConstructorUsedError;
 
-  /// Serializes this RegisterDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of RegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $RegisterDTOCopyWith<RegisterDTO> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,8 +47,6 @@ class _$RegisterDTOCopyWithImpl<$Res, $Val extends RegisterDTO>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of RegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,8 +80,6 @@ class __$$RegisterDTOImplCopyWithImpl<$Res>
       _$RegisterDTOImpl _value, $Res Function(_$RegisterDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of RegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,13 +119,11 @@ class _$RegisterDTOImpl implements _RegisterDTO {
                 other.phoneNumber == phoneNumber));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, phoneNumber);
 
-  /// Create a copy of RegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$RegisterDTOImplCopyWith<_$RegisterDTOImpl> get copyWith =>
@@ -156,11 +146,8 @@ abstract class _RegisterDTO implements RegisterDTO {
 
   @override
   String get phoneNumber;
-
-  /// Create a copy of RegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$RegisterDTOImplCopyWith<_$RegisterDTOImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

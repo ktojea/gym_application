@@ -26,12 +26,8 @@ mixin _$UserProfileResponse {
   DateTime get createdAt => throw _privateConstructorUsedError;
   UserInfo get userInfo => throw _privateConstructorUsedError;
 
-  /// Serializes this UserProfileResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of UserProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $UserProfileResponseCopyWith<UserProfileResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,8 +58,6 @@ class _$UserProfileResponseCopyWithImpl<$Res, $Val extends UserProfileResponse>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of UserProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,8 +91,6 @@ class _$UserProfileResponseCopyWithImpl<$Res, $Val extends UserProfileResponse>
     ) as $Val);
   }
 
-  /// Create a copy of UserProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserInfoCopyWith<$Res> get userInfo {
@@ -135,8 +127,6 @@ class __$$UserProfileResponseImplCopyWithImpl<$Res>
       $Res Function(_$UserProfileResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of UserProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,14 +206,12 @@ class _$UserProfileResponseImpl extends _UserProfileResponse {
                 other.userInfo == userInfo));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, name, surname, phoneNumber, createdAt, userInfo);
 
-  /// Create a copy of UserProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$UserProfileResponseImplCopyWith<_$UserProfileResponseImpl> get copyWith =>
@@ -260,11 +248,8 @@ abstract class _UserProfileResponse extends UserProfileResponse {
   DateTime get createdAt;
   @override
   UserInfo get userInfo;
-
-  /// Create a copy of UserProfileResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$UserProfileResponseImplCopyWith<_$UserProfileResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

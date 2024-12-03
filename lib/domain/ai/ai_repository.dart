@@ -1,4 +1,4 @@
-import 'package:gym_application/data/provider/network/ai_api/ai_api.dart';
+import 'package:gym_application/data/provider/network/ai/ai_api.dart';
 
 class AiRepository {
   const AiRepository({required AiApi aiApi}) : _aiApi = aiApi;

@@ -1,6 +1,5 @@
-import 'package:elementary_helper/elementary_helper.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/data/enums/training_level_enum.dart';
 import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/data/models/local/prepared_workout/prepared_workout.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
@@ -12,13 +11,12 @@ class WorkoutExtendedWidget extends StatelessWidget {
     super.key,
     required this.workout,
     required this.onFavoriteTap,
-    required this.muscleGroupListListenable,
+    required this.muscleGroupList,
   });
 
   final PreparedWorkout workout;
   final VoidCallback onFavoriteTap;
-  final ValueListenable<EntityState<List<MuscleGroup>>>
-      muscleGroupListListenable;
+  final List<MuscleGroup> muscleGroupList;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +24,7 @@ class WorkoutExtendedWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               workout.name,
@@ -40,8 +39,8 @@ class WorkoutExtendedWidget extends StatelessWidget {
             GestureDetector(
               onTap: () => onFavoriteTap(),
               child: Icon(
-                workout.isFav ? Icons.star_rounded : Icons.star_border_rounded,
-                color: AppColors.secondColorDark,
+                workout.isFav ?? false ? Icons.favorite : Icons.favorite_border,
+                color: Colors.red,
                 size: 30,
               ),
             ),
@@ -49,8 +48,7 @@ class WorkoutExtendedWidget extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         PlateWidget(
-          padding:
-              const EdgeInsets.only(right: 25, left: 25, top: 20, bottom: 20),
+          padding: const EdgeInsets.only(right: 25, left: 25, top: 20, bottom: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -58,7 +56,7 @@ class WorkoutExtendedWidget extends StatelessWidget {
                 "Описание",
                 style: TextStyle(
                   color: AppColors.mainColorDarkest,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -68,24 +66,32 @@ class WorkoutExtendedWidget extends StatelessWidget {
                 style: const TextStyle(fontSize: 14.5),
               ),
               const SizedBox(height: 12),
-              Center(
-                child: Column(
-                  children: [
-                    const Text(
-                      "Задействованные группы мышц:",
-                      style: TextStyle(
-                        color: AppColors.mainColorDarkest,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    MuscleIconsGridWidget(
-                      muscleGroupListListenable: muscleGroupListListenable,
-                      size: 30,
-                    ),
-                  ],
+              const Text(
+                "Задействованные группы мышц",
+                style: TextStyle(
+                  color: AppColors.mainColorDarkest,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
+              ),
+              const SizedBox(height: 3),
+              MuscleIconsGridWidget(
+                muscleGroupList: muscleGroupList,
+                size: 60,
+              ),
+              const SizedBox(height: 12),
+              const Text(
+                "Сложность",
+                style: TextStyle(
+                  color: AppColors.mainColorDarkest,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 3),
+              Text(
+                TrainingLevelEnum.getNameFromValue(workout.trainingLevel),
+                style: const TextStyle(fontSize: 14.5),
               ),
             ],
           ),

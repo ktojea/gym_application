@@ -10,8 +10,7 @@ import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.da
 
 @RoutePage()
 class WorkoutsScreen extends ElementaryWidget<IWorkoutsScreenWidgetModel> {
-  const WorkoutsScreen({super.key})
-      : super(defaultWorkoutsScreenWidgetModelFactory);
+  const WorkoutsScreen({super.key}) : super(defaultWorkoutsScreenWidgetModelFactory);
 
   @override
   Widget build(IWorkoutsScreenWidgetModel wm) {
@@ -36,9 +35,8 @@ class WorkoutsScreen extends ElementaryWidget<IWorkoutsScreenWidgetModel> {
                 ),
                 const SizedBox(height: 20),
                 EntityStateNotifierBuilder(
-                  listenableEntityState: wm.practiceListListenable,
-                  loadingBuilder: (_, __) =>
-                      const Center(child: CircularProgressIndicator()),
+                  listenableEntityState: wm.preparedWorkoutListListenable,
+                  loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
                   builder: (_, practiceList) => practiceList == null
                       ? const SizedBox.shrink()
                       : Column(
@@ -48,9 +46,8 @@ class WorkoutsScreen extends ElementaryWidget<IWorkoutsScreenWidgetModel> {
                                   padding: const EdgeInsets.only(bottom: 10),
                                   child: WorkoutWidget(
                                     workout: workout,
-                                    muscleGroupListListenable:
-                                        wm.muscleGroupListListenable,
-                                    onTap: (id) => wm.onWorkoutTap(),
+                                    muscleGroupList: workout.muscleGroups,
+                                    onTap: () => wm.onWorkoutTap(workout.id, workout.muscleGroups),
                                     onFavoriteTap: () => wm.onFavoriteTap(),
                                   ),
                                 ),

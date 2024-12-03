@@ -28,12 +28,8 @@ mixin _$MuscleGroupLevelLists {
   List<ExerciseInList> get advancedExercises =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this MuscleGroupLevelLists to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MuscleGroupLevelLists
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MuscleGroupLevelListsCopyWith<MuscleGroupLevelLists> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,8 +57,6 @@ class _$MuscleGroupLevelListsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MuscleGroupLevelLists
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -111,8 +105,6 @@ class __$$MuscleGroupLevelListsImplCopyWithImpl<$Res>
       $Res Function(_$MuscleGroupLevelListsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MuscleGroupLevelLists
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -197,7 +189,7 @@ class _$MuscleGroupLevelListsImpl extends _MuscleGroupLevelLists {
                 .equals(other._advancedExercises, _advancedExercises));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -205,9 +197,7 @@ class _$MuscleGroupLevelListsImpl extends _MuscleGroupLevelLists {
       const DeepCollectionEquality().hash(_intermediateExercises),
       const DeepCollectionEquality().hash(_advancedExercises));
 
-  /// Create a copy of MuscleGroupLevelLists
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MuscleGroupLevelListsImplCopyWith<_$MuscleGroupLevelListsImpl>
@@ -239,11 +229,8 @@ abstract class _MuscleGroupLevelLists extends MuscleGroupLevelLists {
   List<ExerciseInList> get intermediateExercises;
   @override
   List<ExerciseInList> get advancedExercises;
-
-  /// Create a copy of MuscleGroupLevelLists
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MuscleGroupLevelListsImplCopyWith<_$MuscleGroupLevelListsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

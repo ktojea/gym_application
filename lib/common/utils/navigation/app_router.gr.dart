@@ -91,9 +91,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     WorkoutRoute.name: (routeData) {
+      final args = routeData.argsAs<WorkoutRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const WorkoutScreen(),
+        child: WorkoutScreen(
+          key: args.key,
+          preparedWorkoutId: args.preparedWorkoutId,
+          muscleGroups: args.muscleGroups,
+        ),
       );
     },
     WorkoutsRoute.name: (routeData) {
@@ -314,16 +319,45 @@ class UserScopeWrapperRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [WorkoutScreen]
-class WorkoutRoute extends PageRouteInfo<void> {
-  const WorkoutRoute({List<PageRouteInfo>? children})
-      : super(
+class WorkoutRoute extends PageRouteInfo<WorkoutRouteArgs> {
+  WorkoutRoute({
+    Key? key,
+    required int preparedWorkoutId,
+    required List<MuscleGroup> muscleGroups,
+    List<PageRouteInfo>? children,
+  }) : super(
           WorkoutRoute.name,
+          args: WorkoutRouteArgs(
+            key: key,
+            preparedWorkoutId: preparedWorkoutId,
+            muscleGroups: muscleGroups,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'WorkoutRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<WorkoutRouteArgs> page =
+      PageInfo<WorkoutRouteArgs>(name);
+}
+
+class WorkoutRouteArgs {
+  const WorkoutRouteArgs({
+    this.key,
+    required this.preparedWorkoutId,
+    required this.muscleGroups,
+  });
+
+  final Key? key;
+
+  final int preparedWorkoutId;
+
+  final List<MuscleGroup> muscleGroups;
+
+  @override
+  String toString() {
+    return 'WorkoutRouteArgs{key: $key, preparedWorkoutId: $preparedWorkoutId, muscleGroups: $muscleGroups}';
+  }
 }
 
 /// generated route for

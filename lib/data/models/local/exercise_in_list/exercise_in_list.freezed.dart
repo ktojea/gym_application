@@ -27,12 +27,8 @@ mixin _$ExerciseInList {
   int get equipmentId => throw _privateConstructorUsedError;
   int get muscleGroupId => throw _privateConstructorUsedError;
 
-  /// Serializes this ExerciseInList to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ExerciseInList
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ExerciseInListCopyWith<ExerciseInList> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,8 +58,6 @@ class _$ExerciseInListCopyWithImpl<$Res, $Val extends ExerciseInList>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ExerciseInList
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,8 +122,6 @@ class __$$ExerciseInListImplCopyWithImpl<$Res>
       _$ExerciseInListImpl _value, $Res Function(_$ExerciseInListImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ExerciseInList
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -219,14 +211,12 @@ class _$ExerciseInListImpl extends _ExerciseInList {
                 other.muscleGroupId == muscleGroupId));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, description, imageUrl, equipmentId, muscleGroupId);
 
-  /// Create a copy of ExerciseInList
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseInListImplCopyWith<_$ExerciseInListImpl> get copyWith =>
@@ -266,11 +256,8 @@ abstract class _ExerciseInList extends ExerciseInList {
   int get equipmentId;
   @override
   int get muscleGroupId;
-
-  /// Create a copy of ExerciseInList
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ExerciseInListImplCopyWith<_$ExerciseInListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

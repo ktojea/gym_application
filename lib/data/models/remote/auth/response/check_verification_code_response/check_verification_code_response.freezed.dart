@@ -25,12 +25,8 @@ mixin _$CheckVerificationCodeResponse {
   String get tokenType => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
 
-  /// Serializes this CheckVerificationCodeResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CheckVerificationCodeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CheckVerificationCodeResponseCopyWith<CheckVerificationCodeResponse>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -57,8 +53,6 @@ class _$CheckVerificationCodeResponseCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CheckVerificationCodeResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -105,8 +99,6 @@ class __$$CheckVerificationCodeResponseImplCopyWithImpl<$Res>
       $Res Function(_$CheckVerificationCodeResponseImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CheckVerificationCodeResponse
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,13 +160,11 @@ class _$CheckVerificationCodeResponseImpl
             (identical(other.userId, userId) || other.userId == userId));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, accessToken, tokenType, userId);
 
-  /// Create a copy of CheckVerificationCodeResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckVerificationCodeResponseImplCopyWith<
@@ -206,11 +196,8 @@ abstract class _CheckVerificationCodeResponse
   String get tokenType;
   @override
   String get userId;
-
-  /// Create a copy of CheckVerificationCodeResponse
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CheckVerificationCodeResponseImplCopyWith<
           _$CheckVerificationCodeResponseImpl>
       get copyWith => throw _privateConstructorUsedError;

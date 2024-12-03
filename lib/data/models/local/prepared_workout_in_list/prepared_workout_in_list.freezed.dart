@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'prepared_workout.dart';
+part of 'prepared_workout_in_list.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,45 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-PreparedWorkout _$PreparedWorkoutFromJson(Map<String, dynamic> json) {
-  return _PreparedWorkout.fromJson(json);
+PreparedWorkoutInList _$PreparedWorkoutInListFromJson(
+    Map<String, dynamic> json) {
+  return _PreparedWorkoutInList.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PreparedWorkout {
-  int? get id => throw _privateConstructorUsedError;
+mixin _$PreparedWorkoutInList {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get trainingLevel => throw _privateConstructorUsedError;
-  List<ExerciseInListWorkout> get exercises =>
-      throw _privateConstructorUsedError;
-  bool? get isFav => throw _privateConstructorUsedError;
+  List<MuscleGroup> get muscleGroups => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PreparedWorkoutCopyWith<PreparedWorkout> get copyWith =>
+  $PreparedWorkoutInListCopyWith<PreparedWorkoutInList> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PreparedWorkoutCopyWith<$Res> {
-  factory $PreparedWorkoutCopyWith(
-          PreparedWorkout value, $Res Function(PreparedWorkout) then) =
-      _$PreparedWorkoutCopyWithImpl<$Res, PreparedWorkout>;
+abstract class $PreparedWorkoutInListCopyWith<$Res> {
+  factory $PreparedWorkoutInListCopyWith(PreparedWorkoutInList value,
+          $Res Function(PreparedWorkoutInList) then) =
+      _$PreparedWorkoutInListCopyWithImpl<$Res, PreparedWorkoutInList>;
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       String name,
       String description,
       String trainingLevel,
-      List<ExerciseInListWorkout> exercises,
-      bool? isFav});
+      List<MuscleGroup> muscleGroups});
 }
 
 /// @nodoc
-class _$PreparedWorkoutCopyWithImpl<$Res, $Val extends PreparedWorkout>
-    implements $PreparedWorkoutCopyWith<$Res> {
-  _$PreparedWorkoutCopyWithImpl(this._value, this._then);
+class _$PreparedWorkoutInListCopyWithImpl<$Res,
+        $Val extends PreparedWorkoutInList>
+    implements $PreparedWorkoutInListCopyWith<$Res> {
+  _$PreparedWorkoutInListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -62,18 +61,17 @@ class _$PreparedWorkoutCopyWithImpl<$Res, $Val extends PreparedWorkout>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? description = null,
     Object? trainingLevel = null,
-    Object? exercises = null,
-    Object? isFav = freezed,
+    Object? muscleGroups = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -86,58 +84,54 @@ class _$PreparedWorkoutCopyWithImpl<$Res, $Val extends PreparedWorkout>
           ? _value.trainingLevel
           : trainingLevel // ignore: cast_nullable_to_non_nullable
               as String,
-      exercises: null == exercises
-          ? _value.exercises
-          : exercises // ignore: cast_nullable_to_non_nullable
-              as List<ExerciseInListWorkout>,
-      isFav: freezed == isFav
-          ? _value.isFav
-          : isFav // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      muscleGroups: null == muscleGroups
+          ? _value.muscleGroups
+          : muscleGroups // ignore: cast_nullable_to_non_nullable
+              as List<MuscleGroup>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$PreparedWorkoutImplCopyWith<$Res>
-    implements $PreparedWorkoutCopyWith<$Res> {
-  factory _$$PreparedWorkoutImplCopyWith(_$PreparedWorkoutImpl value,
-          $Res Function(_$PreparedWorkoutImpl) then) =
-      __$$PreparedWorkoutImplCopyWithImpl<$Res>;
+abstract class _$$PreparedWorkoutInListImplCopyWith<$Res>
+    implements $PreparedWorkoutInListCopyWith<$Res> {
+  factory _$$PreparedWorkoutInListImplCopyWith(
+          _$PreparedWorkoutInListImpl value,
+          $Res Function(_$PreparedWorkoutInListImpl) then) =
+      __$$PreparedWorkoutInListImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int? id,
+      {int id,
       String name,
       String description,
       String trainingLevel,
-      List<ExerciseInListWorkout> exercises,
-      bool? isFav});
+      List<MuscleGroup> muscleGroups});
 }
 
 /// @nodoc
-class __$$PreparedWorkoutImplCopyWithImpl<$Res>
-    extends _$PreparedWorkoutCopyWithImpl<$Res, _$PreparedWorkoutImpl>
-    implements _$$PreparedWorkoutImplCopyWith<$Res> {
-  __$$PreparedWorkoutImplCopyWithImpl(
-      _$PreparedWorkoutImpl _value, $Res Function(_$PreparedWorkoutImpl) _then)
+class __$$PreparedWorkoutInListImplCopyWithImpl<$Res>
+    extends _$PreparedWorkoutInListCopyWithImpl<$Res,
+        _$PreparedWorkoutInListImpl>
+    implements _$$PreparedWorkoutInListImplCopyWith<$Res> {
+  __$$PreparedWorkoutInListImplCopyWithImpl(_$PreparedWorkoutInListImpl _value,
+      $Res Function(_$PreparedWorkoutInListImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
     Object? name = null,
     Object? description = null,
     Object? trainingLevel = null,
-    Object? exercises = null,
-    Object? isFav = freezed,
+    Object? muscleGroups = null,
   }) {
-    return _then(_$PreparedWorkoutImpl(
-      id: freezed == id
+    return _then(_$PreparedWorkoutInListImpl(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -150,63 +144,55 @@ class __$$PreparedWorkoutImplCopyWithImpl<$Res>
           ? _value.trainingLevel
           : trainingLevel // ignore: cast_nullable_to_non_nullable
               as String,
-      exercises: null == exercises
-          ? _value._exercises
-          : exercises // ignore: cast_nullable_to_non_nullable
-              as List<ExerciseInListWorkout>,
-      isFav: freezed == isFav
-          ? _value.isFav
-          : isFav // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      muscleGroups: null == muscleGroups
+          ? _value._muscleGroups
+          : muscleGroups // ignore: cast_nullable_to_non_nullable
+              as List<MuscleGroup>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PreparedWorkoutImpl extends _PreparedWorkout {
-  const _$PreparedWorkoutImpl(
+class _$PreparedWorkoutInListImpl extends _PreparedWorkoutInList {
+  const _$PreparedWorkoutInListImpl(
       {required this.id,
       required this.name,
       required this.description,
       required this.trainingLevel,
-      required final List<ExerciseInListWorkout> exercises,
-      this.isFav})
-      : _exercises = exercises,
+      required final List<MuscleGroup> muscleGroups})
+      : _muscleGroups = muscleGroups,
         super._();
 
-  factory _$PreparedWorkoutImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PreparedWorkoutImplFromJson(json);
+  factory _$PreparedWorkoutInListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PreparedWorkoutInListImplFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
   final String name;
   @override
   final String description;
   @override
   final String trainingLevel;
-  final List<ExerciseInListWorkout> _exercises;
+  final List<MuscleGroup> _muscleGroups;
   @override
-  List<ExerciseInListWorkout> get exercises {
-    if (_exercises is EqualUnmodifiableListView) return _exercises;
+  List<MuscleGroup> get muscleGroups {
+    if (_muscleGroups is EqualUnmodifiableListView) return _muscleGroups;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_exercises);
+    return EqualUnmodifiableListView(_muscleGroups);
   }
 
   @override
-  final bool? isFav;
-
-  @override
   String toString() {
-    return 'PreparedWorkout(id: $id, name: $name, description: $description, trainingLevel: $trainingLevel, exercises: $exercises, isFav: $isFav)';
+    return 'PreparedWorkoutInList(id: $id, name: $name, description: $description, trainingLevel: $trainingLevel, muscleGroups: $muscleGroups)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PreparedWorkoutImpl &&
+            other is _$PreparedWorkoutInListImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -214,45 +200,44 @@ class _$PreparedWorkoutImpl extends _PreparedWorkout {
             (identical(other.trainingLevel, trainingLevel) ||
                 other.trainingLevel == trainingLevel) &&
             const DeepCollectionEquality()
-                .equals(other._exercises, _exercises) &&
-            (identical(other.isFav, isFav) || other.isFav == isFav));
+                .equals(other._muscleGroups, _muscleGroups));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, description,
-      trainingLevel, const DeepCollectionEquality().hash(_exercises), isFav);
+      trainingLevel, const DeepCollectionEquality().hash(_muscleGroups));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PreparedWorkoutImplCopyWith<_$PreparedWorkoutImpl> get copyWith =>
-      __$$PreparedWorkoutImplCopyWithImpl<_$PreparedWorkoutImpl>(
-          this, _$identity);
+  _$$PreparedWorkoutInListImplCopyWith<_$PreparedWorkoutInListImpl>
+      get copyWith => __$$PreparedWorkoutInListImplCopyWithImpl<
+          _$PreparedWorkoutInListImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PreparedWorkoutImplToJson(
+    return _$$PreparedWorkoutInListImplToJson(
       this,
     );
   }
 }
 
-abstract class _PreparedWorkout extends PreparedWorkout {
-  const factory _PreparedWorkout(
-      {required final int? id,
-      required final String name,
-      required final String description,
-      required final String trainingLevel,
-      required final List<ExerciseInListWorkout> exercises,
-      final bool? isFav}) = _$PreparedWorkoutImpl;
-  const _PreparedWorkout._() : super._();
+abstract class _PreparedWorkoutInList extends PreparedWorkoutInList {
+  const factory _PreparedWorkoutInList(
+          {required final int id,
+          required final String name,
+          required final String description,
+          required final String trainingLevel,
+          required final List<MuscleGroup> muscleGroups}) =
+      _$PreparedWorkoutInListImpl;
+  const _PreparedWorkoutInList._() : super._();
 
-  factory _PreparedWorkout.fromJson(Map<String, dynamic> json) =
-      _$PreparedWorkoutImpl.fromJson;
+  factory _PreparedWorkoutInList.fromJson(Map<String, dynamic> json) =
+      _$PreparedWorkoutInListImpl.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
   String get name;
   @override
@@ -260,11 +245,9 @@ abstract class _PreparedWorkout extends PreparedWorkout {
   @override
   String get trainingLevel;
   @override
-  List<ExerciseInListWorkout> get exercises;
-  @override
-  bool? get isFav;
+  List<MuscleGroup> get muscleGroups;
   @override
   @JsonKey(ignore: true)
-  _$$PreparedWorkoutImplCopyWith<_$PreparedWorkoutImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$PreparedWorkoutInListImplCopyWith<_$PreparedWorkoutInListImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

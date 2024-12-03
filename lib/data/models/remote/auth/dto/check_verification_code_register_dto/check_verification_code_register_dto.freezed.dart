@@ -27,12 +27,8 @@ mixin _$CheckVerificationCodeRegisterDTO {
   String get name => throw _privateConstructorUsedError;
   String get surname => throw _privateConstructorUsedError;
 
-  /// Serializes this CheckVerificationCodeRegisterDTO to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of CheckVerificationCodeRegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CheckVerificationCodeRegisterDTOCopyWith<CheckVerificationCodeRegisterDTO>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -64,8 +60,6 @@ class _$CheckVerificationCodeRegisterDTOCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of CheckVerificationCodeRegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,8 +121,6 @@ class __$$CheckVerificationCodeRegisterDTOImplCopyWithImpl<$Res>
       $Res Function(_$CheckVerificationCodeRegisterDTOImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of CheckVerificationCodeRegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,14 +201,12 @@ class _$CheckVerificationCodeRegisterDTOImpl
             (identical(other.surname, surname) || other.surname == surname));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, phoneNumber, password, verificationCode, name, surname);
 
-  /// Create a copy of CheckVerificationCodeRegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckVerificationCodeRegisterDTOImplCopyWith<
@@ -255,11 +245,8 @@ abstract class _CheckVerificationCodeRegisterDTO
   String get name;
   @override
   String get surname;
-
-  /// Create a copy of CheckVerificationCodeRegisterDTO
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CheckVerificationCodeRegisterDTOImplCopyWith<
           _$CheckVerificationCodeRegisterDTOImpl>
       get copyWith => throw _privateConstructorUsedError;

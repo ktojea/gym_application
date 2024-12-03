@@ -9,7 +9,7 @@ class BacklessPlate extends StatelessWidget {
     this.color,
   });
 
-  final num value;
+  final num? value;
   final String unit;
   final String label;
   final Color? color;
@@ -29,22 +29,24 @@ class BacklessPlate extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                        text: "$value",
+                        text: value == null ? '-' : value.toString(),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
                           color: color ?? const Color.fromRGBO(59, 41, 122, 1),
                         ),
                       ),
-                      const WidgetSpan(child: SizedBox(width: 2)),
-                      TextSpan(
-                        text: unit,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: color ?? const Color.fromRGBO(59, 41, 122, 1),
+                      if (value != null) ...[
+                        const WidgetSpan(child: SizedBox(width: 2)),
+                        TextSpan(
+                          text: unit,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: color ?? const Color.fromRGBO(59, 41, 122, 1),
+                          ),
                         ),
-                      ),
+                      ]
                     ],
                   ),
                 ),

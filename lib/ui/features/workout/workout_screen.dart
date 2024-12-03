@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/features/workout/widgets/start_button.dart';
 import 'package:gym_application/ui/features/workout/widgets/workout_exercise_widget.dart';
 import 'package:gym_application/ui/features/workout/widgets/workout_extended_widget.dart';
@@ -12,8 +13,14 @@ import 'package:gym_application/ui/widgets/decoration/text_with_filter_widget.da
 
 @RoutePage()
 class WorkoutScreen extends ElementaryWidget<IWorkoutScreenWidgetModel> {
-  const WorkoutScreen({super.key})
-      : super(defaultWorkoutScreenWidgetModelFactory);
+  const WorkoutScreen({
+    super.key,
+    required this.preparedWorkoutId,
+    required this.muscleGroups,
+  }) : super(defaultWorkoutScreenWidgetModelFactory);
+
+  final int preparedWorkoutId;
+  final List<MuscleGroup> muscleGroups;
 
   @override
   Widget build(IWorkoutScreenWidgetModel wm) {
@@ -26,56 +33,41 @@ class WorkoutScreen extends ElementaryWidget<IWorkoutScreenWidgetModel> {
           child: MainAppBarWidget(),
         ),
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              children: [
-                EntityStateNotifierBuilder(
-                  listenableEntityState: wm.workoutListenable,
-                  loadingBuilder: (_, __) => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  builder: (_, workout) => workout == null
-                      ? const SizedBox.shrink()
-                      : WorkoutExtendedWidget(
-                          workout: workout,
-                          onFavoriteTap: () => wm.onFavoriteTap(),
-                          muscleGroupListListenable:
-                              wm.muscleGroupListListenable,
+      body: EntityStateNotifierBuilder(
+        listenableEntityState: wm.preparedWorkoutListenable,
+        loadingBuilder: (_, __) => const Center(child: CircularProgressIndicator()),
+        builder: (_, preparedWorkout) => preparedWorkout == null
+            ? const SizedBox()
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ListView(
+                  children: [
+                    WorkoutExtendedWidget(
+                      workout: preparedWorkout,
+                      onFavoriteTap: () => wm.onFavoriteTap(),
+                      muscleGroupList: muscleGroups,
+                    ),
+                    const SizedBox(height: 20),
+                    const TextWithFilterWidget(
+                      mainText: 'Упражнения',
+                      secondText: 'Все упражнения',
+                    ),
+                    const SizedBox(height: 20),
+                    ...List.generate(
+                      preparedWorkout.exercises.length,
+                      (i) => Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: WorkoutExerciseWidget(
+                          number: i + 1,
+                          exercise: preparedWorkout.exercises[i],
+                          onTap: (equipmentId, exerciseId) => wm.onExerciseTap(equipmentId, exerciseId),
                         ),
+                      ),
+                    ),
+                    const SizedBox(height: 100),
+                  ],
                 ),
-                const SizedBox(height: 20),
-                const TextWithFilterWidget(
-                  mainText: 'Упражнения',
-                  secondText: 'Все упражнения',
-                ),
-                const SizedBox(height: 20),
-                EntityStateNotifierBuilder(
-                  listenableEntityState: wm.exerciseListListenable,
-                  loadingBuilder: (_, __) =>
-                      const Center(child: CircularProgressIndicator()),
-                  builder: (_, exerciseList) => exerciseList == null
-                      ? const SizedBox.shrink()
-                      : Column(
-                          children: exerciseList.map(
-                            (exercise) {
-                              return Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: WorkoutExerciseWidget(
-                                  exercise: exercise,
-                                  onTap: () => wm.onExerciseTap(),
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        ),
-                )
-              ],
-            ),
-          ),
-        ],
+              ),
       ),
       floatingActionButton: StartButton(
         onPressed: () => wm.onStartTap(),

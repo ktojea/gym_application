@@ -1,8 +1,6 @@
-import 'package:elementary_helper/elementary_helper.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
-import 'package:gym_application/data/models/local/prepared_workout/prepared_workout.dart';
+import 'package:gym_application/data/models/local/prepared_workout_in_list/prepared_workout_in_list.dart';
 import 'package:gym_application/ui/widgets/info/muscle_icons_grid_widget.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
@@ -12,20 +10,19 @@ class WorkoutWidget extends StatelessWidget {
     super.key,
     required this.workout,
     required this.onTap,
-    required this.muscleGroupListListenable,
+    required this.muscleGroupList,
     required this.onFavoriteTap,
   });
 
-  final PreparedWorkout workout;
-  final ValueListenable<EntityState<List<MuscleGroup>>>
-      muscleGroupListListenable;
-  final void Function(int id) onTap;
+  final PreparedWorkoutInList workout;
+  final List<MuscleGroup> muscleGroupList;
+  final VoidCallback onTap;
   final VoidCallback onFavoriteTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onTap(workout.id),
+      onTap: () => onTap(),
       child: PlateWidget(
         blurRadius: 35,
         child: Column(
@@ -39,21 +36,17 @@ class WorkoutWidget extends StatelessWidget {
                     workout.name,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 15.5,
+                      fontSize: 18,
                       color: AppColors.mainColorDarkest,
                     ),
                   ),
                 ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () => onFavoriteTap(),
-                  child: Icon(
-                    workout.isFav
-                        ? Icons.star_rounded
-                        : Icons.star_border_rounded,
-                    color: AppColors.secondColorDark,
-                  ),
-                ),
+                //TODO
+                const Icon(
+                  Icons.favorite_border,
+                  color: Colors.red,
+                  size: 30,
+                )
               ],
             ),
             const SizedBox(height: 5),
@@ -66,9 +59,7 @@ class WorkoutWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 9),
-            MuscleIconsGridWidget(
-              muscleGroupListListenable: muscleGroupListListenable,
-            ),
+            MuscleIconsGridWidget(muscleGroupList: muscleGroupList),
           ],
         ),
       ),
