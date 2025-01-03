@@ -2,7 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:elementary_helper/elementary_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
 import 'package:gym_application/common/utils/di/scopes/user/user_scope.dart';
+import 'package:gym_application/common/utils/navigation/app_router.dart';
 import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/data/models/local/user/user.dart';
 import 'package:gym_application/ui/features/my_profile/my_profile_model.dart';
@@ -21,6 +23,8 @@ abstract interface class IMyProfileScreenWidgetModel implements IWidgetModel {
 
   void navigateBack();
 
+  void onLogoutTap();
+
   void onEditTap();
 }
 
@@ -29,6 +33,7 @@ MyProfileScreenWidgetModel defaultMyProfileScreenWidgetModelFactory(BuildContext
     MyProfileScreenModel(
       userRepository: context.userInfo.userRepository,
       aiRepository: context.userInfo.aiRepository,
+      localStorageRepository: context.global.localStorageRepository,
     ),
   );
 }
@@ -116,4 +121,19 @@ class MyProfileScreenWidgetModel extends WidgetModel<MyProfileScreen, IMyProfile
       _aiTextEntity.error();
     }
   }
+
+  @override
+  Future<void> onLogoutTap() async {
+    try {
+      model.removeInfoAboutUser();
+
+      await context.global.reinitDioAsync();
+
+      _naviageteToSplashScreen();
+    } on Exception {
+      //TODO add exception
+    }
+  }
+
+  void _naviageteToSplashScreen() => context.router.replace(const AuthScopeWrapperRoute());
 }

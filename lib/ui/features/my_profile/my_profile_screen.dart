@@ -24,15 +24,24 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
         child: ListView(
           children: [
             const SizedBox(height: 5),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 25),
-              child: Text(
-                "Мой профиль",
-                style: TextStyle(
-                  color: AppColors.mainColorDarkest,
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Мой профиль",
+                    style: TextStyle(
+                      color: AppColors.mainColorDarkest,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () => wm.onLogoutTap(),
+                    child: const Icon(Icons.exit_to_app_rounded),
+                  )
+                ],
               ),
             ),
             const SizedBox(height: 25),

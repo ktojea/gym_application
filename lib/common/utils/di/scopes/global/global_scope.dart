@@ -6,7 +6,7 @@ import 'package:gym_application/domain/local_storage/local_storage_repository.da
 import 'package:provider/provider.dart';
 
 class GlobalScope extends AppAsyncDependency {
-  late final Dio dio;
+  late Dio dio;
 
   late final TokenLDS _tokenLDS;
 
@@ -14,23 +14,25 @@ class GlobalScope extends AppAsyncDependency {
 
   @override
   Future<void> initAsync(BuildContext context) async {
-    await _initDioAsync();
-  }
-
-  Future<void> _initDioAsync() async {
     _tokenLDS = TokenLDS();
 
     localStorageRepository = LocalStorageRepository(tokenLDS: _tokenLDS);
 
+    await _initDioAsync();
+  }
+
+  Future<void> reinitDioAsync() async => await _initDioAsync();
+
+  Future<void> _initDioAsync() async {
     final token = await localStorageRepository.getTokenFromLocalStorage();
 
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://176.123.161.174:8000',
+        baseUrl: 'http://176.109.104.29:8000',
         connectTimeout: const Duration(seconds: 60),
         sendTimeout: const Duration(seconds: 60),
         receiveTimeout: const Duration(seconds: 60),
-        headers: {'Authorization': token},
+        headers: token != null ? {'Authorization': token} : {},
       ),
     );
   }
