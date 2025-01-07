@@ -25,7 +25,7 @@ class MyProfileScreen extends ElementaryWidget<IMyProfileScreenWidgetModel> {
           children: [
             const SizedBox(height: 5),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

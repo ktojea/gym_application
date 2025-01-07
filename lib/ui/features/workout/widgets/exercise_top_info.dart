@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/exercise_in_list_workout/exercise_in_list_workout.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
@@ -21,9 +22,9 @@ class ExerciseTopInfo extends StatelessWidget {
             dimension: 70,
             child: ColoredBox(
               color: AppColors.mainColor,
-              child: Image(
-                fit: BoxFit.cover,
-                image: NetworkImage(exercise.imageUrl ?? ''),
+              child: ImageWithInsurance(
+                imageUrl: exercise.imageUrl ?? '',
+                assetPath: 'assets/images/not_found.png',
               ),
             ),
           ),

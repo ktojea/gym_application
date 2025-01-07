@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_application/common/utils/datetime/date_formattors.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/subscription/subscription.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
@@ -29,9 +30,9 @@ class SubscriptionWidget extends StatelessWidget {
                 child: ColoredBox(
                   color: AppColors.mainColor,
                   child: subscription.gymAvatar != null
-                      ? Image(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(subscription.gymAvatar!),
+                      ? ImageWithInsurance(
+                          imageUrl: subscription.gymAvatar!,
+                          assetPath: 'assets/images/not_found.png',
                         )
                       : null,
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/equipment/equipment.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
@@ -22,9 +23,9 @@ class EquipmentDescriptionWidget extends StatelessWidget {
             dimension: 100,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                equipment.imageUrl,
-                fit: BoxFit.cover,
+              child: ImageWithInsurance(
+                imageUrl: equipment.imageUrl,
+                assetPath: 'assets/images/not_found.png',
               ),
             ),
           ),

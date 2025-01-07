@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
 class TextWithImageWidget extends StatelessWidget {
@@ -32,9 +33,9 @@ class TextWithImageWidget extends StatelessWidget {
           borderRadius: BorderRadiusDirectional.circular(15),
           child: SizedBox.square(
             dimension: 160,
-            child: Image(
-              fit: BoxFit.cover,
-              image: NetworkImage(imageUrl),
+            child: ImageWithInsurance(
+              imageUrl: imageUrl,
+              assetPath: 'assets/images/not_found.png',
             ),
           ),
         ),

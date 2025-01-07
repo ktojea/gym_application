@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/exercise_in_list/exercise_in_list.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
@@ -33,9 +34,9 @@ class ExerciseWidget extends StatelessWidget {
                   child: ColoredBox(
                     color: AppColors.mainColor,
                     child: exercise.imageUrl != null
-                        ? Image(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(exercise.imageUrl!),
+                        ? ImageWithInsurance(
+                            imageUrl: exercise.imageUrl!,
+                            assetPath: 'assets/images/not_found.png',
                           )
                         : const SizedBox(),
                   ),
