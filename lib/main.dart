@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_application/common/utils/di/app_async_dependency.dart';
 import 'package:gym_application/common/utils/di/scopes/global/global_scope.dart';
 import 'package:gym_application/common/utils/navigation/app_router.dart';
+import 'package:gym_application/ui/theme/theme.dart';
 
 void main() async {
   runApp(
@@ -23,10 +24,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Gym app',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.themeData,
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      //   useMaterial3: true,
+      // ),
       debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(),
     );

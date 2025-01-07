@@ -8,12 +8,14 @@ class TextWithFilterWidget extends StatelessWidget {
     this.secondText,
     this.color = AppColors.mainColorDarkest,
     this.underText,
+    this.fontSize = 22,
   });
 
   final String mainText;
   final String? underText;
   final String? secondText;
   final Color color;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class TextWithFilterWidget extends StatelessWidget {
                 softWrap: true,
                 style: TextStyle(
                   color: color,
-                  fontSize: 22,
+                  fontSize: fontSize,
                   fontWeight: FontWeight.w600,
                 ),
               ),

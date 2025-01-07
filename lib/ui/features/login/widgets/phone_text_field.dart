@@ -14,6 +14,8 @@ class PhoneTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //TODO Добавить общий стиль
+    //TODO Добавить тень
     return TextField(
         controller: phoneController,
         keyboardType: TextInputType.number,
@@ -23,7 +25,7 @@ class PhoneTextField extends StatelessWidget {
           prefixText: '+7',
           prefixStyle: const TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.deepPurple,
+            color: AppColors.mainColorDarkest,
             fontSize: 20,
           ),
           labelText: 'Номер телефона',
@@ -35,9 +37,9 @@ class PhoneTextField extends StatelessWidget {
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           filled: true,
           fillColor: Colors.white,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          contentPadding: const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 15),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(1000),
             borderSide: BorderSide.none,
           ),
         ),
@@ -45,7 +47,7 @@ class PhoneTextField extends StatelessWidget {
         maxLength: 10,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.deepPurple,
+          color: AppColors.mainColorDarkest,
           fontSize: 20,
         ),
         onTapOutside: (_) => FocusScope.of(context).requestFocus(FocusNode()));
