@@ -23,16 +23,20 @@ class WorkoutExtendedWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              workout.name,
-              softWrap: true,
-              style: const TextStyle(
-                color: AppColors.mainColorDarkest,
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
+            Expanded(
+              child: Text(
+                workout.name,
+                softWrap: true,
+                style: const TextStyle(
+                  color: AppColors.mainColorDarkest,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             const SizedBox(width: 2),

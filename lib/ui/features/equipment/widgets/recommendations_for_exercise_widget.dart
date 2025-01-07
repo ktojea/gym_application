@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/exercise_media/exercise_media.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
@@ -26,13 +27,18 @@ class RecommendationsForExerciseWidget extends StatelessWidget {
         Center(
           child: Column(
             children: exerciseMediaList
-                .map((exerciseMedia) => Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width / 1.7,
-                        child: Image(image: NetworkImage(exerciseMedia.url)),
+                .map(
+                  (exerciseMedia) => Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width / 1.7,
+                      child: ImageWithInsurance(
+                        imageUrl: exerciseMedia.url,
+                        assetPath: 'assets/images/not_found.png',
                       ),
-                    ))
+                    ),
+                  ),
+                )
                 .toList(),
           ),
         ),

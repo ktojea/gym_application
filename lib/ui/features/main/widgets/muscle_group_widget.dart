@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 import 'package:gym_application/ui/widgets/decoration/plate_widget.dart';
@@ -36,20 +37,17 @@ class MuscleGroupWidget extends StatelessWidget {
                 color: color,
               ),
             ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: SizedBox.square(
-                dimension: 80,
-                child: Image.network(
-                  muscleGroup.imageUrl,
-                  fit: BoxFit.cover,
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: SizedBox.square(
+                  dimension: 80,
+                  child: ImageWithInsurance(
+                    imageUrl: muscleGroup.imageUrl,
+                    assetPath: 'assets/images/not_found.png',
+                  ),
                 ),
               ),
-              // child: Icon(
-              //   Icons.accessibility_new_rounded,
-              //   size: 60,
-              //   color: color,
-              // ),
             ),
           ],
         ),

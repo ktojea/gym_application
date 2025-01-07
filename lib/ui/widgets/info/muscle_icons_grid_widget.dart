@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_application/common/utils/images/image_with_insurance.dart';
 import 'package:gym_application/data/models/local/muscle_group/muscle_group.dart';
 import 'package:gym_application/ui/theme/color/app_colors.dart';
 
@@ -29,9 +30,9 @@ class MuscleIconsGridWidget extends StatelessWidget {
                     dimension: size,
                     child: ColoredBox(
                       color: AppColors.mainColor,
-                      child: Image(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(muscleGroup.imageUrl),
+                      child: ImageWithInsurance(
+                        imageUrl: muscleGroup.imageUrl,
+                        assetPath: 'assets/images/not_found.png',
                       ),
                     ),
                   ),

@@ -33,8 +33,6 @@ class UserInfoWidget extends StatelessWidget {
           const SizedBox(height: 15),
           UserAvatar(
             imageUrl: user.imageUrl,
-            borderRadius: 80,
-            borderWeight: 6,
             shadowColor: AppColors.mainColorMedium,
           ),
           const SizedBox(height: 15),

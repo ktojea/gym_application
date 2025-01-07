@@ -32,10 +32,12 @@ class MainAppBarWidget extends StatelessWidget {
                 ),
           GestureDetector(
             onTap: () => context.router.push(const MyProfileRoute()),
-            child: UserAvatar(
-              imageUrl: user.imageUrl,
-              borderColor: AppColors.mainColorDark,
-              borderWeight: 2.3,
+            child: SizedBox.square(
+              dimension: 44,
+              child: UserAvatar(
+                imageUrl: user.imageUrl,
+                borderColor: AppColors.mainColorDark,
+              ),
             ),
           ),
         ],
